@@ -26,29 +26,29 @@ public abstract class Control_hoteles implements ListSelectionListener {
 	
 	//Añadir listeners a los botones del panel 'hoteles'
 	public void addListeners() {
-		vista.panelHoteles.hoteles.addListSelectionListener(this);
+		vista.panelHoteles.jlistHoteles.addListSelectionListener(this);
 	}
 	
-	public void actionPerformed(ActionEvent e) throws SQLException {
+	public static void addHotelesJList() {
+
+		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
-		Hotel ubicacion = (Hotel) vista.panelBuscador.comboBox.getSelectedItem();
+		String ubicacion = Launcher_sprint1.vista.panelBuscador.comboBox.getSelectedItem().toString();
+		System.out.println("1 ubicacion seleccionada");
+
+		//Lamar ala funcion que lee los hoteles de la BBDD en el modelo
+		ArrayList <Hotel> hotelesList =	Launcher_sprint1.modelo.consulta.getHotelesUbicacion(ubicacion);
+		System.out.println("2 listado hoteles");
 		
-		
-		if(ubicacion != null) {
-			String ubicString = ubicacion.getUbicacion();
-			System.out.println("1111" + ubicString + "111");
+		//Limpiar el JList de hoteles
+		Launcher_sprint1.vista.panelHoteles.jlistHoteles.removeAll();
+		System.out.println("3 borrar listado anterior del jlist");
 			
-			//Limpiar el JList de hoteles
-			vista.panelHoteles.hoteles.removeAll();
-			
-			//Cargar los hoteles de la ubicacion seleccionada desde la bbdd
-			hotelesList = modelo.consulta.getHoteles(ubicString);
-			
-			//Mostrar hoteles en JList
-			for(int i=0; i<hotelesList.size(); i++) {
-				vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i));
-				vista.panelHoteles.hoteles.setModel(vista.panelHoteles.modeloHoteles);
-			}
+		//Mostrar hoteles en JList
+		for(int i=0; i<hotelesList.size(); i++) {
+			Launcher_sprint1.vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i));
+			System.out.println("4 imprimir hoteles en jlist");
 		}
+		Launcher_sprint1.vista.panelHoteles.jlistHoteles.setModel(Launcher_sprint1.vista.panelHoteles.modeloHoteles);
 	}
 }

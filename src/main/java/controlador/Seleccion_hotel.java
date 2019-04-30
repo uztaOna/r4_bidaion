@@ -22,16 +22,16 @@ public class Seleccion_hotel {
 	 */
 	public static void meterHotelesEnComboBox(Ventana vis, String [] nombreHotel) {
 		for (int i = 0; i <nombreHotel.length; i++) {
-			vis.panelHoteles.hoteles.setListData(nombreHotel);
+			vis.panelHoteles.jlistHoteles.setListData(nombreHotel);
 		}
 	}
 	
 	public static String [] cosas (Hotel [] hotel) {
-		String[] cosas = new String[hotel.length];
-		for (int i = 0; i <cosas.length; i++) {
-			cosas[i]=hotel[i].getNombreAloj();
+		String[] nomHoteles = new String[hotel.length];
+		for (int i = 0; i <nomHoteles.length; i++) {
+			nomHoteles[i]=hotel[i].getNombreAloj();
 		}
-		return cosas;
+		return nomHoteles;
 		
 	}
 	
@@ -40,7 +40,7 @@ public class Seleccion_hotel {
 	 */
 	public static void mostrarDatos(Ventana vis, Hotel [] hotel) {
 		//vis.panelHoteles.hoteles.setSelectedIndex(0);
-		int seleccionado=vis.panelHoteles.hoteles.getSelectedIndex();
+		int seleccionado=vis.panelHoteles.jlistHoteles.getSelectedIndex();
 		datosHotel(vis, hotel[seleccionado].getNombreAloj(), hotel[seleccionado].getUbicacion(),4, hotel[seleccionado].getCategoria());
 	}
 	

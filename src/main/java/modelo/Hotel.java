@@ -3,13 +3,25 @@ package modelo;
 public class Hotel extends Alojamiento{
 	
 	protected int categoria;
+	protected double precio;
+	protected String id;
 	
-	public Hotel(String nombreAloj, String ubicacion, int categoria) {
-		super(nombreAloj, ubicacion, categoria);
+	public Hotel() {}
+	
+	public Hotel(String id, String nombreAloj, String ubicacion, int numHabitaciones, int categoria, double precio) {
+		super(nombreAloj, ubicacion, numHabitaciones);
 		
-		this.nombreAloj = nombreAloj;
-		this.ubicacion = ubicacion;
+		this.id = id;
 		this.categoria = categoria;
+		this.precio = precio;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getCategoria() {
@@ -18,6 +30,14 @@ public class Hotel extends Alojamiento{
 
 	public void setCategoria(int categoria) {
 		this.categoria = categoria;
+	}
+	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	
 	//Crea un hotel y lo mete en un array de hoteles
@@ -31,7 +51,7 @@ public class Hotel extends Alojamiento{
 				nombreAloj + 
 				ubicacion + 
 				categoria + " estrellas" +
+				precio +
 				"]";
 	}
-	
 }
