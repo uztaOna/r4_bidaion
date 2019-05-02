@@ -54,7 +54,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		ArrayList<Hotel> nomHoteles = controlador.Seleccion_hotel.cosas(hotel); 
+//		ArrayList<Hotel> nomHoteles = controlador.Seleccion_hotel.cosas(hotel); 
 		//hotel [0]=new Hotel("hotel1", "Madrid", 20);
 		//hotel [1]=new Hotel("hotel2", "Madrid", 25);
 		//hotel [2]=new Hotel("hotel3", "Madrid", 22);
@@ -69,8 +69,8 @@ public class Controlador implements ActionListener, ContainerListener {
 			System.out.println("vaaa bennneeeee");
 			Control_hoteles.addHotelesJList();	
 			vista.setContentPane(vista.panelHoteles);
-		}else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
-			controlador.Seleccion_hotel.mostrarDatos(vista, );
+//		}else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
+//			controlador.Seleccion_hotel.mostrarDatos(vista, );
 		}else if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
 				||e.getSource() == vista.panelLogin2.btnCancelar) {			
 			vista.setContentPane(vista.panelBuscador);

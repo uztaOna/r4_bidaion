@@ -38,6 +38,7 @@ public abstract class Control_hoteles implements ListSelectionListener {
 
 		//Lamar ala funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Hotel> hotelesList =	Launcher_sprint1.modelo.consulta.getHotelesUbicacion(ubicacion);
+		controlador.Seleccion_hotel.listadoHotelesToString(hotelesList);
 		System.out.println("2 listado hoteles");
 		
 		//Limpiar el JList de hoteles
