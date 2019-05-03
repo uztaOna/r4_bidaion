@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/mysql-connector-java-8.0.15.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/r4_bbdd_conex"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

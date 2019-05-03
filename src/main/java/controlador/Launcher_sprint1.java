@@ -2,7 +2,6 @@ package controlador;
 
 import vista.Ventana;
 import modelo.*;
-import vista.*;
 
 public class Launcher_sprint1 {
 
@@ -14,11 +13,11 @@ public class Launcher_sprint1 {
 		// Instancia de las clases necesarias para el programa
 		vista = new Ventana();
 		modelo = new Modelo();
-		Controlador controlador = new Controlador(vista,modelo);
+		@SuppressWarnings("unused")
+		Controlador control = new Controlador(vista,modelo);
 
 		// Hacer la vista visible 
 		vista.setVisible(true);
-		//System.out.println(controlador.Controlador.devolverUbicacion(vista));
 	    }
 	
 }

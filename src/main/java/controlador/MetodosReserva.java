@@ -1,20 +1,8 @@
 package controlador;
 
-import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import modelo.Cama;
-import modelo.Cliente;
-import modelo.Habitacion;
+import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -23,6 +11,17 @@ public class MetodosReserva {
 	/*
 	 * Registra al usuario si no lo está
 	 */
+	public static void infoRva() {
+		// 1 Leer JList seleccionado
+		String nombreHotel = (String)Launcher_sprint1.vista.panelHoteles.jlistHoteles.getSelectedValue();
+		
+		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
+		Hotel hotel = Launcher_sprint1.modelo.consulta.getDatosHotel(nombreHotel);
+		
+		// 3 Cambiar labels de pan hoteles con datos de bbdd
+		Launcher_sprint1.vista.panelReserva.lblHotelSelec.setText(hotel.getNombreAloj());
+	}
+	
 	public static boolean reserva(Ventana vis, Modelo mod, Cama cama) {
 		int individual=vis.panelReserva.indspinn.getComponentCount();
 		System.out.println(individual);
@@ -32,6 +31,7 @@ public class MetodosReserva {
 		String ubicacion= cama.getUbicacion();
 		String cod_Habitacion = cama.getCod_Habitacion();
 		String tipoHabitacion= cama.getTipoHabitacion();
+		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;

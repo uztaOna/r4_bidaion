@@ -45,13 +45,15 @@ public class Hotel extends Alojamiento{
 		
 	}
 
+	public String toStringNombre() {
+		return nombreAloj;
+	}
+	
 	@Override
 	public String toString() {
-		return "Hotel" + 
-				nombreAloj + 
+		return nombreAloj + 
 				ubicacion + 
 				categoria + " estrellas" +
-				precio +
-				"]";
+				precio;
 	}
 }

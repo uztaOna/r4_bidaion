@@ -93,4 +93,46 @@ public class Consultas {
 		//return ArrayList
 		return listaHoteles;
 	}
+	
+	//Método que recibe nombre de un hotel y saca sus datos
+	public Hotel getDatosHotel(String nombreHotel){
+		//read * hotels
+		Hotel hotel = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		
+		String query = "SELECT * FROM hoteles WHERE Nombre=?";
+
+		try {
+			//levantar la conexion
+			connection = conexion.conectar();
+			
+			//preparar la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			stmt.setString(1, nombreHotel);
+			System.out.println(nombreHotel);
+			
+			//execute la consulta y guardarla en un ResultSet
+			result = stmt.executeQuery();
+			
+			//crear un objeto Hotel sus datos propios
+			while (result.next()) {
+				hotel = new Hotel();
+				hotel.setId(result.getString("Id"));
+				hotel.setNombreAloj(result.getString("Nombre"));
+				hotel.setCategoria(result.getInt("Categoria"));
+				hotel.setUbicacion(result.getString("Ubicacion"));
+				hotel.setPrecio(result.getDouble("Precio"));
+			}
+		} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+			    //cerrar la conexion
+			    try { result.close(); } catch (Exception e) { e.printStackTrace(); }
+			    try { stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+			    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+			} 
+		//return ArrayList
+		return hotel;
+	}
 }

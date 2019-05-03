@@ -3,24 +3,25 @@ package vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-
-import java.awt.Scrollbar;
 import javax.swing.JButton;
 
 public class PanelReserva extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
 	
-	public JLabel lblHotelSelc, lblIndividual, lblMatrimonio, lbldoble, lblUsuarioReser;
+	public JLabel lblHotelSelec, lblIndividual, lblMatrimonio, lbldoble, lblUsuarioReser;
 	public JSpinner indspinn, matrispinn,doblespinn;
 	public JButton btnReservar, btnLogReserva, btnRegisReser;
 	
@@ -30,10 +31,10 @@ public class PanelReserva extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblHotelSelc = new JLabel("El Hotel Seleccionado");
-		lblHotelSelc.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelSelc.setBounds(37, 41, 210, 62);
-		add(lblHotelSelc);
+		lblHotelSelec = new JLabel("");
+		lblHotelSelec.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHotelSelec.setBounds(37, 41, 210, 62);
+		add(lblHotelSelec);
 		
 		lblIndividual = new JLabel("Individual");
 		lblIndividual.setBounds(51, 231, 62, 27);
