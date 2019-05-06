@@ -38,7 +38,7 @@ public class Ventana extends JFrame {
 		getContentPane().add(panelLogin);
 		getContentPane().add(panelLogin2);
 		getContentPane().add(panelReserva);
-		getContentPane().add(panelPago);		
+		getContentPane().add(panelPago);			
 		
 		//Inicializacion de variables
 		

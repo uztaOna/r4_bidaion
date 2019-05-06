@@ -21,32 +21,48 @@ public class MetodoLogin {
 	/*
 	 * Registra al usuario si no lo está
 	 */
-	public Cliente registro(Ventana vis, Modelo mod) {
+	public static Cliente registro(Ventana vis, Modelo mod) {
 		String nombre = vis.panelLogin.textFieldNombre.getText();
 		String apellido = vis.panelLogin.textFieldApellido.getText();
 		String dni = vis.panelLogin.textFieldDNI.getText();
 		char sexo = cambiarSexoAChar(vis.panelLogin.comboBoxSexo);
 		String fechaNac = vis.panelLogin.textFieldNacimiento.getText();
 		String contrasenia = vis.panelLogin.textFieldContrasenia.getText();	
-		if (nombre.length() > 0 && apellido.length() > 0 && validarDNI(dni) == true && fechaNac.length() > 0 ) {
-			return (new Cliente(nombre, apellido, dni, sexo, fechaNac, contrasenia, 99, 9999));
+		if (nombre.length() > 0 && validarSoloLetras(vis.panelLogin.textFieldNombre) && validarSoloLetras(vis.panelLogin.textFieldApellido)
+				&& apellido.length() > 0 && validarDNI(dni) == true && fechaNac.length() > 0 ) {
+			return (new Cliente(nombre, apellido, dni, sexo, fechaNac, contrasenia, "99", 9999));
 		} else {
 			JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return null;
 	}
 		
+	public static void limpiarRegistro(Ventana vis) {
+		vis.panelLogin.textFieldNombre.setText("");
+		vis.panelLogin.textFieldApellido.setText("");
+		vis.panelLogin.textFieldDNI.setText("");
+		vis.panelLogin.textFieldNacimiento.setText("");
+		vis.panelLogin.textFieldContrasenia.setText("");
+		vis.panelLogin.textFieldNombre.setBackground(new JTextField().getBackground());
+		vis.panelLogin.textFieldApellido.setBackground(new JTextField().getBackground());
+	}
+	
+	public static void limpiarLogin(Ventana vis) {
+		vis.panelLogin2.textFieldNombre.setText("");
+		vis.panelLogin2.textFieldContrasenia.setText("");
+	}
+	
 	/*
 	 * valida que sea un DNI válido
 	 */
-	public boolean validarDNI(String DNI) {
+	public static boolean validarDNI(String DNI) {
 		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
 	
 	/*
 	 * Pasa el valor de la comboBox a char dependiendo de si es hombre (V) o mujer (M)
 	 */
-	public char cambiarSexoAChar(JComboBox ComboBoxSexo) {
+	public static char cambiarSexoAChar(JComboBox ComboBoxSexo) {
 		String sexo = ComboBoxSexo.getSelectedItem().toString();
 		if (sexo == "Hombre") {
 			return 'V';
@@ -57,7 +73,7 @@ public class MetodoLogin {
 	/*
 	 * Valida si en el campo solo hay letras
 	 */
-	public boolean validarSoloLetras(JTextField campoTexto) {
+	public static boolean validarSoloLetras(JTextField campoTexto) {
 		if (!(campoTexto.getText().matches("^[a-zA-Z]+$"))) {
 			JOptionPane.showMessageDialog(null, "Este campo solo admite letras", "Error", JOptionPane.ERROR_MESSAGE);
 			campoTexto.setBackground(new Color(240, 128, 128));
@@ -70,7 +86,7 @@ public class MetodoLogin {
 	/*
 	 * valida que la contraseña tenga los parámetros válidos
 	 */
-	public boolean validarContrasenia(char[] password) {
+	public static boolean validarContrasenia(char[] password) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
 
@@ -87,5 +103,28 @@ public class MetodoLogin {
 		}
 
 	}
+	
+	public static void nombreUsuario (Ventana vis, Cliente cliente) {		
+		vis.panelReserva.lblUsuarioReser.setText(cliente.nombre);
+		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
+		
+		vis.panelReserva.btnLogReserva.setText("Log out");
+		vis.panelHoteles.btnLogHoteles.setText("Log out");
+		
+	}
+	
+	public static void salirUsuario(Ventana vis) {
+		if(vis.panelReserva.btnLogReserva.getText()=="Log out" || vis.panelHoteles.btnLogHoteles.getText()=="Log out") {
+			vis.panelReserva.lblUsuarioReser.setText("");
+			vis.panelHoteles.lblUsuarioHotel.setText("");
+			
+			vis.panelReserva.btnLogReserva.setText("Loguearme");
+			vis.panelHoteles.btnLogHoteles.setText("Loguearme");
+		}
+		else {
+			System.out.println("Debes estar en log out");
+		}
+	}
+
 
 }

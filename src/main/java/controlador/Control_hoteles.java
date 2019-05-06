@@ -1,6 +1,8 @@
 package controlador;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionListener;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -45,9 +47,9 @@ public abstract class Control_hoteles implements ListSelectionListener {
 		//Guardar ubicacion seleccionada
 		String ubicacion = Launcher_sprint1.vista.panelBuscador.comboBox.getSelectedItem().toString();
 
-		//Lamar ala funcion que lee los hoteles de la BBDD en el modelo
+		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Hotel> hotelesList =	Launcher_sprint1.modelo.consulta.getHotelesUbicacion(ubicacion);
-		controlador.Seleccion_hotel.listadoHotelesToString(hotelesList);
+		Control_hoteles.listadoHotelesToString(hotelesList);
 		
 		//Limpiar el JList de hoteles
 		Launcher_sprint1.vista.panelHoteles.jlistHoteles.removeAll();
@@ -57,5 +59,31 @@ public abstract class Control_hoteles implements ListSelectionListener {
 			Launcher_sprint1.vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i).getNombreAloj());
 		}
 		Launcher_sprint1.vista.panelHoteles.jlistHoteles.setModel(Launcher_sprint1.vista.panelHoteles.modeloHoteles);
+	}
+	
+	
+	public static void tres(Ventana vis) {
+		String nombre = "";
+		if(nombre==vis.panelHoteles.lblNomHotel.getText()) {
+			if(JOptionPane.showConfirmDialog(null,"gxdd")==JOptionPane.YES_OPTION) {
+				System.exit(0);
+			}
+			else {
+				JOptionPane.showConfirmDialog(null,"no has cerrado nada");
+			}
+		}
+	}
+	
+	
+	public static void listadoHoteles(Ventana vis, String nombre) {		
+		vis.panelHoteles.lblNomHotel.setText(nombre);
+	}
+	
+	
+	public static ArrayList<Hotel> listadoHotelesToString (ArrayList<Hotel> listHoteles) {		
+		for (int i = 0; i <listHoteles.size(); i++) {
+			listHoteles.get(i);
+		}
+		return listHoteles;
 	}
 }

@@ -1,8 +1,20 @@
 package controlador;
 
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 import modelo.Cama;
-import modelo.Hotel;
+import modelo.Cliente;
+import modelo.Habitacion;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -11,27 +23,15 @@ public class MetodosReserva {
 	/*
 	 * Registra al usuario si no lo está
 	 */
-	public static void infoRva() {
-		// 1 Leer JList seleccionado
-		String nombreHotel = (String)Launcher_sprint1.vista.panelHoteles.jlistHoteles.getSelectedValue();
-		
-		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
-		Hotel hotel = Launcher_sprint1.modelo.consulta.getDatosHotel(nombreHotel);
-		
-		// 3 Cambiar labels de pan hoteles con datos de bbdd
-		Launcher_sprint1.vista.panelReserva.lblHotelSelec.setText(hotel.getNombreAloj());
-	}
-	
-	public static boolean reserva(Ventana vis, Modelo mod, Cama cama) {
-		int individual=vis.panelReserva.indspinn.getComponentCount();
+	public static boolean reserva(Ventana vis, Cama cama) {
+		int individual=vis.panelReserva.lblCantInd.getComponentCount();
 		System.out.println(individual);
-		int matrimonio=vis.panelReserva.matrispinn.getComponentCount();
-		int doble=vis.panelReserva.doblespinn.getComponentCount();
+		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
+		int doble=vis.panelReserva.lblCantDoble.getComponentCount();
 		String nombreAloj = cama.getNombreAloj();
 		String ubicacion= cama.getUbicacion();
 		String cod_Habitacion = cama.getCod_Habitacion();
 		String tipoHabitacion= cama.getTipoHabitacion();
-		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;
@@ -46,5 +46,44 @@ public class MetodosReserva {
 		}
 		return true;
 	}
+	
+	public static String sumaBoton (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())+1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
+	public static String sumaBoton2 (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())+1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
+	public static String sumaBoton3 (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())+1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
+	public static void disponibilidadCamas (Ventana vis, Cama cama) {
+		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
+		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));
+		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
+	}
 
+	public static void actualizacionCamas (Ventana vis, Cama cama) {
+		cama.setIndividual(cama.getIndividual()-Integer.parseInt(vis.panelReserva.lblCantInd.getText()));
+		cama.setMatrimonio(cama.getMatrimonio()-Integer.parseInt(vis.panelReserva.lblMatriDisp.getText()));
+		cama.setDoble(cama.getDoble()-Integer.parseInt(vis.panelReserva.lblDobleDisp.getText()));
+		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
+		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));
+		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
+	}
+	
+	public static void limpiarDispReser(Ventana vis) {
+		vis.panelReserva.lblCantInd.setText("0");
+		vis.panelReserva.lblCantMatri.setText("0");
+		vis.panelReserva.lblCantDoble.setText("0");
+	}
+	
 }

@@ -8,10 +8,10 @@ public class Cliente {
 	public char sexo;
 	public String fechaNac;
 	private String contrasenia;
-	private int NCuenta;
-	private int dinero;
+	public String NCuenta;
+	public int dinero;
 
-	public Cliente (String nombre, String apellido, String dni, char sexo, String fechaNac, String contrasenia, int NCuenta, int dinero) {
+	public Cliente (String nombre, String apellido, String dni, char sexo, String fechaNac, String contrasenia, String NCuenta, int dinero) {
 		this.nombre = nombre;
 		this.dni = dni;	
 		this.apellido = apellido;
@@ -74,11 +74,11 @@ public class Cliente {
 		this.contrasenia = contrasenia;
 	}
 
-	public int getNCuenta() {
+	public String getNCuenta() {
 		return NCuenta;
 	}
 
-	public void setNCuenta(int nCuenta) {
+	public void setNCuenta(String nCuenta) {
 		NCuenta = nCuenta;
 	}
 

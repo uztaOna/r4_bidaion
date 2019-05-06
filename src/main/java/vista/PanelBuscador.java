@@ -5,10 +5,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.Color;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
+import com.toedter.components.JLocaleChooser;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JSpinner;
 
 public class PanelBuscador extends JPanel {
 
@@ -27,7 +29,7 @@ public class PanelBuscador extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
 		
-		lblUbicacion = new JLabel("Ubicacion");
+		lblUbicacion = new JLabel("Ubicaci\u00F3n");
 		lblUbicacion.setBounds(257, 304, 71, 23);
 		add(lblUbicacion);
 
@@ -46,6 +48,22 @@ public class PanelBuscador extends JPanel {
 		lblEscojaElDestino.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEscojaElDestino.setBounds(187, 121, 451, 126);
 		add(lblEscojaElDestino);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(398, 337, 95, 20);
+		add(dateChooser);
+		
+		JLabel lblFechaInicio = new JLabel("Fecha inicio");
+		lblFechaInicio.setBounds(284, 347, 80, 20);
+		add(lblFechaInicio);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(430, 383, 41, 20);
+		add(spinner);
+		
+		JLabel lblNmeroDeDas = new JLabel("N\u00FAmero de d\u00EDas");
+		lblNmeroDeDas.setBounds(282, 386, 82, 14);
+		add(lblNmeroDeDas);
 		
 		
 		

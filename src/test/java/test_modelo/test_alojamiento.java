@@ -1,9 +1,7 @@
 package test_modelo;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
 import modelo.Alojamiento;
 
 public class test_alojamiento {
@@ -25,5 +23,4 @@ public class test_alojamiento {
 		Alojamiento1.setNombreAloj(nombreAloj);
 		assertEquals(nombreAloj, Alojamiento1.getNombreAloj());
 	}
-
 }

@@ -23,7 +23,7 @@ public class PanelPago extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	
-	public JButton btnConfirmar, btnCancelar;
+	public JButton btnConfirmar, btnCancelar, btnPagar;
 	public JLabel label_2, lblNCuenta, lblPrecioTotal;
 	public JTextField textAPagar, textCuenta;
 	@SuppressWarnings("rawtypes")
@@ -70,7 +70,7 @@ public class PanelPago extends JPanel {
 		textAPagar.setText("0.00");
 		btnConfirmar.setEnabled(false);
 		
-		JButton btnPagar = new JButton("PAGAR");
+		btnPagar = new JButton("PAGAR");
 		btnPagar.setBounds(277, 345, 247, 83);
 		add(btnPagar);
 		

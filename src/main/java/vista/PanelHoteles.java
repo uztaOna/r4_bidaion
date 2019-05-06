@@ -17,8 +17,8 @@ public class PanelHoteles extends JPanel {
 	
 	public JList<Object> jlistHoteles;
 	public DefaultListModel<Object> modeloHoteles = new DefaultListModel<Object>();
-	public JButton btnAtras, btnContinuar, btnSeleccionar, btnLogin, btnRegistro;
-	public JLabel lblNomHotel, ubicacion, precio, categoria, lblNombreHotel, lblUbicacion, lblPrecio, lblCategoría, lblUser;
+	public JButton btnAtras, btnContinuar, btnSeleccionar, btnLogin, btnRegistro,  btnLogHoteles, btnRegisHoteles;
+	public JLabel lblNomHotel, ubicacion, precio, categoria, lblNombreHotel, lblUbicacion, lblPrecio, lblCategoría, lblUser, lblUsuarioHotel;
 	
 	public PanelHoteles() {
 		setBackground(new Color(255, 201, 164));
@@ -79,5 +79,17 @@ public class PanelHoteles extends JPanel {
 		lblUser = new JLabel("");
 		lblUser.setBounds(497, 29, 153, 50);
 		add(lblUser);
+		
+		btnLogHoteles = new JButton("Logearme");
+		btnLogHoteles.setBounds(660, 29, 94, 20);
+		add(btnLogHoteles);
+		
+		btnRegisHoteles = new JButton("Registrarme");
+		btnRegisHoteles.setBounds(660, 59, 94, 20);
+		add(btnRegisHoteles);
+		
+		lblUsuarioHotel = new JLabel(" ");
+		lblUsuarioHotel.setBounds(497, 29, 153, 50);
+		add(lblUsuarioHotel);
 	}
 }
