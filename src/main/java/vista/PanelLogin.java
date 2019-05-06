@@ -10,63 +10,86 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import com.toedter.calendar.JDateChooser;
 
 public class PanelLogin extends JPanel {
 
 	/**
+	 * 
+	 */
+	
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
 	
-	public JLabel lblRegistroUsuario, lblNombre, lblApellido, lblDni, lblSexo, lblContrasenia, lblFechaNacimiento;
-	public JTextField textFieldNombre, textFieldApellido, textFieldDNI, textFieldNacimiento, textFieldContrasenia;
+	public JLabel lblTitulo, lblNombre, lblApellido, lblDni, lblSexo, lblPassword, lblFnac;
+	public JTextField txtNombre, txtApellido, txtDni, txtPassword;
 	public JButton btnRegistrarme, btnCancelar;
-	public JComboBox comboBoxSexo;
+	public JComboBox boxSexo;
+	public JDateChooser dateFnac;
 	
 	public PanelLogin() {
 		setLayout(null);
 		setBounds(0,0,800,600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblRegistroUsuario = new JLabel("REGISTRO");
-		lblRegistroUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegistroUsuario.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblRegistroUsuario.setBounds(229, 35, 269, 39);
-		add(lblRegistroUsuario);
+		lblTitulo = new JLabel("ALTA NUEVA");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblTitulo.setBounds(229, 35, 269, 39);
+		add(lblTitulo);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(218, 106, 78, 39);
 		add(lblNombre);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(383, 106, 192, 39);
-		add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(383, 106, 192, 39);
+		add(txtNombre);
+		txtNombre.setColumns(10);
 		
 		lblApellido = new JLabel("Apellido:");
 		lblApellido.setBounds(218, 170, 78, 39);
 		add(lblApellido);
 		
-		textFieldApellido = new JTextField();
-		textFieldApellido.setColumns(10);
-		textFieldApellido.setBounds(383, 171, 192, 39);
-		add(textFieldApellido);
+		txtApellido = new JTextField();
+		txtApellido.setColumns(10);
+		txtApellido.setBounds(383, 171, 192, 39);
+		add(txtApellido);
 		
 		lblDni = new JLabel("DNI:");
 		lblDni.setBounds(218, 371, 65, 39);
 		add(lblDni);
 		
-		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(385, 371, 190, 39);
-		add(textFieldDNI);
+		txtDni = new JTextField();
+		txtDni.setBounds(385, 371, 190, 39);
+		add(txtDni);
 		
-		lblFechaNacimiento = new JLabel("Fecha de nacimiento:");
-		lblFechaNacimiento.setBounds(218, 304, 160, 39);
-		add(lblFechaNacimiento);
+		lblFnac = new JLabel("Fecha de nacimiento:");
+		lblFnac.setBounds(218, 304, 160, 39);
+		add(lblFnac);
 		
-		textFieldNacimiento = new JTextField();
-		textFieldNacimiento.setColumns(10);
-		textFieldNacimiento.setBounds(383, 304, 192, 39);
-		add(textFieldNacimiento);
+		dateFnac = new JDateChooser();
+		dateFnac.setBounds(383, 304, 192, 39);
+		add(dateFnac);
+		
+		lblSexo = new JLabel("Sexo");
+		lblSexo.setBounds(218, 239, 78, 39);
+		add(lblSexo);
+		
+		boxSexo = new JComboBox();
+		boxSexo.setBounds(383, 239, 192, 39);
+		boxSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
+		add(boxSexo);
+		
+		lblPassword = new JLabel("Contrase\u00F1a");
+		lblPassword.setBounds(218, 434, 65, 39);
+		add(lblPassword);
+		
+		txtPassword = new JTextField();
+		txtPassword.setBounds(385, 434, 190, 39);
+		add(txtPassword);
 		
 		btnRegistrarme = new JButton("REGISTRARME");
 		btnRegistrarme.setBounds(545, 526, 171, 39);
@@ -76,22 +99,5 @@ public class PanelLogin extends JPanel {
 		btnCancelar.setBounds(90, 526, 134, 39);
 		add(btnCancelar);
 		
-		lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(218, 239, 78, 39);
-		add(lblSexo);
-		
-		comboBoxSexo = new JComboBox();
-		comboBoxSexo.setBounds(383, 239, 192, 39);
-		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
-		add(comboBoxSexo);
-		
-		lblContrasenia = new JLabel("Contrase\u00F1a");
-		lblContrasenia.setBounds(218, 434, 65, 39);
-		add(lblContrasenia);
-		
-		textFieldContrasenia = new JTextField();
-		textFieldContrasenia.setBounds(385, 434, 190, 39);
-		add(textFieldContrasenia);
 	}
-
 }

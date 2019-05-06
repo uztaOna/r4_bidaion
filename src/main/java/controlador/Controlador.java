@@ -116,18 +116,18 @@ public class Controlador implements ActionListener, ContainerListener {
 		else if(e.getSource() == vista.panelReserva.btnDoble) {			
 			vista.panelReserva.lblCantDoble.setText(MetodosReserva.sumaBoton3(vista));
 			}else if(e.getSource() == vista.panelLogin2.btnContinuar) {		
-				controlador.MetodoLogin.nombreUsuario(vista, cliente1);
+				MetodoLogin.nombreUsuario(vista, cliente1);
 			}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
 				MetodoLogin.registro(vista, modelo);
 				System.out.println("Registra bien");
 			}else if(e.getSource() == vista.panelPago.btnPagar) {		
-				controlador.MetodosPago.pagar(vista, cliente1);
+				MetodosPago.pagar(vista, cliente1);
 				MetodosReserva.actualizacionCamas(vista, cama1);
 			}else if(e.getSource() == vista.panelHoteles.btnContinuar) {
 				vista.setContentPane(vista.panelReserva);
 				//CerrarVentana.VistaPrincipal();
 			}else if(e.getSource() == vista.panelReserva.btnReservar) {
-				if(controlador.MetodosReserva.reserva(vista, cama1)==true) {
+				if(MetodosReserva.reserva(vista, cama1)==true) {
 					vista.setContentPane(vista.panelPago);
 				}
 			}else if(e.getSource() == vista.panelPago.btnCancelar) {

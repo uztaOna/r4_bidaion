@@ -13,11 +13,11 @@ public class Launcher_sprint1 {
 		// Instancia de las clases necesarias para el programa
 		vista = new Ventana();
 		modelo = new Modelo();
-		@SuppressWarnings("unused")
+		
 		Controlador control = new Controlador(vista,modelo);
-
+	
+		
 		// Hacer la vista visible 
 		vista.setVisible(true);
-	    }
-	
+	}
 }

@@ -11,26 +11,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class PanelLogin2 extends JPanel {
+public class PanelRegistro extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
 	
-	public JLabel lblLogIn, lblNombre, lblContrasenia;
+	public JLabel lblTitulo, lblNombre, lblContrasenia;
 	public JTextField textFieldNombre, textFieldContrasenia;
 	public JButton btnContinuar, btnNoAcc, btnCancelar;
 	
-	public PanelLogin2() {
+	public PanelRegistro() {
 		setLayout(null);
 		setBounds(0,0,800,600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblLogIn = new JLabel("LOG IN");
-		lblLogIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogIn.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblLogIn.setBounds(229, 35, 269, 39);
-		add(lblLogIn);
+		lblTitulo = new JLabel("INICIO DE SESIÓN");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblTitulo.setBounds(229, 35, 269, 39);
+		add(lblTitulo);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(218, 132, 78, 39);

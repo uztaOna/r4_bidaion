@@ -22,13 +22,13 @@ public class MetodoLogin {
 	 * Registra al usuario si no lo está
 	 */
 	public static Cliente registro(Ventana vis, Modelo mod) {
-		String nombre = vis.panelLogin.textFieldNombre.getText();
-		String apellido = vis.panelLogin.textFieldApellido.getText();
-		String dni = vis.panelLogin.textFieldDNI.getText();
-		char sexo = cambiarSexoAChar(vis.panelLogin.comboBoxSexo);
+		String nombre = vis.panelLogin.txtNombre.getText();
+		String apellido = vis.panelLogin.txtApellido.getText();
+		String dni = vis.panelLogin.txtDni.getText();
+		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
 		String fechaNac = vis.panelLogin.textFieldNacimiento.getText();
-		String contrasenia = vis.panelLogin.textFieldContrasenia.getText();	
-		if (nombre.length() > 0 && validarSoloLetras(vis.panelLogin.textFieldNombre) && validarSoloLetras(vis.panelLogin.textFieldApellido)
+		String contrasenia = vis.panelLogin.txtPassword.getText();	
+		if (nombre.length() > 0 && validarSoloLetras(vis.panelLogin.txtNombre) && validarSoloLetras(vis.panelLogin.txtApellido)
 				&& apellido.length() > 0 && validarDNI(dni) == true && fechaNac.length() > 0 ) {
 			return (new Cliente(nombre, apellido, dni, sexo, fechaNac, contrasenia, "99", 9999));
 		} else {
@@ -38,13 +38,13 @@ public class MetodoLogin {
 	}
 		
 	public static void limpiarRegistro(Ventana vis) {
-		vis.panelLogin.textFieldNombre.setText("");
-		vis.panelLogin.textFieldApellido.setText("");
-		vis.panelLogin.textFieldDNI.setText("");
+		vis.panelLogin.txtNombre.setText("");
+		vis.panelLogin.txtApellido.setText("");
+		vis.panelLogin.txtDni.setText("");
 		vis.panelLogin.textFieldNacimiento.setText("");
-		vis.panelLogin.textFieldContrasenia.setText("");
-		vis.panelLogin.textFieldNombre.setBackground(new JTextField().getBackground());
-		vis.panelLogin.textFieldApellido.setBackground(new JTextField().getBackground());
+		vis.panelLogin.txtPassword.setText("");
+		vis.panelLogin.txtNombre.setBackground(new JTextField().getBackground());
+		vis.panelLogin.txtApellido.setBackground(new JTextField().getBackground());
 	}
 	
 	public static void limpiarLogin(Ventana vis) {
