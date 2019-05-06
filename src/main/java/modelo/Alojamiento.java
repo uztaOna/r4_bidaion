@@ -1,6 +1,7 @@
 package modelo;
 
 public class Alojamiento {
+	protected String id;
 	protected String nombreAloj;
 	protected String ubicacion;
 	protected int numHabitaciones;
@@ -9,11 +10,20 @@ public class Alojamiento {
 		super();
 	}
 	
-	public Alojamiento(String nombreAloj, String ubicacion, int numHabitaciones) {
+	public Alojamiento(String id, String nombreAloj, String ubicacion, int numHabitaciones) {
 		super();
+		this.id = id;
 		this.nombreAloj = nombreAloj;
 		this.ubicacion = ubicacion;
 		this.numHabitaciones = numHabitaciones;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNombreAloj() {

@@ -15,7 +15,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	
 	public Controlador(Ventana vista, Modelo modelo) {
 		this.vista = vista;
-		this.modelo = modelo;
+		this.modelo = modelo; 
 		
 		vista.setContentPane(vista.panelBienvenida);
 		inicializarEventos();
@@ -23,7 +23,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	
 	public void inicializarEventos() {
 		//Panel bienvenida
-		this.vista.panelBienvenida.btnContinuar.addActionListener(this);
+		this.vista.panelBienvenida.btnInicio.addActionListener(this);
 		
 		//Panel buscador de destinos
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
@@ -31,7 +31,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		//Panel de selección de hoteles
 		this.vista.panelHoteles.btnAtras.addActionListener(this);
 		this.vista.panelHoteles.btnContinuar.addActionListener(this);
-		this.vista.panelHoteles.jlistHoteles.addContainerListener(this);
+		this.vista.panelHoteles.JListHoteles.addContainerListener(this);
 		this.vista.panelHoteles.btnSeleccionar.addActionListener(this);	
 		this.vista.panelHoteles.btnLogin.addActionListener(this);
 		this.vista.panelHoteles.btnRegistro.addActionListener(this);
@@ -67,7 +67,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","GDSASS", 'M', "04/04/2000", "QQQQ", "2", 9999999);
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
-		if(e.getSource() == vista.panelBienvenida.btnContinuar) {	
+		if(e.getSource() == vista.panelBienvenida.btnInicio) {	
 			Control_buscador.addUbicacionesCombo();
 			vista.setContentPane(vista.panelBuscador);
 			System.out.println("dfsdfsdfsdfsfsdfsdf");
@@ -84,6 +84,7 @@ public class Controlador implements ActionListener, ContainerListener {
 				||e.getSource() == vista.panelLogin2.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
 				|| e.getSource() == vista.panelLogin2.btnCancelar) {			
 			vista.setContentPane(vista.panelBuscador);
+			Control_hoteles.limpiarBox(vista);
 			MetodoLogin.limpiarRegistro(vista);
 			MetodoLogin.limpiarLogin(vista);
 			MetodosReserva.limpiarDispReser(vista);

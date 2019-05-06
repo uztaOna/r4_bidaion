@@ -1,7 +1,6 @@
 package controlador;
 
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionListener;
 import modelo.Hotel;
@@ -24,13 +23,13 @@ public abstract class Control_hoteles implements ListSelectionListener {
 	
 	//Añadir listeners a los botones del panel 'hoteles'
 	public void addListeners() {
-		vista.panelHoteles.jlistHoteles.addListSelectionListener(this);
+		vista.panelHoteles.JListHoteles.addListSelectionListener(this);
 	}
 	
 
 	public static void infoHotelSelec() {
 		// 1 Leer JList seleccionado
-		String nombreHotel = (String)Launcher_sprint1.vista.panelHoteles.jlistHoteles.getSelectedValue();
+		String nombreHotel = (String)Launcher_sprint1.vista.panelHoteles.JListHoteles.getSelectedValue();
 		
 		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
 		Hotel hotel = Launcher_sprint1.modelo.consulta.getDatosHotel(nombreHotel);
@@ -49,16 +48,16 @@ public abstract class Control_hoteles implements ListSelectionListener {
 
 		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Hotel> hotelesList =	Launcher_sprint1.modelo.consulta.getHotelesUbicacion(ubicacion);
-		Control_hoteles.listadoHotelesToString(hotelesList);
+		Control_hoteles.listadoHoteles(hotelesList); 
 		
 		//Limpiar el JList de hoteles
-		Launcher_sprint1.vista.panelHoteles.jlistHoteles.removeAll();
+		Launcher_sprint1.vista.panelHoteles.JListHoteles.removeAll();
 			
 		//Mostrar hoteles en JList
 		for(int i=0; i<hotelesList.size(); i++) {
 			Launcher_sprint1.vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i).getNombreAloj());
 		}
-		Launcher_sprint1.vista.panelHoteles.jlistHoteles.setModel(Launcher_sprint1.vista.panelHoteles.modeloHoteles);
+		Launcher_sprint1.vista.panelHoteles.JListHoteles.setModel(Launcher_sprint1.vista.panelHoteles.modeloHoteles);
 	}
 	
 	
@@ -71,16 +70,19 @@ public abstract class Control_hoteles implements ListSelectionListener {
 			else {
 				JOptionPane.showConfirmDialog(null,"no has cerrado nada");
 			}
-		}
+		} 
 	}
 	
+	public static void limpiarBox(Ventana vis) {		
+		vis.panelHoteles.JListHoteles.removeAll();
+	}
 	
-	public static void listadoHoteles(Ventana vis, String nombre) {		
+	public static void cargaNombreHotel(Ventana vis, String nombre) {		
 		vis.panelHoteles.lblNomHotel.setText(nombre);
 	}
 	
 	
-	public static ArrayList<Hotel> listadoHotelesToString (ArrayList<Hotel> listHoteles) {		
+	public static ArrayList<Hotel> listadoHoteles (ArrayList<Hotel> listHoteles) {	
 		for (int i = 0; i <listHoteles.size(); i++) {
 			listHoteles.get(i);
 		}

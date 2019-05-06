@@ -19,24 +19,24 @@ public class PanelBienvenida extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	
-	public JLabel lblBienvenido;
-	public JButton btnContinuar;
+	public JLabel lblTitulo;
+	public JButton btnInicio;
 	
 	public PanelBienvenida() {
 		setBackground(new Color(255, 201, 164));
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
 		
-		btnContinuar = new JButton("Reservar");
-		btnContinuar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
-		btnContinuar.setBounds(193, 496, 395, 23);
-		add(btnContinuar);
+		btnInicio = new JButton("Reservar");
+		btnInicio.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnInicio.setBounds(174, 319, 411, 55);
+		add(btnInicio);
 		
-		lblBienvenido = new JLabel("Bienvenida a BiDaiOn");
-		lblBienvenido.setFont(new Font("Yu Gothic UI", Font.PLAIN, 34));
-		lblBienvenido.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBienvenido.setBounds(182, 59, 411, 103);
-		add(lblBienvenido);
+		lblTitulo = new JLabel("Bienvenida a BiDaiOn");
+		lblTitulo.setFont(new Font("Yu Gothic UI", Font.PLAIN, 34));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(174, 128, 411, 124);
+		add(lblTitulo);
 
 	}
 }

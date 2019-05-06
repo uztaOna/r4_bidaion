@@ -9,7 +9,7 @@ public class Hotel extends Alojamiento{
 	public Hotel() {}
 	
 	public Hotel(String id, String nombreAloj, String ubicacion, int numHabitaciones, int categoria, double precio) {
-		super(nombreAloj, ubicacion, numHabitaciones);
+		super(id, nombreAloj, ubicacion, numHabitaciones);
 		
 		this.id = id;
 		this.categoria = categoria;
@@ -51,7 +51,7 @@ public class Hotel extends Alojamiento{
 	
 	@Override
 	public String toString() {
-		return nombreAloj + 
+		return id + nombreAloj + 
 				ubicacion + 
 				categoria + " estrellas" +
 				precio;

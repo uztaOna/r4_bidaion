@@ -18,7 +18,7 @@ import modelo.Habitacion;
 import modelo.Modelo;
 import vista.Ventana;
 
-public class MetodosReserva {
+public class MetodosReserva { 
 	
 	/*
 	 * Registra al usuario si no lo está
@@ -32,6 +32,7 @@ public class MetodosReserva {
 		String ubicacion= cama.getUbicacion();
 		String cod_Habitacion = cama.getCod_Habitacion();
 		String tipoHabitacion= cama.getTipoHabitacion();
+		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;
