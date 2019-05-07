@@ -2,6 +2,9 @@ package modelo;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 import java.sql.Connection;
 
 /**
@@ -23,7 +26,7 @@ public class Conexion {
 			System.out.println("Conexión establecida...");
 		} catch (ClassNotFoundException | SQLException ex) {
 			ex.printStackTrace();
-			System.err.println("¡Error al conectarse!");
+			JOptionPane.showMessageDialog(null,"¡Error al conectarse!","Error",0);
 		}
 		return cnx;
 	}
@@ -33,7 +36,7 @@ public class Conexion {
 			cnx.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("[ERROR] No se pudo finalizar la conexión");
+			JOptionPane.showMessageDialog(null,"[ERROR] No se pudo finalizar la conexión","Error",0);
 		}
 	}
 }

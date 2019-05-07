@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.Cliente;
 import vista.Ventana;
 
@@ -16,8 +18,9 @@ public class MetodosPago {
 			vis.panelPago.textAPagar.setText("0");
 			System.out.println(cliente.dinero);
 		}
+	
 		else {
-			System.out.println("Nº cuenta incorrecto");
+			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
