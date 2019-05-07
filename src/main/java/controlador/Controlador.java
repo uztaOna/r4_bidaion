@@ -50,9 +50,9 @@ public class Controlador implements ActionListener, ContainerListener {
 		this.vista.panelLogin.btnCancelar.addActionListener(this);
 		
 		//Panel login de usuario 2
-		this.vista.panelLogin2.btnContinuar.addActionListener(this);
-		this.vista.panelLogin2.btnNoAcc.addActionListener(this);
-		this.vista.panelLogin2.btnCancelar.addActionListener(this);
+		this.vista.panelRegistro.btnContinuar.addActionListener(this);
+		this.vista.panelRegistro.btnNoAcc.addActionListener(this);
+		this.vista.panelRegistro.btnCancelar.addActionListener(this);
 		
 		//Panel de pago
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
@@ -63,7 +63,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Cama cama1=new Cama("no", "si", 21, "089", "spa",6,10,5);
+		Cama cama1=new Cama("id001", "no", "si", 21, "089", "spa",6,10,5);
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","GDSASS", 'M', "04/04/2000", "QQQQ", "2", 9999999);
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
@@ -81,8 +81,8 @@ public class Controlador implements ActionListener, ContainerListener {
 			Control_hoteles.infoHotelSelec();
 		}
 		else if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
-				||e.getSource() == vista.panelLogin2.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
-				|| e.getSource() == vista.panelLogin2.btnCancelar) {			
+				||e.getSource() == vista.panelRegistro.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
+				|| e.getSource() == vista.panelRegistro.btnCancelar) {			
 			vista.setContentPane(vista.panelBuscador);
 			Control_hoteles.limpiarBox(vista);
 			MetodoLogin.limpiarRegistro(vista);
@@ -93,15 +93,15 @@ public class Controlador implements ActionListener, ContainerListener {
 				controlador.MetodoLogin.salirUsuario(vista);
 			}
 			else {
-				vista.setContentPane(vista.panelLogin2);
+				vista.setContentPane(vista.panelRegistro);
 			}
 		}
-		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  e.getSource() == vista.panelLogin2.btnNoAcc) {
+		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  e.getSource() == vista.panelRegistro.btnNoAcc) {
 
 			vista.setContentPane(vista.panelLogin);
 		}
 		else if(e.getSource() == vista.panelHoteles.btnLogin || e.getSource() == vista.panelReserva.btnLogReserva) {
-			vista.setContentPane(vista.panelLogin2);
+			vista.setContentPane(vista.panelRegistro);
 		}
 		else if(e.getSource() == vista.panelHoteles.btnContinuar) {
 //			MetodosReserva.infoRva();
@@ -116,7 +116,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelReserva.btnDoble) {			
 			vista.panelReserva.lblCantDoble.setText(MetodosReserva.sumaBoton3(vista));
-			}else if(e.getSource() == vista.panelLogin2.btnContinuar) {		
+			}else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
 				MetodoLogin.nombreUsuario(vista, cliente1);
 			}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
 				MetodoLogin.registro(vista, modelo);

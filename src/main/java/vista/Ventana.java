@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.CardLayout;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class Ventana extends JFrame {
 
@@ -17,7 +16,7 @@ public class Ventana extends JFrame {
 	public PanelBuscador panelBuscador;
 	public PanelHoteles panelHoteles;
 	public PanelLogin panelLogin;
-	public PanelRegistro panelLogin2;
+	public PanelRegistro panelRegistro;
 	public PanelReserva panelReserva;
 	public PanelPago panelPago;	
 	
@@ -28,7 +27,7 @@ public class Ventana extends JFrame {
 		panelHoteles=new PanelHoteles();
 		panelPago=new PanelPago();
 		panelLogin=new PanelLogin();
-		panelLogin2=new PanelRegistro();
+		panelRegistro=new PanelRegistro();
 		panelReserva=new PanelReserva();
 		panelPago=new PanelPago();
 
@@ -36,7 +35,7 @@ public class Ventana extends JFrame {
 		getContentPane().add(panelBuscador);
 		getContentPane().add(panelHoteles);
 		getContentPane().add(panelLogin);
-		getContentPane().add(panelLogin2);
+		getContentPane().add(panelRegistro);
 		getContentPane().add(panelReserva);
 		getContentPane().add(panelPago);			
 		

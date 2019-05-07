@@ -6,9 +6,9 @@ public class Cama extends Habitacion{
 	private int matrimonio;
 	private int doble;
 
-	public Cama(String nombreAloj, String ubicacion, int numHabitaciones, String cod_Habitacion, String habitacion,
+	public Cama(String id, String nombreAloj, String ubicacion, int numHabitaciones, String cod_Habitacion, String habitacion,
 			int individual, int matrimonio, int doble) {
-		super(nombreAloj, ubicacion, numHabitaciones, cod_Habitacion, habitacion);
+		super(id, nombreAloj, ubicacion, numHabitaciones, cod_Habitacion, habitacion);
 		this.individual = individual;
 		this.matrimonio = matrimonio;
 		this.doble = doble;

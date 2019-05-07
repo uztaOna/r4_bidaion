@@ -4,8 +4,8 @@ public class Habitacion extends Alojamiento {
 	protected String cod_Habitacion;
 	protected String tipoHabitacion;
 	
-	public Habitacion(String nombreAloj, String ubicacion, int numHabitaciones, String cod_Habitacion, String tipoHabitacion) {
-		super(nombreAloj, ubicacion, numHabitaciones);
+	public Habitacion(String id, String nombreAloj, String ubicacion, int numHabitaciones, String cod_Habitacion, String tipoHabitacion) {
+		super(id, nombreAloj, ubicacion, numHabitaciones);
 		this.cod_Habitacion = cod_Habitacion;
 		this.tipoHabitacion = tipoHabitacion;
 	}

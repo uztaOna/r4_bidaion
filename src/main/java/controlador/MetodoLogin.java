@@ -26,7 +26,7 @@ public class MetodoLogin {
 		String apellido = vis.panelLogin.txtApellido.getText();
 		String dni = vis.panelLogin.txtDni.getText();
 		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
-		String fechaNac = vis.panelLogin.textFieldNacimiento.getText();
+		String fechaNac = vis.panelLogin.dateFnac.getDateFormatString();
 		String contrasenia = vis.panelLogin.txtPassword.getText();	
 		if (nombre.length() > 0 && validarSoloLetras(vis.panelLogin.txtNombre) && validarSoloLetras(vis.panelLogin.txtApellido)
 				&& apellido.length() > 0 && validarDNI(dni) == true && fechaNac.length() > 0 ) {
@@ -41,15 +41,15 @@ public class MetodoLogin {
 		vis.panelLogin.txtNombre.setText("");
 		vis.panelLogin.txtApellido.setText("");
 		vis.panelLogin.txtDni.setText("");
-		vis.panelLogin.textFieldNacimiento.setText("");
+//		vis.panelLogin.dateFnac.setTex("");
 		vis.panelLogin.txtPassword.setText("");
 		vis.panelLogin.txtNombre.setBackground(new JTextField().getBackground());
 		vis.panelLogin.txtApellido.setBackground(new JTextField().getBackground());
 	}
 	
 	public static void limpiarLogin(Ventana vis) {
-		vis.panelLogin2.textFieldNombre.setText("");
-		vis.panelLogin2.textFieldContrasenia.setText("");
+		vis.panelRegistro.textFieldNombre.setText("");
+		vis.panelRegistro.textFieldContrasenia.setText("");
 	}
 	
 	/*
