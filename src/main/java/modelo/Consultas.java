@@ -14,7 +14,7 @@ public class Consultas {
 	
 	public Consultas(Conexion conexion) {
 		this.conexion = conexion;
-		this.connection = null;
+		this.connection = null; 
 	}
 	
 	//Cargar ubicaciones disponibles

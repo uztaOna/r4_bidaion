@@ -7,12 +7,14 @@ import org.junit.Test;
 import modelo.Habitacion;
 
 public class test_habitacion {
+	private String id = "ID1";
 	private String nombreAloj = "Alojamiento1";
 	private String ubicacion = "Bilbao";
 	private int numHabitaciones = 2;
 	private String cod_Habitacion="A0048";
 	private String tipoHabitacion= "cocina";
-	private Habitacion Habitacion1 = new Habitacion(nombreAloj, ubicacion, numHabitaciones, cod_Habitacion, tipoHabitacion);
+	
+	private Habitacion Habitacion1 = new Habitacion(id, nombreAloj, ubicacion, numHabitaciones, cod_Habitacion, tipoHabitacion);
 	
 	@Test
 	public void testConstructorAlojamiento() {
