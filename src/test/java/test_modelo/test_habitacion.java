@@ -7,22 +7,36 @@ import org.junit.Test;
 import modelo.Habitacion;
 
 public class test_habitacion {
-	private String id = "ID1";
-	private String nombreAloj = "Alojamiento1";
-	private String ubicacion = "Bilbao";
-	private int numHabitaciones = 2;
-	private String cod_Habitacion="A0048";
-	private String tipoHabitacion= "cocina";
 	
-	private Habitacion Habitacion1 = new Habitacion(id, nombreAloj, ubicacion, numHabitaciones, cod_Habitacion, tipoHabitacion);
+	private String codHabitacion = "202";
+	private String tipoHabitacion = "Matrimonio";
+	private double precio = 70.2f;
+	
+	private Habitacion habitacion = new Habitacion(codHabitacion, tipoHabitacion, precio);
 	
 	@Test
 	public void testConstructorAlojamiento() {
-		assertEquals(nombreAloj, Habitacion1.getNombreAloj(), "Alojamiento1");
-		assertEquals(ubicacion, Habitacion1.getUbicacion(), "Bilbao");
-		assertEquals(numHabitaciones, Habitacion1.getNumHabitaciones(), 2);
-		assertEquals(cod_Habitacion, Habitacion1.getCod_Habitacion(), "A0048");
-		assertEquals(tipoHabitacion, Habitacion1.getTipoHabitacion(), "cocina");
+		assertEquals(habitacion.getCodHabitacion(), "202");
+		assertEquals(habitacion.getTipoHabitacion(), "Matrimonio");
+		assertEquals(habitacion.getPrecio(), 70.2f, 0);
+	}
+	
+	@Test
+	public void setCodHabitacion() {
+		habitacion.setCodHabitacion("316");
+		assertEquals("316", habitacion.getCodHabitacion());
+	}
+	
+	@Test
+	public void setTipoHabitacion() {
+		habitacion.setTipoHabitacion("Individual");
+		assertEquals("Individual", habitacion.getTipoHabitacion());
+	}
+	
+	@Test
+	public void setPrecio() {
+		habitacion.setPrecio(85.60f);
+		assertEquals(85.60f, habitacion.getPrecio(), 0);
 	}
 
 }
