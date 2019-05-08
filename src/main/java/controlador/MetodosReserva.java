@@ -1,21 +1,9 @@
 package controlador;
 
-import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import modelo.TipoHab;
-import modelo.Cliente;
-import modelo.Habitacion;
-import modelo.Modelo;
 import vista.Ventana;
 
 public class MetodosReserva { 
