@@ -1,17 +1,19 @@
 package modelo;
 
+import java.util.Date;
+
 public class Cliente {
 	
 	public String nombre;
 	public String apellido;
 	public String dni;
 	public char sexo;
-	public String fechaNac;
-	private String contrasenia;
+	public Date fechaNac;
+	private char[] contrasenia;
 	public int NCuenta;
 	public double dinero;
 
-	public Cliente (String nombre, String apellido, String dni, char sexo, String fechaNac, String contrasenia, int NCuenta, double dinero) {
+	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, char[] contrasenia, int NCuenta, double dinero) {
 		this.nombre = nombre;
 		this.dni = dni;	
 		this.apellido = apellido;
@@ -58,19 +60,19 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 
-	public String getFechaNac() {
+	public Date getFechaNac() {
 		return fechaNac;
 	}
 
-	public void setFechaNac(String fechaNac) {
+	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
 
-	public String getContrasenia() {
+	public char[] getContrasenia() {
 		return contrasenia;
 	}
 
-	public void setContrasenia(String contrasenia) {
+	public void setContrasenia(char[] contrasenia) {
 		this.contrasenia = contrasenia;
 	}
 

@@ -28,19 +28,15 @@ public class MetodosReserva {
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
 		int doble=vis.panelReserva.lblCantDoble.getComponentCount();
-		String nombreAloj = cama.getNombreAloj();
-		String ubicacion= cama.getUbicacion();
-		String cod_Habitacion = cama.getCod_Habitacion();
-		String tipoHabitacion= cama.getTipoHabitacion();
 		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;
 		}else {
-			int NHabitaciones=cama.getNumHabitaciones()-(individual+matrimonio+doble);
-			cama.setNumHabitaciones(NHabitaciones);
-			System.out.println(individual+matrimonio+doble+nombreAloj+ubicacion+cod_Habitacion+tipoHabitacion);
-			cama.setNumHabitaciones(NHabitaciones);
+			int NHabitaciones=cama.getcantHabs()-(individual+matrimonio+doble);
+			cama.setcantHabs(NHabitaciones);
+			System.out.println(individual+matrimonio+doble);
+			cama.setcantHabs(NHabitaciones);
 			cama.setDoble(doble);
 			cama.setIndividual(individual);
 			cama.setMatrimonio(matrimonio);
