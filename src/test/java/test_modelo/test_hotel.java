@@ -2,12 +2,12 @@ package test_modelo;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
-import herencias.guerra_troya.Guerrero;
 import modelo.Hotel;
 
 public class test_hotel {
 
+	private Hotel hotel2 = new Hotel("H1", "Hotel2", "Bilbao", 100, 5, 50.5f);
+	
 	@Test
 	public void testConstructorVacioHotel() {
 		Hotel hotel = new Hotel();
@@ -51,6 +51,42 @@ public class test_hotel {
 		Hotel hotel3 = new Hotel("H1", "Hotel3", "Bilbao", 100, 5, 50.5f);
 		
 		assertEquals(expectedString, hotel3.toString());
+	}
+	
+	@Test
+	public void testSetId() {
+		hotel2.setId("Id1");
+		assertEquals("Id1", hotel2.getId());
+	}
+	
+	@Test
+	public void testSetNombre() {
+		hotel2.setNombreAloj("nombre aloj");
+		assertEquals("nombre aloj", hotel2.getNombreAloj());		
+	}
+	
+	@Test
+	public void testSetUbicacion() {
+		hotel2.setUbicacion("Calabria");
+		assertEquals("Calabria", hotel2.getUbicacion());
+	}
+	
+	@Test
+	public void testSetNumHabs() {
+		hotel2.setNumHabitaciones(12);
+		assertEquals(12, hotel2.getNumHabitaciones());
+	}
+	
+	@Test
+	public void testSetCategoria() {
+		hotel2.setCategoria(1);
+		assertEquals(1, hotel2.getCategoria());
+	}
+	
+	@Test
+	public void testSetPrecio() {
+		hotel2.setPrecio(20.2f);
+		assertEquals(20.2f, 0, hotel2.getPrecio());
 	}
 
 }

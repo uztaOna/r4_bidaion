@@ -6,6 +6,7 @@ public class Casa extends Alojamiento{
 	
 	public Casa(String id, String nombre, String ubicacion, int nhabitaciones, int nbanos, double tamano) {
 		super(id, nombre, ubicacion, nhabitaciones);
+		
 		this.nbanos = nbanos;
 		this.tamano = tamano;
 	}

@@ -65,9 +65,11 @@ public class Controlador implements ActionListener, ContainerListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Cama cama1=new Cama("id001", "no", "si", 21, "089", "spa",6,10,5);
+
+		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), "2", 9999999);
+
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
 		if(e.getSource() == vista.panelBienvenida.btnInicio) {	

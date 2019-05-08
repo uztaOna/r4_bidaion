@@ -1,25 +1,23 @@
 package modelo;
 
-public class Habitacion extends Alojamiento {
-	protected String cod_Habitacion;
-	protected String tipoHabitacion;
+public class Habitacion {
 	
-	public Habitacion(String id, String nombreAloj, String ubicacion, int numHabitaciones, String cod_Habitacion, String tipoHabitacion) {
-		super(id, nombreAloj, ubicacion, numHabitaciones);
-		this.cod_Habitacion = cod_Habitacion;
+	private String codHabitacion;
+	private String tipoHabitacion;
+	private double precio;
+	
+	public Habitacion(String codHabitacion, String tipoHabitacion, double precio) {
+		this.codHabitacion = codHabitacion;
 		this.tipoHabitacion = tipoHabitacion;
-	}
-	
-	public Habitacion() {
-		super();
+		this.precio = precio;
 	}
 
-	public String getCod_Habitacion() {
-		return cod_Habitacion;
+	public String getCodHabitacion() {
+		return codHabitacion;
 	}
 
-	public void setCod_Habitacion(String cod_Habitacion) {
-		this.cod_Habitacion = cod_Habitacion;
+	public void setCodHabitacion(String codHabitacion) {
+		this.codHabitacion = codHabitacion;
 	}
 
 	public String getTipoHabitacion() {
@@ -30,6 +28,11 @@ public class Habitacion extends Alojamiento {
 		this.tipoHabitacion = tipoHabitacion;
 	}
 	
-	
-	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}	
 }
