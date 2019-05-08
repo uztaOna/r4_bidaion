@@ -63,7 +63,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Cama cama1=new Cama("id001", "no", "si", 21, "089", "spa",6,10,5);
+		TipoHab cama1=new TipoHab("id001", "no", "si", 21, "089", "spa",6,10,5);
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","GDSASS", 'M', "04/04/2000", "QQQQ", "2", 9999999);
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);

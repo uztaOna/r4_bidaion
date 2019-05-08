@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import modelo.Cama;
+import modelo.TipoHab;
 import modelo.Cliente;
 import modelo.Habitacion;
 import modelo.Modelo;
@@ -23,7 +23,7 @@ public class MetodosReserva {
 	/*
 	 * Registra al usuario si no lo está
 	 */
-	public static boolean reserva(Ventana vis, Cama cama) {
+	public static boolean reserva(Ventana vis, TipoHab cama) {
 		int individual=vis.panelReserva.lblCantInd.getComponentCount();
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
@@ -66,13 +66,13 @@ public class MetodosReserva {
 		return texto;
 	}
 	
-	public static void disponibilidadCamas (Ventana vis, Cama cama) {
+	public static void disponibilidadCamas (Ventana vis, TipoHab cama) {
 		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
 		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));
 		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
 	}
 
-	public static void actualizacionCamas (Ventana vis, Cama cama) {
+	public static void actualizacionCamas (Ventana vis, TipoHab cama) {
 		cama.setIndividual(cama.getIndividual()-Integer.parseInt(vis.panelReserva.lblCantInd.getText()));
 		cama.setMatrimonio(cama.getMatrimonio()-Integer.parseInt(vis.panelReserva.lblMatriDisp.getText()));
 		cama.setDoble(cama.getDoble()-Integer.parseInt(vis.panelReserva.lblDobleDisp.getText()));

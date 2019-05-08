@@ -1,11 +1,12 @@
 package modelo;
 
-public class Apartamento extends Casa{
+public class Apartamento extends Alojamiento{
 
 	protected int npiso;
 	
-	public Apartamento(String id, String nombre, String ubicacion, int nhabitaciones, int nbanos, double tamano, int npiso) {
-		super(id, nombre, ubicacion, nhabitaciones, nbanos, tamano);
+	public Apartamento(String id, String nombre, String ubicacion, int nhabitaciones, int npiso) {
+		super(id, nombre, ubicacion, nhabitaciones);
+		
 		this.npiso = npiso;
 	}
 
@@ -16,7 +17,4 @@ public class Apartamento extends Casa{
 	public void setNpiso(int npiso) {
 		this.npiso = npiso;
 	}
-	
-	
-	
 }
