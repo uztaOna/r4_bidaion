@@ -71,7 +71,7 @@ public class MetodosReserva {
 		vis.panelReserva.lblCantDoble.setText("0");
 	}
 	
-	public boolean validarFecha(Date fecha) {
+	public static boolean validarFecha(Date fecha) {
 		if(!fecha.before(Calendar.getInstance().getTime())) {
 			JOptionPane.showMessageDialog(null, "La fecha introducida no es valida","Error en la fecha", JOptionPane.INFORMATION_MESSAGE);
 			return false;

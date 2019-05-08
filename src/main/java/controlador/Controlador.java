@@ -72,7 +72,7 @@ public class Controlador implements ActionListener, ContainerListener {
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
-		if(e.getSource() == vista.panelBienvenida.btnInicio) {	
+		if(e.getSource() == vista.panelBienvenida.btnInicio) {
 			Control_buscador.addUbicacionesCombo();
 			vista.setContentPane(vista.panelBuscador);
 			System.out.println("dfsdfsdfsdfsfsdfsdf");

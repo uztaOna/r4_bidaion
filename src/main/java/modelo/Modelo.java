@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Modelo {
 
 	public Conexion conexion;
@@ -7,6 +9,8 @@ public class Modelo {
 	
 	public Hotel hotel;
 	public float precioTotal;
+	
+	public Date fechaIni, fechaFin;
 	
 	public Modelo() {
 		//crear objeto conexion que establecera una conexion a bbdd
