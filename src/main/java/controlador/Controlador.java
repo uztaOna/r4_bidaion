@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
+import java.beans.PropertyChangeListener;
+import java.util.Date;
+
 import modelo.*;
 import vista.Ventana;
 
@@ -67,7 +70,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","GDSASS", 'M', "04/04/2000", "QQQQ", "2", 9999999);
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
-		if(e.getSource() == vista.panelBienvenida.btnInicio) {	
+		if(e.getSource() == vista.panelBienvenida.btnInicio) {
 			Control_buscador.addUbicacionesCombo();
 			vista.setContentPane(vista.panelBuscador);
 			System.out.println("dfsdfsdfsdfsfsdfsdf");
