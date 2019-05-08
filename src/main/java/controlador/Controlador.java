@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
+import java.util.Date;
+
 import modelo.*;
 import vista.Ventana;
 
@@ -64,7 +66,8 @@ public class Controlador implements ActionListener, ContainerListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Cama cama1=new Cama("id001", "no", "si", 21, "089", "spa",6,10,5);
-		Cliente cliente1=new Cliente("Juan", "BRRRRR","GDSASS", 'M', "04/04/2000", "QQQQ", "2", 9999999);
+		Date miFecha= new Date(115, 6, 2, 15, 30);
+		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), "2", 9999999);
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
 		if(e.getSource() == vista.panelBienvenida.btnInicio) {	
@@ -119,7 +122,7 @@ public class Controlador implements ActionListener, ContainerListener {
 			}else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
 				MetodoLogin.nombreUsuario(vista, cliente1);
 			}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
-				MetodoLogin.registro(vista, modelo);
+				MetodoLogin.registro(vista);
 				System.out.println("Registra bien");
 			}else if(e.getSource() == vista.panelPago.btnPagar) {		
 				MetodosPago.pagar(vista, cliente1);

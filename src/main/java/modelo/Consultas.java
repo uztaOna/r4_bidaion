@@ -135,4 +135,25 @@ public class Consultas {
 		//return ArrayList
 		return hotel;
 	}
+	public boolean comprobarDNIenBD(String dni) {		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String query = "select DNI from cliente where DNI = \"" + dni + "\"";
+		try {
+			connection = conexion.conectar();
+			
+			//preparar la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			//execute la consulta y guardarla en un ResultSet
+			result = stmt.executeQuery();
+			if (result.next()) {
+				return true;
+			} else
+				return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

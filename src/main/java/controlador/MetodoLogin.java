@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -17,24 +18,32 @@ import modelo.Modelo;
 import vista.Ventana;
 
 public class MetodoLogin {
-	
-	/*
+		
+	 /*
 	 * Registra al usuario si no lo está
 	 */
-	public static Cliente registro(Ventana vis, Modelo mod) {
-		String nombre = vis.panelLogin.txtNombre.getText();
-		String apellido = vis.panelLogin.txtApellido.getText();
-		String dni = vis.panelLogin.txtDni.getText();
+	public static Cliente registro(Ventana vis) {
+		JTextField dni = vis.panelLogin.txtDni;
+		JTextField nombre = vis.panelLogin.txtNombre;
+		JTextField apellido = vis.panelLogin.txtApellido;
+		Date fechaNac = vis.panelLogin.dateFnac.getDate();
 		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
-		String fechaNac = vis.panelLogin.dateFnac.getDateFormatString();
-		String contrasenia = vis.panelLogin.txtPassword.getText();	
-		if (nombre.length() > 0 && validarSoloLetras(vis.panelLogin.txtNombre) && validarSoloLetras(vis.panelLogin.txtApellido)
-				&& apellido.length() > 0 && validarDNI(dni) == true && fechaNac.length() > 0 ) {
-			return (new Cliente(nombre, apellido, dni, sexo, fechaNac, contrasenia, "99", 9999));
-		} else {
-			JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
+		char[] contra = vis.panelLogin.txtPassword.getText().toCharArray();
+		JTextField contrasenia = vis.panelLogin.txtPassword;
+		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
+			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelLogin.txtDni.getText()) == false) {
+				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra, "99", 9999));
+			} else {
+				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
-		return null;
+		return null;	
+	}
+	
+	public static void comprobarInicioSesion(Ventana vis) {
+		JTextField dni = vis.panelRegistro.textFieldNombre;
+		char[] contra = vis.panelRegistro.textFieldContrasenia.getText().toCharArray();
+		//if()
 	}
 		
 	public static void limpiarRegistro(Ventana vis) {
@@ -55,8 +64,8 @@ public class MetodoLogin {
 	/*
 	 * valida que sea un DNI válido
 	 */
-	public static boolean validarDNI(String DNI) {
-		return DNI.matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
+	public static boolean validarDNI(JTextField DNI) {
+		return DNI.getText().matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
 	
 	/*
