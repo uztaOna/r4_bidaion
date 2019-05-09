@@ -75,6 +75,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		if(e.getSource() == vista.panelBienvenida.btnInicio) {
 			Control_buscador.addUbicacionesCombo();
 			vista.setContentPane(vista.panelBuscador);
+			MetodosReserva.validarFecha(vista);
 			System.out.println("dfsdfsdfsdfsfsdfsdf");
 		}
 		else if(e.getSource() == vista.panelBuscador.btnContinuar) {
