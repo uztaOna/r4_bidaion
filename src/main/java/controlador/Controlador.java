@@ -123,6 +123,7 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.panelReserva.lblCantDoble.setText(MetodosReserva.sumaBoton3(vista));
 			}else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
 				MetodoLogin.nombreUsuario(vista, cliente1);
+				MetodoLogin.comprobarInicioSesion(vista);
 			}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
 				MetodoLogin.registro(vista);
 				System.out.println("Registra bien");

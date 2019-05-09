@@ -68,7 +68,7 @@ public class PanelHoteles extends JPanel {
 		btnSeleccionar.setBounds(275, 161, 111, 23);
 		add(btnSeleccionar);
 		
-		btnLogin = new JButton("Inicio Sesión");
+		btnLogin = new JButton("Logearme");
 		btnLogin.setBounds(660, 29, 94, 20);
 		add(btnLogin);
 		
