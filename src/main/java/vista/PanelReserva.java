@@ -11,6 +11,7 @@ import javax.swing.border.BevelBorder;
 
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import javax.swing.ImageIcon;
 
 public class PanelReserva extends JPanel {
 
@@ -18,9 +19,12 @@ public class PanelReserva extends JPanel {
 	 * Create the panel.
 	 */
 	
-	public JLabel lblHotelSelc, lblUsuarioReser, lblInDisp, lblMatriDisp, lblDobleDisp, lblCantInd, lblCantMatri, lblCantDoble;
-	public JButton btnReservar, btnLogReserva, btnRegisReser, btnIndividual, btnMatrimonio, btnDoble, btnCancelar;
+	public JLabel lblHotelSelc, lblUsuarioReser, lblInDisp, lblMatriDisp, lblDobleDisp, lblCantInd, lblCantMatri, lblCantDoble,
+				  lblCamasDiponibles, lblCantSeleccionada, lblServicios, lblCamasInd, lblCamasMatri, lblCamasDoble;
+	public JButton btnReservar, btnLogReserva, btnRegisReser, btnIndividual, btnMatrimonio, btnDoble, btnCancelar, btnAtras,
+				   btnMasInd,btnMenosInd, btnMasMatri, btnMenosMatri, btnMasDoble, btnMenosDoble;
 	public JRadioButton rdbtnWifi, rdbtnPiscina, rdbtnSpa, rdbtnParking, rdbtnAireAcon, rdbtnRestaurante, rdbtnBar, rdbtnGYM;
+
 
 	
 	public PanelReserva() {
@@ -53,35 +57,38 @@ public class PanelReserva extends JPanel {
 		add(btnRegisReser);	
 		
 		btnIndividual = new JButton("INDIVIDUAL");
-		btnIndividual.setBounds(306, 274, 110, 50);
+		btnIndividual.setIcon(new ImageIcon(PanelReserva.class.getResource("/imagenes/camaIndividual.jpg")));
+		btnIndividual.setBounds(126, 145, 165, 140);
 		add(btnIndividual);
 		
 		 btnMatrimonio = new JButton("MATRIMONIO");
-		btnMatrimonio.setBounds(431, 274, 119, 56);
+		 btnMatrimonio.setIcon(new ImageIcon(PanelReserva.class.getResource("/imagenes/camaMatrimonio.jpg")));
+		btnMatrimonio.setBounds(351, 145, 165, 140);
 		add(btnMatrimonio);
 		
 		 btnDoble = new JButton("DOBLE");
-		btnDoble.setBounds(572, 274, 119, 50);
+		 btnDoble.setIcon(new ImageIcon(PanelReserva.class.getResource("/imagenes/camaDoble.jpg")));
+		btnDoble.setBounds(574, 145, 165, 140);
 		add(btnDoble);
 		
 		 lblInDisp = new JLabel("(0 disponibles) ");
-		lblInDisp.setBounds(306, 331, 110, 21);
+		lblInDisp.setBounds(126, 344, 110, 21);
 		add(lblInDisp);
 		
 		lblMatriDisp = new JLabel("(0 disponibles) ");
-		lblMatriDisp.setBounds(431, 331, 110, 21);
+		lblMatriDisp.setBounds(351, 344, 110, 21);
 		add(lblMatriDisp);
 		
 		lblDobleDisp = new JLabel("(0 disponibles) ");
-		lblDobleDisp.setBounds(572, 331, 110, 21);
+		lblDobleDisp.setBounds(574, 344, 110, 21);
 		add(lblDobleDisp);
 		
 		rdbtnWifi = new JRadioButton("Wifi");
-		rdbtnWifi.setBounds(307, 416, 109, 23);
+		rdbtnWifi.setBounds(186, 469, 109, 23);
 		add(rdbtnWifi);
 		
 		rdbtnPiscina = new JRadioButton("Piscina");
-		rdbtnPiscina.setBounds(306, 442, 109, 23);
+		rdbtnPiscina.setBounds(186, 496, 109, 23);
 		add(rdbtnPiscina);
 		
 		rdbtnSpa = new JRadioButton("Spa");
@@ -93,31 +100,31 @@ public class PanelReserva extends JPanel {
 		add(rdbtnParking);
 		
 		rdbtnAireAcon = new JRadioButton("Aire Acondicionado");
-		rdbtnAireAcon.setBounds(432, 418, 109, 23);
+		rdbtnAireAcon.setBounds(432, 469, 117, 23);
 		add(rdbtnAireAcon);
 		
 		rdbtnRestaurante = new JRadioButton("Restaurante");
-		rdbtnRestaurante.setBounds(431, 444, 109, 23);
+		rdbtnRestaurante.setBounds(432, 496, 117, 23);
 		add(rdbtnRestaurante);
 		
 		rdbtnBar = new JRadioButton("Bar");
-		rdbtnBar.setBounds(431, 471, 109, 23);
+		rdbtnBar.setBounds(567, 469, 109, 23);
 		add(rdbtnBar);
 		
 		rdbtnGYM = new JRadioButton("Gimnasio");
-		rdbtnGYM.setBounds(431, 498, 109, 23);
+		rdbtnGYM.setBounds(567, 496, 109, 23);
 		add(rdbtnGYM);
 		
 		lblCantInd = new JLabel("0");
-		lblCantInd.setBounds(306, 356, 101, 23);
+		lblCantInd.setBounds(126, 387, 101, 23);
 		add(lblCantInd);
 		
 		lblCantMatri = new JLabel("0");
-		lblCantMatri.setBounds(431, 363, 101, 23);
+		lblCantMatri.setBounds(351, 385, 101, 23);
 		add(lblCantMatri);
 		
 		lblCantDoble = new JLabel("0");
-		lblCantDoble.setBounds(572, 363, 101, 23);
+		lblCantDoble.setBounds(574, 385, 101, 23);
 		add(lblCantDoble);
 		
 		btnCancelar = new JButton("Cancelar");
@@ -125,6 +132,61 @@ public class PanelReserva extends JPanel {
 		btnCancelar.setAlignmentY(0.0f);
 		btnCancelar.setBounds(27, 536, 101, 23);
 		add(btnCancelar);
+		
+		
+		lblCamasDiponibles = new JLabel("Camas diponibles:");
+		lblCamasDiponibles.setBounds(10, 344, 110, 21);
+		add(lblCamasDiponibles);
+		
+		lblCantSeleccionada = new JLabel("Cant. seleccionada:");
+		lblCantSeleccionada.setBounds(10, 391, 110, 21);
+		add(lblCantSeleccionada);
+		
+		lblServicios = new JLabel("Servicios Adicionales:");
+		lblServicios.setBounds(10, 469, 110, 21);
+		add(lblServicios);
+		
+		lblCamasInd = new JLabel("Camas Individuales:");
+		lblCamasInd.setBounds(126, 114, 110, 21);
+		add(lblCamasInd);
+	
+		lblCamasMatri = new JLabel("Camas de Matrimonio:");
+		lblCamasMatri.setBounds(351, 114, 110, 21);
+		add(lblCamasMatri);
+		
+		lblCamasDoble = new JLabel("Camas Dobles:");
+		lblCamasDoble.setBounds(574, 113, 110, 21);
+		add(lblCamasDoble);
+		
+		btnAtras = new JButton("Atras");
+		btnAtras.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnAtras.setAlignmentY(0.0f);
+		btnAtras.setBounds(146, 536, 101, 23);
+		add(btnAtras);
+		
+		btnMasInd = new JButton("+");
+		btnMasInd.setBounds(136, 296, 64, 23);
+		add(btnMasInd);
+		
+		btnMenosInd = new JButton("-");
+		btnMenosInd.setBounds(215, 296, 64, 23);
+		add(btnMenosInd);
+		
+		btnMasMatri = new JButton("+");
+		btnMasMatri.setBounds(361, 296, 64, 23);
+		add(btnMasMatri);
+		
+		btnMenosMatri = new JButton("-");
+		btnMenosMatri.setBounds(440, 296, 64, 23);
+		add(btnMenosMatri);
+		
+		btnMasDoble = new JButton("+");
+		btnMasDoble.setBounds(584, 296, 64, 23);
+		add(btnMasDoble);
+		
+		btnMenosDoble = new JButton("-");
+		btnMenosDoble.setBounds(663, 296, 64, 23);
+		add(btnMenosDoble);
 
 	}
 }

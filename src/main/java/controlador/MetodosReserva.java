@@ -49,6 +49,24 @@ public class MetodosReserva {
 		return texto;
 	}
 	
+	public static String restaBoton (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())-1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
+	public static String restaBoton2 (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())-1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
+	public static String restaBoton3 (Ventana vis) {
+		int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())-1;
+		String texto=Integer.toString(numEntero);
+		return texto;
+	}
+	
 	public static void disponibilidadCamas (Ventana vis, TipoHab cama) {
 		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
 		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));

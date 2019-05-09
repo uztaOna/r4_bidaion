@@ -14,6 +14,8 @@ public class MetodosPago {
 			cliente.saldo=cliente.saldo-Integer.parseInt(vis.panelPago.textAPagar.getText());
 			vis.panelPago.textAPagar.setText("0");
 			System.out.println(cliente.saldo);
+			vis.panelPago.btnPagar.setEnabled(false);
+			vis.panelPago.btnConfirmar.setEnabled(true);
 		}
 	
 		else {

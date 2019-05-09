@@ -43,9 +43,16 @@ public class Controlador implements ActionListener, ContainerListener {
 		this.vista.panelReserva.btnRegisReser.addActionListener(this);
 		this.vista.panelReserva.btnReservar.addActionListener(this);
 		this.vista.panelReserva.btnCancelar.addActionListener(this);
+		this.vista.panelReserva.btnAtras.addActionListener(this);
 		this.vista.panelReserva.btnIndividual.addActionListener(this);
+		this.vista.panelReserva.btnMasInd.addActionListener(this);
+		this.vista.panelReserva.btnMenosInd.addActionListener(this);
 		this.vista.panelReserva.btnMatrimonio.addActionListener(this);
+		this.vista.panelReserva.btnMasMatri.addActionListener(this);
+		this.vista.panelReserva.btnMenosMatri.addActionListener(this);	
 		this.vista.panelReserva.btnDoble.addActionListener(this);
+		this.vista.panelReserva.btnMasDoble.addActionListener(this);
+		this.vista.panelReserva.btnMenosDoble.addActionListener(this);
 		
 		//Panel login de usuario
 		this.vista.panelLogin.btnRegistrarme.addActionListener(this);
@@ -60,6 +67,9 @@ public class Controlador implements ActionListener, ContainerListener {
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
 		this.vista.panelPago.btnCancelar.addActionListener(this);
 		this.vista.panelPago.btnPagar.addActionListener(this);	
+		
+		//Panel de resumen
+		this.vista.panelResumen.btnFinReser.addActionListener(this);
 	}
 	
 	
@@ -94,7 +104,8 @@ public class Controlador implements ActionListener, ContainerListener {
 			MetodoLogin.limpiarRegistro(vista);
 			MetodoLogin.limpiarLogin(vista);
 			MetodosReserva.limpiarDispReser(vista);
-		}else if(e.getSource() == vista.panelHoteles.btnLogHoteles || e.getSource() == vista.panelReserva.btnLogReserva) {
+		}
+		else if(e.getSource() == vista.panelHoteles.btnLogHoteles || e.getSource() == vista.panelReserva.btnLogReserva) {
 			if(vista.panelHoteles.btnLogHoteles.getText()=="Log out"||vista.panelReserva.btnLogReserva.getText()=="Log out") {				
 				controlador.MetodoLogin.salirUsuario(vista);
 			}
@@ -102,8 +113,8 @@ public class Controlador implements ActionListener, ContainerListener {
 				vista.setContentPane(vista.panelRegistro);
 			}
 		}
-		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  e.getSource() == vista.panelRegistro.btnNoAcc) {
-
+		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  
+				e.getSource() == vista.panelRegistro.btnNoAcc) {
 			vista.setContentPane(vista.panelLogin);
 		}
 		else if(e.getSource() == vista.panelHoteles.btnLogin || e.getSource() == vista.panelReserva.btnLogReserva) {
@@ -114,35 +125,47 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelReserva);
 			//CerrarVentana.VistaPrincipal();
 		}
-		else if(e.getSource() == vista.panelReserva.btnIndividual) {			
+		else if(e.getSource() == vista.panelReserva.btnIndividual || e.getSource() == vista.panelReserva.btnMasInd) {			
 			vista.panelReserva.lblCantInd.setText(MetodosReserva.sumaBoton(vista));
 		}
-		else if(e.getSource() == vista.panelReserva.btnMatrimonio) {			
+		else if(e.getSource() == vista.panelReserva.btnMatrimonio || e.getSource() == vista.panelReserva.btnMasMatri) {			
 			vista.panelReserva.lblCantMatri.setText(MetodosReserva.sumaBoton2(vista));
 		}
-		else if(e.getSource() == vista.panelReserva.btnDoble) {			
+		else if(e.getSource() == vista.panelReserva.btnDoble || e.getSource() == vista.panelReserva.btnMasDoble) {			
 			vista.panelReserva.lblCantDoble.setText(MetodosReserva.sumaBoton3(vista));
-			}else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
-				MetodoLogin.nombreUsuario(vista, cliente1);
-				MetodoLogin.comprobarInicioSesion(vista);
-			}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
-				MetodoLogin.registro(vista);
-				System.out.println("Registra bien");
-			}else if(e.getSource() == vista.panelPago.btnPagar) {		
-				MetodosPago.pagar(vista, cliente1);
-				MetodosReserva.actualizacionCamas(vista, cama1);
-			}else if(e.getSource() == vista.panelHoteles.btnContinuar) {
-				vista.setContentPane(vista.panelReserva);
-				//CerrarVentana.VistaPrincipal();
-			}else if(e.getSource() == vista.panelReserva.btnReservar) {
-				if(MetodosReserva.reserva(vista, cama1)==true) {
-					vista.setContentPane(vista.panelPago);
-				}
-			}else if(e.getSource() == vista.panelPago.btnCancelar) {
-				vista.setContentPane(vista.panelHoteles);
-			}else if(e.getSource() == vista.panelReserva.btnCancelar) {
-				vista.setContentPane(vista.panelHoteles);
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosInd) {			
+			vista.panelReserva.lblCantInd.setText(MetodosReserva.restaBoton(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosMatri) {			
+			vista.panelReserva.lblCantMatri.setText(MetodosReserva.restaBoton2(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosDoble) {			
+			vista.panelReserva.lblCantDoble.setText(MetodosReserva.restaBoton3(vista));
+		}
+		else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
+			MetodoLogin.nombreUsuario(vista, cliente1);
+			MetodoLogin.comprobarInicioSesion(vista);
+		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
+			MetodoLogin.registro(vista);
+			System.out.println("Registra bien");
+		}else if(e.getSource() == vista.panelPago.btnPagar) {		
+			MetodosPago.pagar(vista, cliente1);
+			MetodosReserva.actualizacionCamas(vista, cama1);
+			MetodosReserva.disponibilidadCamas(vista, cama1);
+		}else if(e.getSource() == vista.panelHoteles.btnContinuar) {
+			vista.setContentPane(vista.panelReserva);
+			//CerrarVentana.VistaPrincipal();
+		}else if(e.getSource() == vista.panelReserva.btnReservar) {
+			if(MetodosReserva.reserva(vista, cama1)==true) {
+				vista.setContentPane(vista.panelPago);
 			}
+		}else if(e.getSource() == vista.panelPago.btnCancelar) {
+			vista.setContentPane(vista.panelHoteles);
+		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
+			vista.setContentPane(vista.panelResumen);
+		}
+		
 	}
 
 	

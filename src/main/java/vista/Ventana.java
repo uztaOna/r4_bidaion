@@ -19,6 +19,7 @@ public class Ventana extends JFrame {
 	public PanelRegistro panelRegistro;
 	public PanelReserva panelReserva;
 	public PanelPago panelPago;	
+	public PanelResumen panelResumen;	
 	
 	public Ventana() {
 		
@@ -30,6 +31,7 @@ public class Ventana extends JFrame {
 		panelRegistro=new PanelRegistro();
 		panelReserva=new PanelReserva();
 		panelPago=new PanelPago();
+		panelResumen=new PanelResumen();
 
 		getContentPane().add(panelBienvenida);
 		getContentPane().add(panelBuscador);
@@ -37,7 +39,8 @@ public class Ventana extends JFrame {
 		getContentPane().add(panelLogin);
 		getContentPane().add(panelRegistro);
 		getContentPane().add(panelReserva);
-		getContentPane().add(panelPago);			
+		getContentPane().add(panelPago);	
+		getContentPane().add(panelResumen);	
 		
 		//Inicializacion de variables
 		
