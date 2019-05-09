@@ -7,13 +7,15 @@ public class Reserva {
 	private int codigoReserva;
 	private String usuario;
 	private String hotel;
-	private int precio;
+	private double precio;
 	private Date fechaIni;
 	private Date fechaFin;
 	
+	//Constructor vacio de reserva
+	public Reserva() {} 
 	
-	
-	public Reserva(int codigoReserva, String usuario, String hotel, int precio, Date fechaIni, Date fechaFin) {
+	//Constructor con parámetros de reserva
+	public Reserva(int codigoReserva, String usuario, String hotel, double precio, Date fechaIni, Date fechaFin) {
 		this.codigoReserva = codigoReserva;
 		this.usuario = usuario;
 		this.hotel = hotel;
@@ -22,10 +24,7 @@ public class Reserva {
 		this.fechaFin = fechaFin;
 	}
 
-	public Reserva() {
-		
-	}
-	
+	//Getters y Setters
 	public int getCodigoReserva() {
 		return codigoReserva;
 	}
@@ -44,10 +43,10 @@ public class Reserva {
 	public void setHotel(String hotel) {
 		this.hotel = hotel;
 	}
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 	public Date getFechaIni() {
