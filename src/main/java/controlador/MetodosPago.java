@@ -12,7 +12,7 @@ import vista.Ventana;
 public class MetodosPago {
 	
 	public static void pagar(Ventana vis, Cliente cliente){
-		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==Integer.parseInt(cliente.NCuenta)) {
+		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
 			System.out.println(cliente.dinero);
 			cliente.dinero=cliente.dinero-Integer.parseInt(vis.panelPago.textAPagar.getText());
 			vis.panelPago.textAPagar.setText("0");
