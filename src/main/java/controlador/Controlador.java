@@ -68,7 +68,7 @@ public class Controlador implements ActionListener, ContainerListener {
 
 		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
-		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), "2", 9999999);
+		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), 2, 9999999);
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);

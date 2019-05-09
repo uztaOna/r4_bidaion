@@ -32,7 +32,7 @@ public class MetodoLogin {
 		JTextField contrasenia = vis.panelLogin.txtPassword;
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
 			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelLogin.txtDni.getText()) == false) {
-				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra, "99", 9999));
+				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra, 99, 9999));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
