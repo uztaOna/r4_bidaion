@@ -1,29 +1,54 @@
 package test_modelo;
 
 import static org.junit.Assert.*;
-
-import org.junit.After;
+import java.util.Date;
 import org.junit.Test;
-
 import modelo.Cliente;
 
 public class test_cliente {
 
 	@Test
+	public void testConstructorVacioCliente() {		
+		Cliente user1 = new Cliente();
+		
+		assertEquals(user1.getNombre(), null);
+		assertEquals(user1.getApellido(), null);
+		assertEquals(user1.getDni(), null);
+		assertEquals(user1.getSexo(), null);
+		assertEquals(user1.getFechaNac(), null);
+		assertEquals(user1.getContrasenia(),null);
+		assertEquals(user1.getNCuenta(), 0);
+		assertEquals(user1.getSaldo(), 0f, 0);
+	}
+	
+	@Test
 	public void testConstructorCliente() {
-		Cliente user1 = new Cliente("Pit", "El Anguila", "01234567X", "H", "01/10/1990", 
-				"password", "1234567890",   80.80f);
-		assertEquals(user1.getId(), "ID1");
-		assertEquals(user1.getNombreAloj(), "Alojamiento1");
-		assertEquals(user1.getUbicacion(), "Bilbao");
-		assertEquals(Casa1.getNumHabitaciones(), 12);
-		assertEquals(Casa1.getNbanos(), 3);
-		assertEquals(Casa1.getTamano(), 112f, 0);
+		Date date = new Date(01-12-1990);
+		char[] password = "password".toCharArray();
+		
+		Cliente user1 = new Cliente("Pit", "El Anguila", "01234567X", 'H', date, 
+				password, 1234567890, 1000f);
+		
+		assertEquals(user1.getNombre(), "Pit");
+		assertEquals(user1.getApellido(), "El Anguila");
+		assertEquals(user1.getDni(), "01234567X");
+		assertEquals(user1.getSexo(), 'H');
+		assertEquals(user1.getFechaNac(), date);
+		assertEquals(user1.getContrasenia(),password);
+		assertEquals(user1.getNCuenta(),1234567890);
+		assertEquals(user1.getSaldo(), 1000f, 0);
+	}
+	
+	Date date = new Date(01-12-1990);
+	char[] password = "password".toCharArray();
+	Cliente user2 = new Cliente("Pit", "El Anguila", "01234567X", 'H', date, 
+			password, 1234567890, 1000f);
+	
+	@Test
+	public void setNbanos() {
+		//user2.getNombre("Pitg");
+		//assertEquals(user2.getNombre());
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }

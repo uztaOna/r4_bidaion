@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,7 +33,7 @@ public class PanelLogin extends JPanel {
 		setBounds(0,0,800,600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblTitulo = new JLabel("ALTA NUEVA");
+		lblTitulo = new JLabel("INICIO DE SESIÓN");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblTitulo.setBounds(229, 35, 269, 39);
@@ -70,7 +69,7 @@ public class PanelLogin extends JPanel {
 		lblFnac.setBounds(218, 304, 160, 39);
 		add(lblFnac);
 		
-		dateFnac = new JDateChooser();
+		JDateChooser dateFnac = new JDateChooser();
 		dateFnac.setBounds(383, 304, 192, 39);
 		add(dateFnac);
 		
