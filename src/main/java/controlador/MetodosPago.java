@@ -1,9 +1,5 @@
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 import modelo.Cliente;
@@ -13,10 +9,10 @@ public class MetodosPago {
 	
 	public static void pagar(Ventana vis, Cliente cliente){
 		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
-			System.out.println(cliente.dinero);
-			cliente.dinero=cliente.dinero-Integer.parseInt(vis.panelPago.textAPagar.getText());
+			System.out.println(cliente.saldo);
+			cliente.saldo=cliente.saldo-Integer.parseInt(vis.panelPago.textAPagar.getText());
 			vis.panelPago.textAPagar.setText("0");
-			System.out.println(cliente.dinero);
+			System.out.println(cliente.saldo);
 		}
 	
 		else {

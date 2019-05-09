@@ -1,21 +1,9 @@
 package controlador;
 
-import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import modelo.TipoHab;
-import modelo.Cliente;
-import modelo.Habitacion;
-import modelo.Modelo;
 import vista.Ventana;
 
 public class MetodosReserva { 
@@ -83,7 +71,7 @@ public class MetodosReserva {
 		vis.panelReserva.lblCantDoble.setText("0");
 	}
 	
-	public boolean validarFecha(Date fecha) {
+	public static boolean validarFecha(Date fecha) {
 		if(!fecha.before(Calendar.getInstance().getTime())) {
 			JOptionPane.showMessageDialog(null, "La fecha introducida no es valida","Error en la fecha", JOptionPane.INFORMATION_MESSAGE);
 			return false;

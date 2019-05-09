@@ -26,7 +26,7 @@ public class PanelRegistro extends JPanel {
 		setBounds(0,0,800,600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblTitulo = new JLabel("INICIO DE SESIÓN");
+		lblTitulo = new JLabel("ALTA NUEVA");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		lblTitulo.setBounds(229, 35, 269, 39);

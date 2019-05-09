@@ -11,9 +11,11 @@ public class Cliente {
 	public Date fechaNac;
 	private char[] contrasenia;
 	public int NCuenta;
-	public int dinero;
+	public double saldo;
 
-	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, char[] contrasenia, int NCuenta, int dinero) {
+	public Cliente () {}
+	
+	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, char[] contrasenia, int NCuenta, double saldo) {
 		this.nombre = nombre;
 		this.dni = dni;	
 		this.apellido = apellido;
@@ -21,11 +23,7 @@ public class Cliente {
 		this.fechaNac = fechaNac;
 		this.contrasenia=contrasenia;
 		this.NCuenta=NCuenta;
-		this.dinero=dinero;
-	}
-	
-	public Cliente () {
-		
+		this.saldo=saldo;
 	}
 
 	public String getNombre() {
@@ -84,11 +82,13 @@ public class Cliente {
 		NCuenta = nCuenta;
 	}
 
-	public int getDinero() {
-		return dinero;
+	public double getSaldo() {
+		return saldo;
 	}
 
-	public void setDinero(int dinero) {
-		this.dinero = dinero;
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
+
+	
 }
