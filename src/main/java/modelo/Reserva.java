@@ -1,6 +1,6 @@
 package modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Reserva {
 	
@@ -15,7 +15,7 @@ public class Reserva {
 	public Reserva() {} 
 	
 	//Constructor con parámetros de reserva
-	public Reserva(int codigoReserva, String usuario, String hotel, double precio, Date fechaIni, Date fechaFin) {
+	public Reserva(int codigoReserva, String usuario, String hotel, float precio, Date fechaIni, Date fechaFin) {
 		this.codigoReserva = codigoReserva;
 		this.usuario = usuario;
 		this.hotel = hotel;

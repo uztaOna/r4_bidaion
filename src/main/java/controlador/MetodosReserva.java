@@ -1,6 +1,5 @@
 package controlador;
 
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.TipoHab;

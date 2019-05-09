@@ -17,7 +17,7 @@ public class test_tipoHab {
 		assertEquals(tipo1.getMatrimonio(), 50);
 		assertEquals(tipo1.getDoble(), 20);
 	}
-	
+	 
 	private TipoHab tipo2 = new TipoHab(10, 3, 5, 2);
 	
 	@Test

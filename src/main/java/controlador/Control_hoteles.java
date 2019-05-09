@@ -51,7 +51,7 @@ public abstract class Control_hoteles implements ListSelectionListener {
 		Control_hoteles.listadoHoteles(hotelesList); 
 		
 		//Limpiar el JList de hoteles
-		Launcher_sprint1.vista.panelHoteles.JListHoteles.removeAll();
+		Launcher_sprint1.vista.panelHoteles.modeloHoteles.clear();
 			
 		//Mostrar hoteles en JList
 		for(int i=0; i<hotelesList.size(); i++) {
