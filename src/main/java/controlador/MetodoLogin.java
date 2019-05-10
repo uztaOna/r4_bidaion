@@ -145,7 +145,7 @@ public class MetodoLogin {
 		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
 		
 		vis.panelReserva.btnLogReserva.setText("Log out");
-		vis.panelHoteles.btnLogHoteles.setText("Log out");
+		vis.panelHoteles.btnLogin.setText("Log out");
 		
 	}
 	
@@ -155,7 +155,7 @@ public class MetodoLogin {
 			vis.panelHoteles.lblUsuarioHotel.setText("");
 			
 			vis.panelReserva.btnLogReserva.setText("Loguearme");
-			vis.panelHoteles.btnLogHoteles.setText("Loguearme");
+			vis.panelHoteles.btnLogin.setText("Loguearme");
 		}
 		else {
 			System.out.println("Debes estar en log out");

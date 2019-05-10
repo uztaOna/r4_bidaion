@@ -10,6 +10,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class PanelBuscador extends JPanel {
 
@@ -62,6 +63,7 @@ public class PanelBuscador extends JPanel {
 		add(numDias);
 		
 		spinnerDias = new JSpinner();
+		spinnerDias.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinnerDias.setBounds(501, 383, 57, 20);
 		add(spinnerDias);
 		

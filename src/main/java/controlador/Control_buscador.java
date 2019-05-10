@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.ArrayList;
 
+import vista.Ventana;
+
 public class Control_buscador{
 	
 	public static void addUbicacionesCombo() {
@@ -16,5 +18,6 @@ public class Control_buscador{
 		for(int i=0; i < ubicaciones.size(); i++) {
 			Launcher_sprint1.vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
 		}
-	}
+	}	
+	
 }

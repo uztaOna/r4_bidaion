@@ -44,7 +44,7 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBounds(653, 536, 101, 23);
 		add(btnReservar);
 		
-		btnLogReserva = new JButton("Logearme");
+		btnLogReserva = new JButton("Loguearme");
 		btnLogReserva.setBounds(671, 31, 94, 20);
 		add(btnLogReserva);
 		

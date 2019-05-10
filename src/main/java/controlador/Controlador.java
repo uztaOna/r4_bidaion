@@ -29,6 +29,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		//Panel buscador de destinos
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
+		this.vista.panelBuscador.spinnerDias.addContainerListener(this);
 		
 		//Panel de selección de hoteles
 		this.vista.panelHoteles.btnAtras.addActionListener(this);
@@ -87,7 +88,7 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelBuscador);
 			MetodosReserva.validarFecha(vista);
 			System.out.println("dfsdfsdfsdfsfsdfsdf");
-		}
+		}		
 		else if(e.getSource() == vista.panelBuscador.btnContinuar) {
 			System.out.println("vaaa bennneeeee");
 			Control_hoteles.addHotelesJList();	
@@ -157,10 +158,13 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelReserva);
 			//CerrarVentana.VistaPrincipal();
 		}else if(e.getSource() == vista.panelReserva.btnReservar) {
-			if(MetodosReserva.reserva(vista, cama1)==true) {
+			if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
 				vista.setContentPane(vista.panelPago);
 			}
-		}else if(e.getSource() == vista.panelPago.btnCancelar) {
+		}else if(e.getSource() == vista.panelReserva.btnAtras) {
+			vista.setContentPane(vista.panelHoteles);			
+		}
+		else if(e.getSource() == vista.panelPago.btnCancelar) {
 			vista.setContentPane(vista.panelHoteles);
 		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
 			vista.setContentPane(vista.panelResumen);
