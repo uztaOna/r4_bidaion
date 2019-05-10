@@ -31,11 +31,11 @@ public class MetodoLogin {
 		JTextField apellido = vis.panelLogin.txtApellido;
 		Date fechaNac = vis.panelLogin.dateFnac.getDate();
 		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
-		char[] contra = vis.panelLogin.txtPassword.getText().toCharArray();
+		String contra = vis.panelLogin.txtPassword.getText();
 		JTextField contrasenia = vis.panelLogin.txtPassword;
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
 			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelLogin.txtDni.getText()) == false) {
-				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra, 99, 9999));
+				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra.toCharArray(), 99, 9999));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -115,14 +115,33 @@ public class MetodoLogin {
 		}
 		return null;
 	}
-	
-	
-	
+	//-----------------------------------------------------------------------------------------------------------
+	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
+		String dniUsuario = vis.panelLogin.txtDni.getText();
+		String contraUsuario = encriptarContra(vis.panelLogin.txtPassword.getPassword());
+		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
+		ResultSet rs = mod.conexion.hacerPeticion(sql);
+		try {
+			if (rs.next()) {
+				String contraBase = rs.getString("Password");
+				if (contraBase.equals(contraUsuario)) {
+					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fnac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Password").toCharArray()));
+				} else {
+					JOptionPane.showMessageDialog(null, "ContraseÃ±a incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
+				}
+			} else
+				JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//-----------------------------------------------------------------------------------------------------------
 	
 	/*
 	 * valida que la contraseña tenga los parámetros válidos
 	 */
-	public static boolean validarContrasenia(char[] password) {
+	public static boolean validarContrasenia(String password) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
 

@@ -13,7 +13,18 @@ public class Cliente {
 	public int NCuenta;
 	public double saldo;
 
-	public Cliente () {}
+	public Cliente () {
+		
+	}
+	
+	public Cliente (String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
+		this.nombre = nombre;
+		this.dni = dni;	
+		this.apellido = apellido;
+		this.sexo = sexo;
+		this.fechaNac = fechaNac;
+		this.contrasenia=contrasenia;
+	}
 	
 	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, char[] contrasenia, int NCuenta, double saldo) {
 		this.nombre = nombre;

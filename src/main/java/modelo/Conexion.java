@@ -1,7 +1,9 @@
 package modelo;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
@@ -30,7 +32,23 @@ public class Conexion {
 		}
 		return cnx;
 	}
-	
+	//---------------------------------------------------------------------------------
+	/**
+	 * Metodo que puede usar para hacer una consulta a la Base de Datos
+	 * @param peticionString
+	 * @return
+	 */
+	public ResultSet hacerPeticion(String peticionString) {
+		try {
+			Statement peticion = this.cnx.createStatement();
+			ResultSet resultadoPeticion = peticion.executeQuery(peticionString);
+			return resultadoPeticion;
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+		}
+		return null;
+	}
+	//---------------------------------------------------------------------------------
 	public void desconectar() {
 		try {
 			cnx.close();

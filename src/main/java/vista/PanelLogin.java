@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import com.toedter.calendar.JDateChooser;
@@ -23,10 +24,11 @@ public class PanelLogin extends JPanel {
 	 */
 	
 	public JLabel lblTitulo, lblNombre, lblApellido, lblDni, lblSexo, lblPassword, lblFnac;
-	public JTextField txtNombre, txtApellido, txtDni, txtPassword;
+	public JTextField txtNombre, txtApellido, txtDni;
 	public JButton btnRegistrarme, btnCancelar;
 	public JComboBox boxSexo;
 	public JDateChooser dateFnac;
+	public JPasswordField txtPassword;
 	
 	public PanelLogin() {
 		setLayout(null);
@@ -86,7 +88,7 @@ public class PanelLogin extends JPanel {
 		lblPassword.setBounds(218, 434, 65, 39);
 		add(lblPassword);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(385, 434, 190, 39);
 		add(txtPassword);
 		

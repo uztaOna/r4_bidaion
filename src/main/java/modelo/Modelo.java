@@ -6,7 +6,6 @@ public class Modelo {
 
 	public Conexion conexion;
 	public Consultas consulta;
-	
 	public Hotel hotel;
 	public float precioTotal;
 	
