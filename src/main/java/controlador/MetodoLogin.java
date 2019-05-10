@@ -1,6 +1,9 @@
 package controlador;
 
 import java.awt.Color;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -91,6 +94,30 @@ public class MetodoLogin {
 			campoTexto.setBackground(new JTextField().getBackground());
 		return true;
 	}
+	
+	/**
+	 * Encritacion de la contraseña
+	 * @param contrasenia
+	 * @return
+	 */
+	public String encriptarContra(char[] contrasenia) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			String contraEnc = new String(contrasenia);
+			byte[] hashInBytes = md.digest(contraEnc.getBytes(StandardCharsets.UTF_8));
+			StringBuilder sb = new StringBuilder();
+			for (byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			return sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
 	
 	/*
 	 * valida que la contraseña tenga los parámetros válidos
