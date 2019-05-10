@@ -12,6 +12,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class PanelReserva extends JPanel {
 
@@ -72,15 +73,18 @@ public class PanelReserva extends JPanel {
 		add(btnDoble);
 		
 		 lblInDisp = new JLabel("(0 disponibles) ");
-		lblInDisp.setBounds(126, 344, 110, 21);
+		 lblInDisp.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInDisp.setBounds(126, 344, 165, 21);
 		add(lblInDisp);
 		
 		lblMatriDisp = new JLabel("(0 disponibles) ");
-		lblMatriDisp.setBounds(351, 344, 110, 21);
+		lblMatriDisp.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMatriDisp.setBounds(351, 344, 165, 21);
 		add(lblMatriDisp);
 		
 		lblDobleDisp = new JLabel("(0 disponibles) ");
-		lblDobleDisp.setBounds(574, 344, 110, 21);
+		lblDobleDisp.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDobleDisp.setBounds(574, 344, 165, 21);
 		add(lblDobleDisp);
 		
 		rdbtnWifi = new JRadioButton("Wifi");
@@ -116,15 +120,21 @@ public class PanelReserva extends JPanel {
 		add(rdbtnGYM);
 		
 		lblCantInd = new JLabel("0");
-		lblCantInd.setBounds(126, 387, 101, 23);
+		lblCantInd.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantInd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCantInd.setBounds(126, 390, 165, 23);
 		add(lblCantInd);
 		
 		lblCantMatri = new JLabel("0");
-		lblCantMatri.setBounds(351, 385, 101, 23);
+		lblCantMatri.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantMatri.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCantMatri.setBounds(351, 390, 165, 23);
 		add(lblCantMatri);
 		
 		lblCantDoble = new JLabel("0");
-		lblCantDoble.setBounds(574, 385, 101, 23);
+		lblCantDoble.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantDoble.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCantDoble.setBounds(574, 390, 165, 23);
 		add(lblCantDoble);
 		
 		btnCancelar = new JButton("Cancelar");
@@ -134,7 +144,7 @@ public class PanelReserva extends JPanel {
 		add(btnCancelar);
 		
 		
-		lblCamasDiponibles = new JLabel("Camas diponibles:");
+		lblCamasDiponibles = new JLabel("Disponibles");
 		lblCamasDiponibles.setBounds(10, 344, 110, 21);
 		add(lblCamasDiponibles);
 		
@@ -146,19 +156,22 @@ public class PanelReserva extends JPanel {
 		lblServicios.setBounds(10, 469, 110, 21);
 		add(lblServicios);
 		
-		lblCamasInd = new JLabel("Camas Individuales:");
-		lblCamasInd.setBounds(126, 114, 110, 21);
+		lblCamasInd = new JLabel("Habitaci\u00F3n Individual");
+		lblCamasInd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCamasInd.setBounds(126, 114, 165, 21);
 		add(lblCamasInd);
 	
-		lblCamasMatri = new JLabel("Camas de Matrimonio:");
-		lblCamasMatri.setBounds(351, 114, 110, 21);
+		lblCamasMatri = new JLabel("Habitaci\u00F3n Matrimonio");
+		lblCamasMatri.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCamasMatri.setBounds(351, 114, 165, 21);
 		add(lblCamasMatri);
 		
-		lblCamasDoble = new JLabel("Camas Dobles:");
-		lblCamasDoble.setBounds(574, 113, 110, 21);
+		lblCamasDoble = new JLabel("Habitaci\u00F3n Doble");
+		lblCamasDoble.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCamasDoble.setBounds(574, 113, 165, 21);
 		add(lblCamasDoble);
 		
-		btnAtras = new JButton("Atras");
+		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnAtras.setAlignmentY(0.0f);
 		btnAtras.setBounds(146, 536, 101, 23);
