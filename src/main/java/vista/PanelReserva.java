@@ -35,7 +35,7 @@ public class PanelReserva extends JPanel {
 		
 		lblHotelSelc = new JLabel("El Hotel Seleccionado");
 		lblHotelSelc.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelSelc.setBounds(37, 41, 210, 62);
+		lblHotelSelc.setBounds(37, 40, 210, 62);
 		add(lblHotelSelc);
 		
 		btnReservar= new JButton("Reservar");
@@ -45,7 +45,7 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBounds(653, 536, 101, 23);
 		add(btnReservar);
 		
-		btnLogReserva = new JButton("Logearme");
+		btnLogReserva = new JButton("Loguearme");
 		btnLogReserva.setBounds(671, 31, 94, 20);
 		add(btnLogReserva);
 		
@@ -149,7 +149,7 @@ public class PanelReserva extends JPanel {
 		add(lblCamasDiponibles);
 		
 		lblCantSeleccionada = new JLabel("Cant. seleccionada:");
-		lblCantSeleccionada.setBounds(10, 391, 110, 21);
+		lblCantSeleccionada.setBounds(10, 391, 118, 21);
 		add(lblCantSeleccionada);
 		
 		lblServicios = new JLabel("Servicios Adicionales:");
