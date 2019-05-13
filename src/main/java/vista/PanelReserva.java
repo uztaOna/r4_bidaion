@@ -88,6 +88,7 @@ public class PanelReserva extends JPanel {
 		add(lblDobleDisp);
 		
 		rdbtnWifi = new JRadioButton("Wifi");
+		rdbtnWifi.setActionCommand("100");
 		rdbtnWifi.setBounds(186, 469, 109, 23);
 		add(rdbtnWifi);
 		
