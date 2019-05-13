@@ -80,7 +80,7 @@ public class Controlador implements ActionListener, ContainerListener {
 
 		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
-		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), 2, 9999999);
+		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
@@ -117,6 +117,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  
 				e.getSource() == vista.panelRegistro.btnNoAcc) {
+			System.out.println("no tengo cuenta");
 			vista.setContentPane(vista.panelLogin);
 		}
 		else if(e.getSource() == vista.panelHoteles.btnLogin || e.getSource() == vista.panelReserva.btnLogReserva) {
@@ -148,7 +149,8 @@ public class Controlador implements ActionListener, ContainerListener {
 		else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
 			MetodoLogin.nombreUsuario(vista, cliente1);
 			MetodoLogin.comprobarInicioSesion(vista);
-		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
+		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {
+	
 			MetodoLogin.registro(vista);
 			System.out.println("Registra bien");
 		}else if(e.getSource() == vista.panelPago.btnPagar) {		
