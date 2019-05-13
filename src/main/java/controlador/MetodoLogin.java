@@ -23,7 +23,7 @@ import vista.Ventana;
 public class MetodoLogin {
 		
 	 /*
-	 * Registra al usuario si no lo está
+	 * Registra al usuario en la base de datos en el caso que no estuviera
 	 */
 	public static Cliente registro(Ventana vis) {
 		JTextField dni = vis.panelLogin.txtDni;
@@ -31,11 +31,11 @@ public class MetodoLogin {
 		JTextField apellido = vis.panelLogin.txtApellido;
 		Date fechaNac = vis.panelLogin.dateFnac.getDate();
 		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
-		String contra = vis.panelLogin.txtPassword.getText();
-		JTextField contrasenia = vis.panelLogin.txtPassword;
+		final char[] contra = vis.panelLogin.txtPassword.getPassword();
+		//JTextField contrasenia = vis.panelLogin.txtPassword;
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
 			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelLogin.txtDni.getText()) == false) {
-				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, contra.toCharArray(), 99, 9999));
+				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, encriptarContra(contra), 99, (double)(9999)));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -45,7 +45,7 @@ public class MetodoLogin {
 	
 	public static void comprobarInicioSesion(Ventana vis) {
 		JTextField dni = vis.panelRegistro.textFieldNombre;
-		char[] contra = vis.panelRegistro.textFieldContrasenia.getText().toCharArray();
+		char[] contra = vis.panelRegistro.textFieldContrasenia.getPassword();
 		//if()
 	}
 		
@@ -100,7 +100,7 @@ public class MetodoLogin {
 	 * @param contrasenia
 	 * @return
 	 */
-	public String encriptarContra(char[] contrasenia) {
+	public static String encriptarContra(char[] contrasenia) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			String contraEnc = new String(contrasenia);
@@ -125,7 +125,7 @@ public class MetodoLogin {
 			if (rs.next()) {
 				String contraBase = rs.getString("Password");
 				if (contraBase.equals(contraUsuario)) {
-					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fnac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Password").toCharArray()));
+					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fnac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Password")));
 				} else {
 					JOptionPane.showMessageDialog(null, "ContraseÃ±a incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -141,12 +141,12 @@ public class MetodoLogin {
 	/*
 	 * valida que la contraseña tenga los parámetros válidos
 	 */
-	public static boolean validarContrasenia(String password) {
+	public static boolean validarContrasenia(char[] contra) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
 		// mayuscula, un numero y minimo 8 caracteres de longitud
 
 		Pattern p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$");
-		String contraString=new String(password);
+		String contraString=new String(contra);
 		Matcher m = p.matcher(contraString);
 		System.out.println(contraString);
 
