@@ -31,4 +31,26 @@ public class MetodosPago {
 		System.out.println(vis.panelReserva.rdbtnWifi.getActionCommand());
 		return Math.round(precio);
 	}
+	
+	public static double precioRadios(Ventana vis) {
+		boolean radioArray[] = {vis.panelReserva.rdbtnWifi.isSelected(),
+				vis.panelReserva.rdbtnPiscina.isSelected(),
+				vis.panelReserva.rdbtnSpa.isSelected(), 
+				vis.panelReserva.rdbtnParking.isSelected(),
+				vis.panelReserva.rdbtnAireAcon.isSelected(),
+				vis.panelReserva.rdbtnRestaurante.isSelected(),
+				vis.panelReserva.rdbtnBar.isSelected(),
+				vis.panelReserva.rdbtnGYM.isSelected()};
+		double radioPrecio[] = {100,200,300,400,500,600,700,800};
+		double cadena=0;
+		for (int i = 0; i < 7; i++) {
+			if(radioArray[i]==true) {
+				cadena=cadena + radioPrecio[i];
+			}
+			else {
+				cadena = cadena;
+			}
+		}
+		return cadena;
+	}
 }

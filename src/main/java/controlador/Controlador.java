@@ -161,7 +161,7 @@ public class Controlador implements ActionListener, ContainerListener {
 			//CerrarVentana.VistaPrincipal();
 		}else if(e.getSource() == vista.panelReserva.btnReservar) {
 			if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
-				vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)));
+				vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
 				vista.setContentPane(vista.panelPago);
 			}
 		}else if(e.getSource() == vista.panelReserva.btnAtras) {
