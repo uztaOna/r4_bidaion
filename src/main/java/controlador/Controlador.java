@@ -89,10 +89,8 @@ public class Controlador implements ActionListener, ContainerListener {
 			Control_buscador.addUbicacionesCombo();
 			vista.setContentPane(vista.panelBuscador);
 			MetodosReserva.validarFecha(vista);
-			System.out.println("dfsdfsdfsdfsfsdfsdf");
 		}		
 		else if(e.getSource() == vista.panelBuscador.btnContinuar) {
-			System.out.println("vaaa bennneeeee");
 			Control_hoteles.addHotelesJList();	
 			vista.setContentPane(vista.panelHoteles);
 		}
@@ -110,7 +108,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelHoteles.btnLogHoteles || e.getSource() == vista.panelReserva.btnLogReserva) {
 			if(vista.panelHoteles.btnLogHoteles.getText()=="Log out"||vista.panelReserva.btnLogReserva.getText()=="Log out") {				
-				controlador.MetodoLogin.salirUsuario(vista);
+				MetodoLogin.salirUsuario(vista);
 			}
 			else {
 				vista.setContentPane(vista.panelRegistro);
@@ -151,7 +149,6 @@ public class Controlador implements ActionListener, ContainerListener {
 			MetodoLogin.comprobarInicioSesion(vista);
 		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
 			MetodoLogin.registro(vista);
-			System.out.println("Registra bien");
 		}else if(e.getSource() == vista.panelPago.btnPagar) {		
 			MetodosPago.pagar(vista, cliente1);
 			MetodosReserva.actualizacionCamas(vista, cama1);
