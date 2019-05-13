@@ -12,7 +12,7 @@ public class Modelo {
 	public float precioTotal;
 	public Cliente clienteRegistrado;
 	
-	public MetodoLogin metodosLogin;
+	public MetodoLogin metodoLogin;
 	public Date fechaIni, fechaFin;
 	
 	public Modelo() {
