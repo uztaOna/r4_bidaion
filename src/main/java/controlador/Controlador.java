@@ -81,6 +81,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), 2, 9999999);
+		Hotel hotel1=new Hotel("gdsgdg", "cdfhxf", "fdh", 10, 5, 50);
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
@@ -160,6 +161,7 @@ public class Controlador implements ActionListener, ContainerListener {
 			//CerrarVentana.VistaPrincipal();
 		}else if(e.getSource() == vista.panelReserva.btnReservar) {
 			if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
+				vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)));
 				vista.setContentPane(vista.panelPago);
 			}
 		}else if(e.getSource() == vista.panelReserva.btnAtras) {
