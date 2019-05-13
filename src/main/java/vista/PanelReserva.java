@@ -46,15 +46,15 @@ public class PanelReserva extends JPanel {
 		add(btnReservar);
 		
 		btnLogReserva = new JButton("Loguearme");
-		btnLogReserva.setBounds(671, 31, 94, 20);
+		btnLogReserva.setBounds(653, 31, 112, 20);
 		add(btnLogReserva);
 		
 		lblUsuarioReser = new JLabel(" ");
-		lblUsuarioReser.setBounds(508, 31, 153, 50);
+		lblUsuarioReser.setBounds(508, 31, 135, 50);
 		add(lblUsuarioReser);
 		
 		btnRegisReser = new JButton("Registrarme");
-		btnRegisReser.setBounds(671, 61, 94, 20);
+		btnRegisReser.setBounds(653, 61, 112, 20);
 		add(btnRegisReser);	
 		
 		btnIndividual = new JButton("INDIVIDUAL");

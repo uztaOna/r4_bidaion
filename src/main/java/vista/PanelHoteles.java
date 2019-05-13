@@ -69,15 +69,15 @@ public class PanelHoteles extends JPanel {
 		add(btnSeleccionar);
 		
 		btnLogin = new JButton("Loguearme");
-		btnLogin.setBounds(660, 29, 94, 20);
+		btnLogin.setBounds(643, 29, 111, 20);
 		add(btnLogin);
 		
 		btnRegistro = new JButton("Registrarse");
-		btnRegistro.setBounds(660, 59, 94, 20);
+		btnRegistro.setBounds(643, 59, 111, 20);
 		add(btnRegistro); 
 		
 		lblUser = new JLabel("");
-		lblUser.setBounds(497, 29, 153, 50);
+		lblUser.setBounds(497, 29, 135, 50);
 		add(lblUser);
 		
 		btnLogHoteles = new JButton("Logearme");

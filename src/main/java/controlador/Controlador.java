@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.util.Date;
+
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import controlador.*;
@@ -63,6 +65,8 @@ public class Controlador implements ActionListener, ContainerListener {
 
 		//Panel login de usuario 2
 		this.vista.panelRegistro.btnCancelar.addActionListener(this);
+		this.vista.panelRegistro.btnNoAcc.addActionListener(this);
+		this.vista.panelRegistro.btnContinuar.addActionListener(this);
 		
 		//Panel de pago
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
@@ -98,6 +102,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
 			Control_hoteles.infoHotelSelec();
+			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
 		}
 		else if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
 				||e.getSource() == vista.panelRegistro.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
@@ -160,9 +165,14 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelReserva);
 			//CerrarVentana.VistaPrincipal();
 		}else if(e.getSource() == vista.panelReserva.btnReservar) {
-			if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
-				vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
-				vista.setContentPane(vista.panelPago);
+			if(vista.panelReserva.btnLogReserva.getText()=="Log out") {
+				if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
+					vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
+					vista.setContentPane(vista.panelPago);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}else if(e.getSource() == vista.panelReserva.btnAtras) {
 			vista.setContentPane(vista.panelHoteles);			

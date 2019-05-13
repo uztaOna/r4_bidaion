@@ -18,10 +18,9 @@ public class MetodosPago {
 			vis.panelPago.btnPagar.setEnabled(false);
 			vis.panelPago.btnConfirmar.setEnabled(true);
 		}
-	
-		else {
+
+		else
 			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
-		}
 	}
 	
 	public static double precio(Ventana vis, Hotel hotel) {	
@@ -43,7 +42,7 @@ public class MetodosPago {
 				vis.panelReserva.rdbtnGYM.isSelected()};
 		double radioPrecio[] = {100,200,300,400,500,600,700,800};
 		double cadena=0;
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 8; i++) {
 			if(radioArray[i]==true) {
 				cadena=cadena + radioPrecio[i];
 			}
