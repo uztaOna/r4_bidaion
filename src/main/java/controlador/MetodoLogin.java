@@ -116,7 +116,7 @@ public class MetodoLogin {
 		return null;
 	}
 	//-----------------------------------------------------------------------------------------------------------
-	/*public Cliente iniciarSesion(Modelo mod, Ventana vis) {
+	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
 		String dniUsuario = vis.panelLogin.txtDni.getText();
 		String contraUsuario = encriptarContra(vis.panelLogin.txtPassword.getPassword());
 		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
@@ -135,7 +135,7 @@ public class MetodoLogin {
 			e.printStackTrace();
 		}
 		return null;
-	}*/
+	}
 	//-----------------------------------------------------------------------------------------------------------
 	
 	/*

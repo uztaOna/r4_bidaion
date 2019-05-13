@@ -20,8 +20,9 @@ public class PanelLogin extends JPanel {
 	 */
 	
 	public JLabel lblTitulo, lblNombre, lblContrasenia;
-	public JTextField textFieldNombre, textFieldContrasenia;
+	public JTextField textFieldNombre;
 	public JButton btnContinuar, btnNoAcc, btnCancelar;
+	public JPasswordField textFieldContrasenia;
 	
 	public PanelLogin() {
 		setLayout(null);
