@@ -39,11 +39,6 @@ public class Hotel extends Alojamiento{
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	
-	//Crea un hotel y lo mete en un array de hoteles
-	public void add() {
-		
-	}
 
 	public String toStringNombre() {
 		return nombreAloj;

@@ -116,7 +116,7 @@ public class MetodoLogin {
 		return null;
 	}
 	//-----------------------------------------------------------------------------------------------------------
-	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
+	/*public Cliente iniciarSesion(Modelo mod, Ventana vis) {
 		String dniUsuario = vis.panelLogin.txtDni.getText();
 		String contraUsuario = encriptarContra(vis.panelLogin.txtPassword.getPassword());
 		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
@@ -135,7 +135,7 @@ public class MetodoLogin {
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 	//-----------------------------------------------------------------------------------------------------------
 	
 	/*
@@ -164,7 +164,7 @@ public class MetodoLogin {
 		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
 		
 		vis.panelReserva.btnLogReserva.setText("Log out");
-		vis.panelHoteles.btnLogHoteles.setText("Log out");
+		vis.panelHoteles.btnLogin.setText("Log out");
 		
 	}
 	
@@ -174,7 +174,7 @@ public class MetodoLogin {
 			vis.panelHoteles.lblUsuarioHotel.setText("");
 			
 			vis.panelReserva.btnLogReserva.setText("Loguearme");
-			vis.panelHoteles.btnLogHoteles.setText("Loguearme");
+			vis.panelHoteles.btnLogin.setText("Loguearme");
 		}
 		else {
 			System.out.println("Debes estar en log out");

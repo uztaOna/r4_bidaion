@@ -14,8 +14,7 @@ public class MetodosReserva {
 		int individual=vis.panelReserva.lblCantInd.getComponentCount();
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
-		int doble=vis.panelReserva.lblCantDoble.getComponentCount();
-		
+		int doble=vis.panelReserva.lblCantDoble.getComponentCount();		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;
@@ -32,39 +31,64 @@ public class MetodosReserva {
 	}
 	
 	public static String sumaBoton (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())+1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblInDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantInd.getText())){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())+1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
 	public static String sumaBoton2 (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())+1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblMatriDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantMatri.getText())){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())+1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
 	public static String sumaBoton3 (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())+1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblDobleDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantDoble.getText())){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())+1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
 	public static String restaBoton (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())-1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblCantInd.getText())>0){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())-1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
 	public static String restaBoton2 (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())-1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())>0){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())-1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
 	public static String restaBoton3 (Ventana vis) {
-		int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())-1;
-		String texto=Integer.toString(numEntero);
-		return texto;
+		if(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())>0){
+			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())-1;
+			String texto=Integer.toString(numEntero);
+			return texto;
+		}
+		else return vis.panelReserva.lblCantDoble.getText();
+	}
+	
+	public static boolean confirmarEleccion(Ventana vis) {
+		if(vis.panelReserva.lblCantInd.getText()=="0" && vis.panelReserva.lblCantMatri.getText()=="0" &&
+				vis.panelReserva.lblCantDoble.getText()=="0") {
+			return false;
+		}else return true;
 	}
 	
 	public static void disponibilidadCamas (Ventana vis, TipoHab cama) {
