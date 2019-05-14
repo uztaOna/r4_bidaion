@@ -21,7 +21,7 @@ public class MetodoLogin {
 	 /*
 	 * Registra al usuario en la base de datos en el caso que no estuviera
 	 */
-	public static Cliente registro(Ventana vis) {
+	public static Cliente registro(Ventana vis, Modelo modelo) {
 		JTextField dni = vis.panelLogin.txtDni;
 		JTextField nombre = vis.panelLogin.txtNombre;
 		JTextField apellido = vis.panelLogin.txtApellido;

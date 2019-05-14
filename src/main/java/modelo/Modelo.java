@@ -13,6 +13,8 @@ public class Modelo {
 	public Cliente clienteRegistrado;
 	
 	public MetodoLogin metodoLogin;
+	public Consultas cbd;
+	
 	public Date fechaIni, fechaFin;
 	
 	public Modelo() {

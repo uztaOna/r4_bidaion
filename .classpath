@@ -4,9 +4,9 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/mockito-all-1.9.5.jar"/>
-	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/mockito-core-1.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/workspace_r4/r4_bidaion/lib/mysql-connector-java-8.0.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspaceReto/r4_bidaion/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/workspaceReto/r4_bidaion/lib/mockito-all-1.9.5.jar"/>
+	<classpathentry kind="lib" path="C:/workspaceReto/r4_bidaion/lib/mockito-core-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/workspaceReto/r4_bidaion/lib/mysql-connector-java-8.0.15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
