@@ -160,8 +160,12 @@ public class Controlador implements ActionListener, ContainerListener {
 			MetodoLogin.nombreUsuario(vista, cliente1);
 			MetodoLogin.comprobarInicioSesion(vista);
 		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {
-	
-			MetodoLogin.registro(vista);
+			modelo.clienteRegistrado = MetodoLogin.registro(vista,modelo);
+			if(modelo.clienteRegistrado != null) {
+				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
+				vista.setContentPane(vista.panelReserva);
+			}
+			MetodoLogin.registro(vista,modelo);
 		}else if(e.getSource() == vista.panelPago.btnPagar) {		
 			MetodosPago.pagar(vista, cliente1);
 			MetodosReserva.actualizacionCamas(vista, cama1);

@@ -140,7 +140,7 @@ public class Consultas {
 	public boolean comprobarDNIenBD(String dni) {		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
-		String query = "select DNI from cliente where DNI = \"" + dni + "\"";
+		String query = "select DNI from clientes where DNI = \"" + dni + "\"";
 		try {
 			connection = conexion.conectar();
 			
@@ -159,27 +159,27 @@ public class Consultas {
 		return false;
 	}
 	
-//	/**
-//	 * Inserta la informacion del usuario en la base de datos
-//	 * 
-//	 * @param usuario el cliente que se registrara en la base de datos
-//	 * @param mod     modelo con la conexion a la base de datos
-//	 */
-//	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
-//		try {
-//			String query = "insert into cliente (DNI,Nombre,Apellido,Fnac,Sexo,Password) values(?,?,?,?,?,?);";
-//			PreparedStatement insertarUsuario = this.connection.prepareStatement(query);
-//			insertarUsuario.setString(1, usuario.dni);
-//			insertarUsuario.setString(2, usuario.nombre);
-//			insertarUsuario.setString(3, usuario.apellido);
-//			insertarUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
-//			insertarUsuario.setString(5, String.valueOf(usuario.sexo));
-//			insertarUsuario.setString(6, usuario.getContrasenia());
-//			insertarUsuario.executeUpdate();
-//		} catch (SQLException e) {
-//			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
-//		}
-//	}
+	/**
+	 * Inserta la informacion del usuario en la base de datos
+	 * 
+	 * @param usuario el cliente que se registrara en la base de datos
+	 * @param mod     modelo con la conexion a la base de datos
+	 */
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+		try {
+			String query = "insert into clientes (DNI,Nombre,Apellido,Fnac,Sexo,Password) values(?,?,?,?,?,?);";
+			PreparedStatement insertarUsuario = this.connection.prepareStatement(query);
+			insertarUsuario.setString(1, usuario.dni);
+			insertarUsuario.setString(2, usuario.nombre);
+			insertarUsuario.setString(3, usuario.apellido);
+			insertarUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
+			insertarUsuario.setString(5, String.valueOf(usuario.sexo));
+			insertarUsuario.setString(6, usuario.getContrasenia());
+			insertarUsuario.executeUpdate();
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+		}
+	}
 	
 	
 }
