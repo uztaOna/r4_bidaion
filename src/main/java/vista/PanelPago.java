@@ -72,6 +72,7 @@ public class PanelPago extends JPanel {
 		add(btnPagar);
 		
 		textCuenta = new JTextField();
+		textCuenta.setText("000000");
 		textCuenta.setBounds(277, 252, 247, 25);
 		add(textCuenta);
 		textCuenta.setColumns(10);

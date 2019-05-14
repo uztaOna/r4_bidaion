@@ -9,7 +9,7 @@ public class Cliente {
 	public String dni;
 	public char sexo;
 	public Date fechaNac;
-	private char[] contrasenia;
+	private String contrasenia;
 	public int NCuenta;
 	public double saldo;
 
@@ -17,7 +17,7 @@ public class Cliente {
 		
 	}
 	
-	public Cliente (String dni, String nombre, String apellido, Date fechaNac, char sexo, char[] contrasenia) {
+	public Cliente (String dni, String nombre, String apellido, Date fechaNac, char sexo, String contrasenia) {
 		this.nombre = nombre;
 		this.dni = dni;	
 		this.apellido = apellido;
@@ -26,7 +26,7 @@ public class Cliente {
 		this.contrasenia=contrasenia;
 	}
 	
-	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, char[] contrasenia, int NCuenta, double saldo) {
+	public Cliente (String nombre, String apellido, String dni, char sexo, Date fechaNac, String contrasenia, int NCuenta, double saldo) {
 		this.nombre = nombre;
 		this.dni = dni;	
 		this.apellido = apellido;
@@ -77,11 +77,11 @@ public class Cliente {
 		this.fechaNac = fechaNac;
 	}
 
-	public char[] getContrasenia() {
+	public String getContrasenia() {
 		return contrasenia;
 	}
 
-	public void setContrasenia(char[] contrasenia) {
+	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
 

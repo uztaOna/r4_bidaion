@@ -71,7 +71,7 @@ public class PanelRegistro extends JPanel {
 		lblFnac.setBounds(218, 304, 160, 39);
 		add(lblFnac);
 		
-		JDateChooser dateFnac = new JDateChooser();
+		dateFnac = new JDateChooser();
 		dateFnac.setBounds(383, 304, 192, 39);
 		add(dateFnac);
 		

@@ -2,13 +2,17 @@ package modelo;
 
 import java.sql.Date;
 
+import controlador.MetodoLogin;
+
 public class Modelo {
 
 	public Conexion conexion;
 	public Consultas consulta;
 	public Hotel hotel;
 	public float precioTotal;
+	public Cliente clienteRegistrado;
 	
+	public MetodoLogin metodoLogin;
 	public Date fechaIni, fechaFin;
 	
 	public Modelo() {

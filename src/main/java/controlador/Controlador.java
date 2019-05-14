@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import vista.Ventana;
 
@@ -61,6 +63,8 @@ public class Controlador implements ActionListener, ContainerListener {
 
 		//Panel login de usuario 2
 		this.vista.panelRegistro.btnCancelar.addActionListener(this);
+		this.vista.panelRegistro.btnNoAcc.addActionListener(this);
+		this.vista.panelRegistro.btnContinuar.addActionListener(this);
 		
 		//Panel de pago
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
@@ -78,7 +82,8 @@ public class Controlador implements ActionListener, ContainerListener {
 
 		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
-		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ".toCharArray(), 2, 9999999);
+
+		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 		Hotel hotel1=new Hotel("gdsgdg", "cdfhxf", "fdh", 10, 5, 50);
 
 
@@ -94,6 +99,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
 			Control_hoteles.infoHotelSelec();
+			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
 		}
 		else if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
 				||e.getSource() == vista.panelRegistro.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
@@ -114,6 +120,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}
 		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  
 				e.getSource() == vista.panelRegistro.btnNoAcc) {
+			System.out.println("no tengo cuenta");
 			vista.setContentPane(vista.panelLogin);
 		}
 		else if(e.getSource() == vista.panelHoteles.btnLogin || e.getSource() == vista.panelReserva.btnLogReserva) {
@@ -145,7 +152,8 @@ public class Controlador implements ActionListener, ContainerListener {
 		else if(e.getSource() == vista.panelRegistro.btnContinuar) {		
 			MetodoLogin.nombreUsuario(vista, cliente1);
 			MetodoLogin.comprobarInicioSesion(vista);
-		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {		
+		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {
+	
 			MetodoLogin.registro(vista);
 		}else if(e.getSource() == vista.panelPago.btnPagar) {		
 			MetodosPago.pagar(vista, cliente1);
@@ -155,9 +163,14 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelReserva);
 			//CerrarVentana.VistaPrincipal();
 		}else if(e.getSource() == vista.panelReserva.btnReservar) {
-			if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
-				vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
-				vista.setContentPane(vista.panelPago);
+			if(vista.panelReserva.btnLogReserva.getText()=="Log out") {
+				if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
+					vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
+					vista.setContentPane(vista.panelPago);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}else if(e.getSource() == vista.panelReserva.btnAtras) {
 			vista.setContentPane(vista.panelHoteles);			
