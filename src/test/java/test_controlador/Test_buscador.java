@@ -1,23 +1,32 @@
 package test_controlador;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
-import static org.mockito.Mockito.*;
-import org.mockito.Mockito;
-import controlador.Launcher_sprint1;
-import modelo.Consultas;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.mockito.Matchers.anyLong;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+import java.awt.event.ActionListener;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import org.junit.Test;
+import controlador.Control_buscador;
+import modelo.Modelo;
+import vista.Ventana;
 
-
+/*
 public class Test_buscador {
 
-//	Consultas consultmock = when();
-//	
-//	@Test
-//	public void test() {
-//		assertEquals(1, 1);
-//		verify(someMock).someMethod(eq(1));
-//	}
+	
+	@Test
+	public void test_inicializar_eventos_buscador() {
+		Ventana vistaMock = mock(Ventana.class);
+		Modelo modeloMock = mock(Modelo.class);
+	        
+		Control_buscador Control_buscador_test = new Control_buscador(modeloMock, vistaMock);
+		
+		Control_buscador_test.inicializar_eventos_buscador();
+		//verify(vistaMock, times(1)).panelBienvenida.btnInicio.addActionListener(any(Control_buscador.class));
+		//Control_buscador_test.inicializar_eventos_buscador();
+	}
 
-}
+}*/

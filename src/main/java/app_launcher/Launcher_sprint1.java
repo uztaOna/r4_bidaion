@@ -1,6 +1,7 @@
-package controlador;
+package app_launcher;
 
 import vista.Ventana;
+import controlador.Controlador;
 import modelo.*;
 
 public class Launcher_sprint1 {

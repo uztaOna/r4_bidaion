@@ -5,28 +5,37 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import modelo.*;
+
+import modelo.Cliente;
+import modelo.Hotel;
+import modelo.Modelo;
+import modelo.TipoHab;
 import vista.Ventana;
 
 public class Controlador implements ActionListener, ContainerListener {
 
 	private Ventana vista;
 	private Modelo modelo;
-	
+	private Control_buscador control_buscador;
 	
 	public Controlador(Ventana vista, Modelo modelo) {
 		this.vista = vista;
 		this.modelo = modelo; 
 		
-		vista.setContentPane(vista.panelBienvenida);
 		inicializarEventos();
-		}
+		
+		
+		
+		control_buscador = new Control_buscador(this.modelo, this.vista);
+		control_buscador.inicializar_eventos_buscador();
+		
+		vista.setContentPane(vista.panelBienvenida);
+	}
 	
 	public void inicializarEventos() {
-		//Panel bienvenida
-		this.vista.panelBienvenida.btnInicio.addActionListener(this);
+		
 		
 		//Panel buscador de destinos
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
@@ -74,6 +83,8 @@ public class Controlador implements ActionListener, ContainerListener {
 		//Panel de resumen
 		this.vista.panelResumen.btnFin.addActionListener(this);
 		this.vista.panelResumen.btnAtras.addActionListener(this);
+		
+		
 	}
 	
 	
@@ -88,12 +99,8 @@ public class Controlador implements ActionListener, ContainerListener {
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
-		if(e.getSource() == vista.panelBienvenida.btnInicio) {
-			Control_buscador.addUbicacionesCombo();
-			vista.setContentPane(vista.panelBuscador);
-			MetodosReserva.validarFecha(vista);
-		}		
-		else if(e.getSource() == vista.panelBuscador.btnContinuar) {
+		
+		if(e.getSource() == vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList();	
 			vista.setContentPane(vista.panelHoteles);
 		}

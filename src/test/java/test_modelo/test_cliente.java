@@ -22,7 +22,7 @@ public class test_cliente {
 		assertNull(user1.getFechaNac());
 	}
 	
-	@Test
+	/*@Test
 	public void testConstructorCliente() {
 		Date date = new Date(01-12-1990);
 		char[] password = "password".toCharArray();
@@ -91,5 +91,5 @@ public class test_cliente {
 	public void setSaldo() {
 		user2.setSaldo(1000f);
 		assertEquals(1000f, user2.getSaldo(), 0);
-	}
+	}*/
 }

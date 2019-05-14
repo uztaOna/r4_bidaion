@@ -1,21 +1,60 @@
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ContainerEvent;
+import java.awt.event.ContainerListener;
 import java.util.ArrayList;
 
-public class Control_buscador{
+import app_launcher.Launcher_sprint1;
+import modelo.Modelo;
+import vista.Ventana;
+
+public class Control_buscador implements ActionListener, ContainerListener{
 	
-	public static void addUbicacionesCombo() {
+	Modelo modelo;
+	Ventana vista;
+	
+	public Control_buscador(Modelo modelo,Ventana vista) {
+		this.modelo = modelo;
+		this.vista = vista;
+	}
+	
+	public void inicializar_eventos_buscador()
+	{
+		this.vista.panelBienvenida.btnInicio.addActionListener(this);
+	}
+	
+	public void addUbicacionesCombo(Modelo modelo, Ventana vista) {
 		//Cargar las ciudades de la bbdd y mostrar
-		 ArrayList<String> ubicaciones = Launcher_sprint1.modelo.consulta.getUbicaciones();
+		 ArrayList<String> ubicaciones = modelo.consulta.getUbicaciones();
 		
 		//Limpiar combobox de ubicaciones de la interfaz
-		Launcher_sprint1.vista.panelBuscador.comboBox.removeAllItems();
+		vista.panelBuscador.comboBox.removeAllItems();
 		
 		//Recorrer el arraylist de ubicaciones y 
 		//rellenarlos con las ubicaciones disponibles
 		for(int i=0; i < ubicaciones.size(); i++) {
-			Launcher_sprint1.vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
+			vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
 		}
 	}	
 	
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
+			addUbicacionesCombo(this.modelo, this.vista);
+			vista.setContentPane(vista.panelBuscador);
+			MetodosReserva.validarFecha(vista);
+		}
+	}
+	
+	@Override
+	public void componentAdded(ContainerEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void componentRemoved(ContainerEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 }
