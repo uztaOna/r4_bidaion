@@ -2,8 +2,6 @@ package controlador;
 
 import java.util.ArrayList;
 
-import vista.Ventana;
-
 public class Control_buscador{
 	
 	public static void addUbicacionesCombo() {

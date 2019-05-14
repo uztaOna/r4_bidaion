@@ -1,9 +1,6 @@
 package controlador;
 
 import vista.Ventana;
-
-import java.util.Date;
-
 import modelo.*;
 
 public class Launcher_sprint1 {

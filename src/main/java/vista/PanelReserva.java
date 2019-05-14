@@ -3,12 +3,10 @@ package vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
@@ -16,6 +14,10 @@ import java.awt.Font;
 
 public class PanelReserva extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Create the panel.
 	 */

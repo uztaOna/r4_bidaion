@@ -4,6 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class CerrarVentana extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void VistaPrincipal() {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
  

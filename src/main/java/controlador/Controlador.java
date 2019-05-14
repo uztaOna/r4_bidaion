@@ -5,9 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 import modelo.*;
-import controlador.*;
 import vista.Ventana;
 
 public class Controlador implements ActionListener, ContainerListener {
@@ -168,9 +166,8 @@ public class Controlador implements ActionListener, ContainerListener {
 			vista.setContentPane(vista.panelHoteles);
 		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
 			vista.setContentPane(vista.panelResumen);
-//			Control_Resumen.mostrarReserva(); Revisar la llamada al metodo para mostrar detalles de reserva (resumen)
+//			Control_Resumen.mostrarReserva(); //Revisar la llamada al metodo para mostrar detalles de reserva (resumen)
 		}
-		
 	}
 
 	
