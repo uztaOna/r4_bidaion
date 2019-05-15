@@ -159,6 +159,7 @@ public class Controlador implements ActionListener, ContainerListener {
 		}else if(e.getSource() == vista.panelLogin.btnRegistrarme) {
 			modelo.clienteRegistrado = MetodoLogin.registro(vista,modelo);
 			if(modelo.clienteRegistrado != null) {
+				System.out.println("prueba1" + modelo.clienteRegistrado.dni + modelo.clienteRegistrado.nombre + modelo.clienteRegistrado.apellido +  modelo.clienteRegistrado.fechaNac + modelo.clienteRegistrado.sexo + modelo.clienteRegistrado.getContrasenia() );
 				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
 				vista.setContentPane(vista.panelReserva);
 			}

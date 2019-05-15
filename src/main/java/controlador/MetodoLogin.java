@@ -74,7 +74,7 @@ public class MetodoLogin {
 	 */
 	public static char cambiarSexoAChar(JComboBox ComboBoxSexo) {
 		String sexo = ComboBoxSexo.getSelectedItem().toString();
-		if (sexo == "Hombre") {
+		if (sexo.equals("Hombre")) {
 			return 'V';
 		} else
 			return 'M';

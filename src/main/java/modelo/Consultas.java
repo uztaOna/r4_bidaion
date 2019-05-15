@@ -165,10 +165,11 @@ public class Consultas {
 	 * @param usuario el cliente que se registrara en la base de datos
 	 * @param mod     modelo con la conexion a la base de datos
 	 */
-	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) { 
+				System.out.println(usuario.dni + usuario.nombre + usuario.apellido +  usuario.fechaNac.getTime() + usuario.sexo + usuario.getContrasenia() );
 		try {
 			String query = "insert into clientes (DNI,Nombre,Apellido,Fnac,Sexo,Password) values(?,?,?,?,?,?);";
-			PreparedStatement insertarUsuario = this.connection.prepareStatement(query);
+			PreparedStatement insertarUsuario = this.conexion.cnx.prepareStatement(query);
 			insertarUsuario.setString(1, usuario.dni);
 			insertarUsuario.setString(2, usuario.nombre);
 			insertarUsuario.setString(3, usuario.apellido);
