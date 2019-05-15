@@ -98,7 +98,6 @@ public class PanelRegistro extends JPanel {
 		
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setBounds(90, 526, 134, 39);
-		add(btnCancelar);
-		
+		add(btnCancelar);	
 	}
 }

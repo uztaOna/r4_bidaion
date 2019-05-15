@@ -82,9 +82,6 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		//Panel de resumen
 		this.vista.panelResumen.btnFin.addActionListener(this);
-		this.vista.panelResumen.btnAtras.addActionListener(this);
-		
-		
 	}
 	
 	

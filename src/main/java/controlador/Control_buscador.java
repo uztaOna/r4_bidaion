@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.util.ArrayList;
-
-import app_launcher.Launcher_sprint1;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -38,7 +36,7 @@ public class Control_buscador implements ActionListener, ContainerListener{
 			vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
 		}
 	}	
-	
+
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {

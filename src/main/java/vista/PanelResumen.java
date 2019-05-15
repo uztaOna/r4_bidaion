@@ -21,7 +21,7 @@ public class PanelResumen extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public JButton btnFin, btnAtras;
+	public JButton btnFin;
 	public JTable table;
 	public JLabel lblTitulo;
 
@@ -32,10 +32,6 @@ public class PanelResumen extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setBackground(new Color(255, 201, 164));
 
-		btnAtras = new JButton("Atr\u00E1s");
-		btnAtras.setBounds(10, 536, 89, 23);
-		add(btnAtras);
-		
 		lblTitulo = new JLabel("DETALLES DE LA RESERVA");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
