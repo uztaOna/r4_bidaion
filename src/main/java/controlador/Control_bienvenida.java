@@ -2,8 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
 import java.util.ArrayList;
 import modelo.Modelo;
 import vista.Ventana;
@@ -35,13 +33,13 @@ public class Control_bienvenida implements ActionListener{
 		for(int i=0; i < ubicaciones.size(); i++) {
 			vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
 		}
-	}	
+	}
 
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
 			addUbicacionesCombo(this.modelo, this.vista);
-			vista.setContentPane(vista.panelBuscador);
+			this.vista.setContentPane(this.vista.panelBuscador);
 			MetodosReserva.validarFecha(vista);
 		}
 	}

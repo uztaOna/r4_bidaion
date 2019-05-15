@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-import controlador.MetodoLogin;
+import controlador.Control_login;
 
 public class Modelo {
 
@@ -12,7 +12,7 @@ public class Modelo {
 	public float precioTotal;
 	public Cliente clienteRegistrado;
 	
-	public MetodoLogin metodoLogin;
+	public Control_login metodoLogin;
 	public Consultas cbd;
 	
 	public Date fechaIni, fechaFin;

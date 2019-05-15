@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,27 +14,50 @@ import java.util.regex.Pattern;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import app_launcher.Launcher_sprint1;
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Ventana;
 
-public class MetodoLogin {
+public class Control_login implements ActionListener {
 		
 	 /*
 	 * Registra al usuario en la base de datos en el caso que no estuviera
 	 */
+	
+	Ventana vista;
+	Modelo modelo;
+	Cliente cliente;
+	
+	//Constructor
+	public Control_login(Modelo modelo, Ventana vista) {
+		this.vista = vista;
+		this.modelo = modelo;
+	}
+	
+	public void inicializar_eventos_login()
+	{
+		this.vista.panelLogin.btnCancelar.addActionListener(this);
+		this.vista.panelLogin.btnNoAcc.addActionListener(this);
+		this.vista.panelLogin.btnContinuar.addActionListener(this);
+	}
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+	
 	public static Cliente registro(Ventana vis, Modelo modelo) {
-		JTextField dni = vis.panelLogin.txtDni;
-		JTextField nombre = vis.panelLogin.txtNombre;
-		JTextField apellido = vis.panelLogin.txtApellido;
-		Date fechaNac = vis.panelLogin.dateFnac.getDate();
-		char sexo = cambiarSexoAChar(vis.panelLogin.boxSexo);
-		final char[] contra = vis.panelLogin.txtPassword.getPassword();
+		JTextField dni = vis.panelRegistro.txtDni;
+		JTextField nombre = vis.panelRegistro.txtNombre;
+		JTextField apellido = vis.panelRegistro.txtApellido;
+		Date fechaNac = vis.panelRegistro.dateFnac.getDate();
+		char sexo = cambiarSexoAChar(vis.panelRegistro.boxSexo);
+		final char[] contra = vis.panelRegistro.txtPassword.getPassword();
 		//JTextField contrasenia = vis.panelLogin.txtPassword;
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
-			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelLogin.txtDni.getText()) == false) {
+			if (Launcher_sprint1.modelo.consulta.comprobarDNIenBD(vis.panelRegistro.txtDni.getText()) == false) {
 				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, encriptarContra(contra), 99, (double)(9999)));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya esta registrado, porfavor inicie sesion", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
@@ -42,24 +67,24 @@ public class MetodoLogin {
 	}
 	
 	public static void comprobarInicioSesion(Ventana vis) {
-		JTextField dni = vis.panelRegistro.textFieldNombre;
-		char[] contra = vis.panelRegistro.textFieldContrasenia.getPassword();
+		JTextField dni = vis.panelLogin.textFieldNombre;
+		char[] contra = vis.panelLogin.textFieldContrasenia.getPassword();
 		//if()
 	}
 		
 	public static void limpiarRegistro(Ventana vis) {
-		vis.panelLogin.txtNombre.setText("");
-		vis.panelLogin.txtApellido.setText("");
-		vis.panelLogin.txtDni.setText("");
+		vis.panelRegistro.txtNombre.setText("");
+		vis.panelRegistro.txtApellido.setText("");
+		vis.panelRegistro.txtDni.setText("");
 //		vis.panelLogin.dateFnac.setTex("");
-		vis.panelLogin.txtPassword.setText("");
-		vis.panelLogin.txtNombre.setBackground(new JTextField().getBackground());
-		vis.panelLogin.txtApellido.setBackground(new JTextField().getBackground());
+		vis.panelRegistro.txtPassword.setText("");
+		vis.panelRegistro.txtNombre.setBackground(new JTextField().getBackground());
+		vis.panelRegistro.txtApellido.setBackground(new JTextField().getBackground());
 	}
 	
 	public static void limpiarLogin(Ventana vis) {
-		vis.panelRegistro.textFieldNombre.setText("");
-		vis.panelRegistro.textFieldContrasenia.setText("");
+		vis.panelLogin.textFieldNombre.setText("");
+		vis.panelLogin.textFieldContrasenia.setText("");
 	}
 	
 	/*
@@ -115,8 +140,8 @@ public class MetodoLogin {
 	}
 	//-----------------------------------------------------------------------------------------------------------
 	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
-		String dniUsuario = vis.panelLogin.txtDni.getText();
-		String contraUsuario = encriptarContra(vis.panelLogin.txtPassword.getPassword());
+		String dniUsuario = vis.panelRegistro.txtDni.getText();
+		String contraUsuario = encriptarContra(vis.panelRegistro.txtPassword.getPassword());
 		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
 		ResultSet rs = mod.conexion.hacerPeticion(sql);
 		try {
@@ -178,6 +203,5 @@ public class MetodoLogin {
 			System.out.println("Debes estar en log out");
 		}
 	}
-
 
 }
