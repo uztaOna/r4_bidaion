@@ -4,14 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
-import java.util.Date;
-
-import javax.swing.JOptionPane;
-
-import modelo.Cliente;
-import modelo.Hotel;
 import modelo.Modelo;
-import modelo.TipoHab;
 import vista.Ventana;
 
 public class Controlador implements ActionListener, ContainerListener {
@@ -23,13 +16,14 @@ public class Controlador implements ActionListener, ContainerListener {
 	private Control_buscador control_buscador;
 	private Control_hoteles control_hoteles;
 	private Control_login control_login;
-	
+	private Control_registro control_registro;
+	private Control_reserva control_reserva;
+	private Control_pago control_pago;
+	private Control_resumen control_resumen;
 	
 	public Controlador(Ventana vista, Modelo modelo) {
 		this.vista = vista;
 		this.modelo = modelo; 
-		
-		inicializarEventos();
 		
 		control_bienvenida = new Control_bienvenida(this.modelo, this.vista);
 		control_bienvenida.inicializar_eventos_bienvenida();
@@ -43,170 +37,20 @@ public class Controlador implements ActionListener, ContainerListener {
 		control_login = new Control_login(this.modelo, this.vista);
 		control_login.inicializar_eventos_login();
 		
+		control_registro = new Control_registro(this.modelo, this.vista);
+		control_registro.inicializar_eventos_registro();
 		
+		control_reserva = new Control_reserva(this.modelo, this.vista);
+		control_reserva.inicializar_eventos_reserva();
+		
+		control_pago = new Control_pago(this.modelo, this.vista);
+		control_pago.inicializar_eventos_pago();
+		
+		control_resumen = new Control_resumen(this.modelo, this.vista);
+		control_resumen.inicializar_eventos_resumen();
 		
 		vista.setContentPane(vista.panelBienvenida);
 	}
-	
-	public void inicializarEventos() {
-		
-		
-		//Panel buscador de destinos
-//		this.vista.panelBuscador.btnContinuar.addActionListener(this);
-//		this.vista.panelBuscador.spinnerDias.addContainerListener(this);
-		
-		//Panel de selección de hoteles
-//		this.vista.panelHoteles.btnAtras.addActionListener(this);
-		//this.vista.panelHoteles.btnContinuar.addActionListener(this);
-		//this.vista.panelHoteles.JListHoteles.addContainerListener(this);
-		//this.vista.panelHoteles.btnSeleccionar.addActionListener(this);	
-//		this.vista.panelHoteles.btnLogin.addActionListener(this);
-//		this.vista.panelHoteles.btnRegistro.addActionListener(this);
-		
-		//Panel de reserva
-		this.vista.panelReserva.btnLogReserva.addActionListener(this);
-		this.vista.panelReserva.btnRegisReser.addActionListener(this);
-		this.vista.panelReserva.btnReservar.addActionListener(this);
-		this.vista.panelReserva.btnCancelar.addActionListener(this);
-		this.vista.panelReserva.btnAtras.addActionListener(this);
-		this.vista.panelReserva.btnIndividual.addActionListener(this);
-		this.vista.panelReserva.btnMasInd.addActionListener(this);
-		this.vista.panelReserva.btnMenosInd.addActionListener(this);
-		this.vista.panelReserva.btnMatrimonio.addActionListener(this);
-		this.vista.panelReserva.btnMasMatri.addActionListener(this);
-		this.vista.panelReserva.btnMenosMatri.addActionListener(this);	
-		this.vista.panelReserva.btnDoble.addActionListener(this);
-		this.vista.panelReserva.btnMasDoble.addActionListener(this);
-		this.vista.panelReserva.btnMenosDoble.addActionListener(this);
-		
-		//Panel registro de usuario
-		this.vista.panelRegistro.btnCancelar.addActionListener(this);
-		this.vista.panelRegistro.btnRegistrarme.addActionListener(this);
-		
-
-		//Panel login de usuario
-//		this.vista.panelLogin.btnCancelar.addActionListener(this);
-//		this.vista.panelLogin.btnNoAcc.addActionListener(this);
-//		this.vista.panelLogin.btnContinuar.addActionListener(this);
-		
-		//Panel de pago
-		this.vista.panelPago.btnConfirmar.addActionListener(this);
-		this.vista.panelPago.btnCancelar.addActionListener(this);
-		this.vista.panelPago.btnPagar.addActionListener(this);	
-		
-		//Panel de resumen
-		this.vista.panelResumen.btnFin.addActionListener(this);
-		
-		
-	}
-	
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-		TipoHab cama1=new TipoHab(40, 10,14,16);
-		Date miFecha= new Date(115, 6, 2, 15, 30);
-
-		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
-		Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
-
-
-		MetodosReserva.disponibilidadCamas(vista, cama1);
-		
-//		if(e.getSource() == vista.panelBuscador.btnContinuar) {
-//			Control_hoteles.addHotelesJList(modelo, vista);	
-//			vista.setContentPane(vista.panelHoteles);
-//		}
-//		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
-//			Control_hoteles.infoHotelSelec(modelo, vista);
-//			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
-//		}
-//		if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
-//				||e.getSource() == vista.panelRegistro.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
-//				|| e.getSource() == vista.panelRegistro.btnCancelar) {			
-//			vista.setContentPane(vista.panelBuscador);
-//			Control_hoteles.limpiarBox(vista);
-//			MetodoLogin.limpiarRegistro(vista);
-//			MetodoLogin.limpiarLogin(vista);
-//			MetodosReserva.limpiarDispReser(vista);
-//		}
-//		else if(e.getSource() == vista.panelHoteles.btnLogHoteles || e.getSource() == vista.panelReserva.btnLogReserva) {
-//			if(vista.panelHoteles.btnLogHoteles.getText()=="Log out"||vista.panelReserva.btnLogReserva.getText()=="Log out") {				
-//				MetodoLogin.salirUsuario(vista);
-//			}
-//			else {
-//				vista.setContentPane(vista.panelRegistro);
-//			}
-//		}
-//		else if(e.getSource() == vista.panelHoteles.btnRegistro || e.getSource() == vista.panelReserva.btnRegisReser ||  
-//				e.getSource() == vista.panelRegistro.btnNoAcc) {
-//			System.out.println("no tengo cuenta");
-//			vista.setContentPane(vista.panelLogin);
-//		}
-//		else if(e.getSource() == vista.panelHoteles.btnLogin || e.getSource() == vista.panelReserva.btnLogReserva) {
-//			vista.setContentPane(vista.panelRegistro);
-//		}
-//		else if(e.getSource() == vista.panelHoteles.btnContinuar) {
-//			MetodosReserva.infoRva();
-//			vista.setContentPane(vista.panelReserva);
-//			//CerrarVentana.VistaPrincipal();
-//		}
-		if(e.getSource() == vista.panelReserva.btnIndividual || e.getSource() == vista.panelReserva.btnMasInd) {			
-			vista.panelReserva.lblCantInd.setText(MetodosReserva.sumaBoton(vista));
-		}
-		else if(e.getSource() == vista.panelReserva.btnMatrimonio || e.getSource() == vista.panelReserva.btnMasMatri) {			
-			vista.panelReserva.lblCantMatri.setText(MetodosReserva.sumaBoton2(vista));
-		}
-		else if(e.getSource() == vista.panelReserva.btnDoble || e.getSource() == vista.panelReserva.btnMasDoble) {			
-			vista.panelReserva.lblCantDoble.setText(MetodosReserva.sumaBoton3(vista));
-		}
-		else if(e.getSource() == vista.panelReserva.btnMenosInd) {			
-			vista.panelReserva.lblCantInd.setText(MetodosReserva.restaBoton(vista));
-		}
-		else if(e.getSource() == vista.panelReserva.btnMenosMatri) {			
-			vista.panelReserva.lblCantMatri.setText(MetodosReserva.restaBoton2(vista));
-		}
-		else if(e.getSource() == vista.panelReserva.btnMenosDoble) {			
-			vista.panelReserva.lblCantDoble.setText(MetodosReserva.restaBoton3(vista));
-		}
-		else if(e.getSource() == vista.panelLogin.btnContinuar) {		
-			Control_login.nombreUsuario(vista, cliente1);
-			Control_login.comprobarInicioSesion(vista);
-		}else if(e.getSource() == vista.panelRegistro.btnRegistrarme) {
-			modelo.clienteRegistrado = Control_login.registro(vista,modelo);
-			if(modelo.clienteRegistrado != null) {
-				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
-				vista.setContentPane(vista.panelReserva);
-			}
-			Control_login.registro(vista,modelo);
-		}else if(e.getSource() == vista.panelPago.btnPagar) {		
-			MetodosPago.pagar(vista, cliente1);
-			MetodosReserva.actualizacionCamas(vista, cama1);
-			MetodosReserva.disponibilidadCamas(vista, cama1);
-		}else if(e.getSource() == vista.panelHoteles.btnContinuar) {
-			vista.setContentPane(vista.panelReserva);
-			//CerrarVentana.VistaPrincipal();
-		}else if(e.getSource() == vista.panelReserva.btnReservar) {
-			if(vista.panelReserva.btnLogReserva.getText()=="Log out") {
-				if(MetodosReserva.reserva(vista, cama1)==true && MetodosReserva.confirmarEleccion(vista)==true) {
-					vista.panelPago.textAPagar.setText(String.valueOf(MetodosPago.precio(vista, hotel1)+MetodosPago.precioRadios(vista)));
-					vista.setContentPane(vista.panelPago);
-				}
-			}
-			else {
-				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
-			}
-		}else if(e.getSource() == vista.panelReserva.btnAtras) {
-			vista.setContentPane(vista.panelHoteles);			
-		}
-		else if(e.getSource() == vista.panelPago.btnCancelar) {
-			vista.setContentPane(vista.panelHoteles);
-		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
-			vista.setContentPane(vista.panelResumen);
-//			Control_Resumen.mostrarReserva(); //Revisar la llamada al metodo para mostrar detalles de reserva (resumen)
-		}
-	}
-
 	
 	@Override
 	public void componentAdded(ContainerEvent arg0) {
@@ -216,5 +60,11 @@ public class Controlador implements ActionListener, ContainerListener {
 	@Override
 	public void componentRemoved(ContainerEvent arg0) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

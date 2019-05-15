@@ -21,7 +21,7 @@ public class PanelBuscador extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public JLabel lblDestino, lblTitulo, lblFechaInicio, numDias;
-	public JButton btnContinuar;
+	public JButton btnContinuar, btnCancelar;
 	public JComboBox<String> comboBox;
 	public JDateChooser dateInicio;
 	public JSpinner spinnerDias;
@@ -66,6 +66,11 @@ public class PanelBuscador extends JPanel {
 		spinnerDias.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spinnerDias.setBounds(501, 383, 57, 20);
 		add(spinnerDias);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnCancelar.setBounds(22, 536, 107, 23);
+		add(btnCancelar);
 		
 	}
 }

@@ -24,12 +24,10 @@ public class PanelReserva extends JPanel {
 	
 	public JLabel lblHotelSelc, lblUsuarioReser, lblInDisp, lblMatriDisp, lblDobleDisp, lblCantInd, lblCantMatri, lblCantDoble,
 				  lblCamasDiponibles, lblCantSeleccionada, lblServicios, lblCamasInd, lblCamasMatri, lblCamasDoble;
-	public JButton btnReservar, btnLogReserva, btnRegisReser, btnIndividual, btnMatrimonio, btnDoble, btnCancelar, btnAtras,
+	public JButton btnReservar, btnLogin, btnRegistro, btnIndividual, btnMatrimonio, btnDoble, btnCancelar, btnAtras,
 				   btnMasInd,btnMenosInd, btnMasMatri, btnMenosMatri, btnMasDoble, btnMenosDoble;
 	public JRadioButton rdbtnWifi, rdbtnPiscina, rdbtnSpa, rdbtnParking, rdbtnAireAcon, rdbtnRestaurante, rdbtnBar, rdbtnGYM;
 
-
-	
 	public PanelReserva() {
 		setLayout(null);
 		setBounds(0, 0, 800, 600);
@@ -47,17 +45,17 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBounds(653, 536, 101, 23);
 		add(btnReservar);
 		
-		btnLogReserva = new JButton("Loguearme");
-		btnLogReserva.setBounds(653, 31, 112, 20);
-		add(btnLogReserva);
+		btnLogin = new JButton("Loguearme");
+		btnLogin.setBounds(653, 31, 112, 20);
+		add(btnLogin);
 		
 		lblUsuarioReser = new JLabel(" ");
 		lblUsuarioReser.setBounds(508, 31, 135, 50);
 		add(lblUsuarioReser);
 		
-		btnRegisReser = new JButton("Registrarme");
-		btnRegisReser.setBounds(653, 61, 112, 20);
-		add(btnRegisReser);	
+		btnRegistro = new JButton("Registrarme");
+		btnRegistro.setBounds(653, 61, 112, 20);
+		add(btnRegistro);	
 		
 		btnIndividual = new JButton("INDIVIDUAL");
 		btnIndividual.setIcon(new ImageIcon(PanelReserva.class.getResource("/imagenes/camaIndividual.jpg")));
@@ -90,36 +88,44 @@ public class PanelReserva extends JPanel {
 		add(lblDobleDisp);
 		
 		rdbtnWifi = new JRadioButton("Wifi");
+		rdbtnWifi.setBackground(new Color(255, 201, 164));
 		rdbtnWifi.setActionCommand("100");
 		rdbtnWifi.setBounds(186, 469, 109, 23);
 		add(rdbtnWifi);
 		
 		rdbtnPiscina = new JRadioButton("Piscina");
 		rdbtnPiscina.setBounds(186, 496, 109, 23);
+		rdbtnPiscina.setBackground(new Color(255, 201, 164));
 		add(rdbtnPiscina);
 		
 		rdbtnSpa = new JRadioButton("Spa");
 		rdbtnSpa.setBounds(306, 469, 109, 23);
+		rdbtnSpa.setBackground(new Color(255, 201, 164));
 		add(rdbtnSpa);
 		
 		rdbtnParking = new JRadioButton("Parking");
 		rdbtnParking.setBounds(306, 496, 109, 23);
+		rdbtnParking.setBackground(new Color(255, 201, 164));
 		add(rdbtnParking);
 		
 		rdbtnAireAcon = new JRadioButton("Aire Acondicionado");
 		rdbtnAireAcon.setBounds(432, 469, 117, 23);
+		rdbtnAireAcon.setBackground(new Color(255, 201, 164));
 		add(rdbtnAireAcon);
 		
 		rdbtnRestaurante = new JRadioButton("Restaurante");
 		rdbtnRestaurante.setBounds(432, 496, 117, 23);
+		rdbtnRestaurante.setBackground(new Color(255, 201, 164));
 		add(rdbtnRestaurante);
 		
 		rdbtnBar = new JRadioButton("Bar");
 		rdbtnBar.setBounds(567, 469, 109, 23);
+		rdbtnBar.setBackground(new Color(255, 201, 164));
 		add(rdbtnBar);
 		
 		rdbtnGYM = new JRadioButton("Gimnasio");
 		rdbtnGYM.setBounds(567, 496, 109, 23);
+		rdbtnGYM.setBackground(new Color(255, 201, 164));
 		add(rdbtnGYM);
 		
 		lblCantInd = new JLabel("0");

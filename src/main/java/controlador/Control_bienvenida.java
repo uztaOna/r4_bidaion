@@ -40,7 +40,7 @@ public class Control_bienvenida implements ActionListener{
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
 			addUbicacionesCombo(this.modelo, this.vista);
 			this.vista.setContentPane(this.vista.panelBuscador);
-			MetodosReserva.validarFecha(vista);
+			Control_reserva.validarFecha(vista);
 		}
 	}
 	

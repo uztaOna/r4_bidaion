@@ -1,12 +1,57 @@
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import modelo.Cliente;
 import modelo.Hotel;
+import modelo.Modelo;
+import modelo.TipoHab;
 import vista.Ventana;
 
-public class MetodosPago {
+public class Control_pago implements ActionListener {
+	
+	Ventana vista;
+	Modelo modelo;
+	Cliente cliente;
+	Hotel hotel;
+	
+	public Control_pago(Modelo modelo, Ventana vista) {
+		this.vista = vista;
+		this.modelo = modelo;
+	}
+	
+	public void inicializar_eventos_pago() {
+		this.vista.panelPago.btnConfirmar.addActionListener(this);
+		this.vista.panelPago.btnCancelar.addActionListener(this);
+		this.vista.panelPago.btnPagar.addActionListener(this);
+	}
+	
+	
+
+	TipoHab cama1=new TipoHab(40, 10,14,16);
+	Date miFecha= new Date(115, 6, 2, 15, 30);
+
+	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == vista.panelPago.btnPagar) {		
+			Control_pago.pagar(vista, cliente1);
+			Control_reserva.actualizacionCamas(vista, cama1);
+			Control_reserva.disponibilidadCamas(vista, cama1);
+		}
+		else if(e.getSource() == vista.panelPago.btnCancelar) {
+			vista.setContentPane(vista.panelBienvenida);
+		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
+			vista.setContentPane(vista.panelResumen);
+//			Control_Resumen.mostrarReserva(); //Revisar la llamada al metodo para mostrar detalles de reserva (resumen)
+		}
+	}
+	
 	
 	public static void pagar(Ventana vis, Cliente cliente){
 		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {

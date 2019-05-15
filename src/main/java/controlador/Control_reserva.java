@@ -1,16 +1,102 @@
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import javax.swing.JOptionPane;
+
+import modelo.Cliente;
+import modelo.Hotel;
+import modelo.Modelo;
 import modelo.TipoHab;
 import vista.Ventana;
 
-public class MetodosReserva { 
+public class Control_reserva implements ActionListener { 
+	
+	Ventana vista;
+	Modelo modelo;
+	Cliente cliente;
+	Hotel hotel;
+	
+	public Control_reserva(Modelo modelo, Ventana vista) {
+		this.vista = vista;
+		this.modelo = modelo;
+	}
+	
+	public void inicializar_eventos_reserva() {
+		this.vista.panelReserva.btnLogin.addActionListener(this);
+		this.vista.panelReserva.btnRegistro.addActionListener(this);
+		this.vista.panelReserva.btnReservar.addActionListener(this);
+		this.vista.panelReserva.btnCancelar.addActionListener(this);
+		this.vista.panelReserva.btnAtras.addActionListener(this);
+		this.vista.panelReserva.btnIndividual.addActionListener(this);
+		this.vista.panelReserva.btnMasInd.addActionListener(this);
+		this.vista.panelReserva.btnMenosInd.addActionListener(this);
+		this.vista.panelReserva.btnMatrimonio.addActionListener(this);
+		this.vista.panelReserva.btnMasMatri.addActionListener(this);
+		this.vista.panelReserva.btnMenosMatri.addActionListener(this);	
+		this.vista.panelReserva.btnDoble.addActionListener(this);
+		this.vista.panelReserva.btnMasDoble.addActionListener(this);
+		this.vista.panelReserva.btnMenosDoble.addActionListener(this);
+	}
+
+
+	TipoHab cama1=new TipoHab(40, 10,14,16);
+	Date miFecha= new Date(115, 6, 2, 15, 30);
+
+	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
+
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == vista.panelReserva.btnIndividual || e.getSource() == vista.panelReserva.btnMasInd) {			
+			vista.panelReserva.lblCantInd.setText(sumaBoton(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMatrimonio || e.getSource() == vista.panelReserva.btnMasMatri) {			
+			vista.panelReserva.lblCantMatri.setText(sumaBoton2(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnDoble || e.getSource() == vista.panelReserva.btnMasDoble) {			
+			vista.panelReserva.lblCantDoble.setText(sumaBoton3(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosInd) {			
+			vista.panelReserva.lblCantInd.setText(restaBoton(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosMatri) {			
+			vista.panelReserva.lblCantMatri.setText(restaBoton2(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnMenosDoble) {			
+			vista.panelReserva.lblCantDoble.setText(restaBoton3(vista));
+		}
+		else if(e.getSource() == vista.panelReserva.btnReservar) {
+			if(vista.panelReserva.btnLogin.getText()=="Log out") {
+				if(Reserva(vista, cama1)==true && confirmarEleccion(vista)==true) {
+					vista.panelPago.textAPagar.setText(String.valueOf(Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista)));
+					vista.setContentPane(vista.panelPago);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		else if(e.getSource() == vista.panelReserva.btnAtras) {
+			vista.setContentPane(vista.panelHoteles);			
+		}
+		else if(e.getSource() == vista.panelReserva.btnCancelar) {
+			vista.setContentPane(vista.panelBienvenida);			
+		}
+		else if(e.getSource() == this.vista.panelReserva.btnLogin) {
+			this.vista.setContentPane(this.vista.panelLogin);
+		}
+		else if(e.getSource() == this.vista.panelReserva.btnRegistro) {
+			this.vista.setContentPane(this.vista.panelRegistro);
+		}
+	}
+	
 	
 	/*
 	 * Registra al usuario si no lo está
 	 */
-	public static boolean reserva(Ventana vis, TipoHab cama) {
+	public static boolean Reserva(Ventana vis, TipoHab cama) {
 		int individual=vis.panelReserva.lblCantInd.getComponentCount();
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
@@ -118,5 +204,4 @@ public class MetodosReserva {
 	public static void validarFecha(Ventana vista) {
 		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
 	}
-	
 }

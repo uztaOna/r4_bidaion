@@ -21,6 +21,7 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	public void inicializar_eventos_buscador()
 	{
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
+		this.vista.panelBuscador.btnCancelar.addActionListener(this);
 		this.vista.panelBuscador.spinnerDias.addContainerListener(this);
 	}
 
@@ -38,6 +39,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList(modelo, vista);	
 			this.vista.setContentPane(vista.panelHoteles);
+		}
+		else if(e.getSource() == this.vista.panelBuscador.btnCancelar) {
+			this.vista.setContentPane(vista.panelBienvenida);
 		}
 	}
 	

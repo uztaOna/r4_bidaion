@@ -21,7 +21,7 @@ public class PanelLogin extends JPanel {
 	
 	public JLabel lblTitulo, lblNombre, lblContrasenia;
 	public JTextField textFieldNombre;
-	public JButton btnContinuar, btnNoAcc, btnCancelar;
+	public JButton btnLogin, btnNoAcc, btnCancelar;
 	public JPasswordField textFieldContrasenia;
 	
 	public PanelLogin() {
@@ -32,24 +32,24 @@ public class PanelLogin extends JPanel {
 		lblTitulo = new JLabel("INICIO DE SESI\u00D3N");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblTitulo.setBounds(229, 35, 269, 39);
+		lblTitulo.setBounds(241, 64, 269, 58);
 		add(lblTitulo);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(218, 132, 78, 39);
+		lblNombre.setBounds(222, 188, 78, 39);
 		add(lblNombre);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(383, 132, 192, 39);
+		textFieldNombre.setBounds(383, 188, 192, 39);
 		add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		btnContinuar = new JButton("CONTINUAR");
-		btnContinuar.setBounds(527, 404, 212, 99);
-		add(btnContinuar);
+		btnLogin = new JButton("Iniciar Sesi\u00F3n");
+		btnLogin.setBounds(307, 346, 192, 99);
+		add(btnLogin);
 		
 		btnNoAcc = new JButton("NO TENGO CUENTA");
-		btnNoAcc.setBounds(59, 404, 158, 99);
+		btnNoAcc.setBounds(600, 523, 158, 29);
 		add(btnNoAcc);
 		
 		lblContrasenia = new JLabel("Contrase\u00F1a:");
@@ -57,11 +57,11 @@ public class PanelLogin extends JPanel {
 		add(lblContrasenia);
 		
 		textFieldContrasenia = new JPasswordField();
-		textFieldContrasenia.setBounds(385, 238, 190, 39);
+		textFieldContrasenia.setBounds(383, 238, 190, 39);
 		add(textFieldContrasenia);
 		
 		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setBounds(276, 404, 192, 99);
+		btnCancelar.setBounds(32, 523, 100, 29);
 		add(btnCancelar);
 	}
 

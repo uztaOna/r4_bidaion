@@ -3,11 +3,16 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
+import modelo.TipoHab;
 import vista.Ventana;
 
 public class Control_hoteles implements ListSelectionListener, ActionListener {
@@ -16,6 +21,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	Modelo modelo;
 	Hotel ubicacion;
 	Hotel hotel;
+	Cliente cliente;
 	
 	//Constructor
 	public Control_hoteles(Modelo modelo, Ventana vista) {
@@ -29,46 +35,49 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		this.vista.panelHoteles.btnContinuar.addActionListener(this);
 		this.vista.panelHoteles.btnSeleccionar.addActionListener(this);
 		this.vista.panelHoteles.btnAtras.addActionListener(this);
-		
+		//Eventos de control de usuarios
 		this.vista.panelHoteles.btnLogin.addActionListener(this);
 		this.vista.panelHoteles.btnRegistro.addActionListener(this);
 	}
 	
+	TipoHab cama1=new TipoHab(40, 10,14,16);
+	Date miFecha= new Date(115, 6, 2, 15, 30);
+
+	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {			
-			Control_hoteles.infoHotelSelec(modelo, vista);
+			infoHotelSelec(modelo, vista);
 			this.vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
 		}
-		if(e.getSource() == this.vista.panelHoteles.btnAtras || e.getSource() == this.vista.panelRegistro.btnCancelar
-				||e.getSource() == this.vista.panelLogin.btnCancelar || e.getSource() == this.vista.panelReserva.btnCancelar
+		else if(e.getSource() == this.vista.panelHoteles.btnAtras || e.getSource() == this.vista.panelRegistro.btnCancelar
+				|| e.getSource() == this.vista.panelReserva.btnCancelar || e.getSource() == this.vista.panelRegistro.btnCancelar
 				|| e.getSource() == this.vista.panelLogin.btnCancelar) {			
 			this.vista.setContentPane(this.vista.panelBuscador);
-			Control_hoteles.limpiarBox(this.vista);
+			limpiarBox(this.vista);
 			Control_login.limpiarRegistro(this.vista);
 			Control_login.limpiarLogin(this.vista);
-			MetodosReserva.limpiarDispReser(this.vista);
+			Control_reserva.limpiarDispReser(this.vista);
 		}
-		else if(e.getSource() == this.vista.panelHoteles.btnLogHoteles || e.getSource() == this.vista.panelReserva.btnLogReserva) {
-			if(this.vista.panelHoteles.btnLogHoteles.getText() == "Desconexión" || this.vista.panelReserva.btnLogReserva.getText() == "Desconexión") {				
+		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
+			if(this.vista.panelReserva.btnLogin.getText() == "Desconexión") {				
 				Control_login.salirUsuario(this.vista);
 			}
 			else {
 				this.vista.setContentPane(this.vista.panelLogin);
 			}
 		}
-		else if(e.getSource() == this.vista.panelHoteles.btnRegistro || e.getSource() == this.vista.panelReserva.btnRegisReser ||  
-				e.getSource() == this.vista.panelLogin.btnNoAcc) {
-			System.out.println("No tengo cuenta");
-			this.vista.setContentPane(this.vista.panelRegistro);
-		}
-		else if(e.getSource() == this.vista.panelHoteles.btnLogin || e.getSource() == this.vista.panelReserva.btnLogReserva) {
+		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
 			this.vista.setContentPane(this.vista.panelLogin);
+		}
+		else if(e.getSource() == this.vista.panelHoteles.btnRegistro) {
+			this.vista.setContentPane(this.vista.panelRegistro);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnContinuar) {
 //			MetodosReserva.infoRva();
 			this.vista.setContentPane(this.vista.panelReserva);
+			Control_reserva.disponibilidadCamas(vista, cama1);
 			//CerrarVentana.VistaPrincipal();
 		}
 	}
