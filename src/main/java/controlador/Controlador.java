@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import modelo.Modelo;
-import vista.Ventana;
+import vista.Vista;
 
 public class Controlador implements ActionListener, ContainerListener {
 
-	private Ventana vista;
+	private Vista vista;
 	private Modelo modelo;
 	
 	private Control_bienvenida control_bienvenida;
@@ -21,7 +21,7 @@ public class Controlador implements ActionListener, ContainerListener {
 	private Control_pago control_pago;
 	private Control_resumen control_resumen;
 	
-	public Controlador(Ventana vista, Modelo modelo) {
+	public Controlador(Vista vista, Modelo modelo) {
 		this.vista = vista;
 		this.modelo = modelo; 
 		

@@ -11,7 +11,7 @@ import static org.mockito.Mockito.verify;
 import org.junit.Test;
 import controlador.Control_bienvenida;
 import modelo.Modelo;
-import vista.Ventana;
+import vista.Vista;
 
 /*
 public class Test_buscador {

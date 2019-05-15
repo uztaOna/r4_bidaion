@@ -10,16 +10,16 @@ import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_pago implements ActionListener {
 	
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Cliente cliente;
 	Hotel hotel;
 	
-	public Control_pago(Modelo modelo, Ventana vista) {
+	public Control_pago(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
@@ -53,7 +53,7 @@ public class Control_pago implements ActionListener {
 	}
 	
 	
-	public static void pagar(Ventana vis, Cliente cliente){
+	public static void pagar(Vista vis, Cliente cliente){
 		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
 
 			System.out.println(cliente.saldo);
@@ -68,7 +68,7 @@ public class Control_pago implements ActionListener {
 			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 	}
 	
-	public static double precio(Ventana vis, Hotel hotel) {	
+	public static double precio(Vista vis, Hotel hotel) {	
 		double precio = (Double.parseDouble(vis.panelReserva.lblCantInd.getText())*hotel.getPrecio())+
 				(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1))+
 				(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())*(hotel.getPrecio()*1.2));
@@ -76,7 +76,7 @@ public class Control_pago implements ActionListener {
 		return Math.round(precio);
 	}
 	
-	public static double precioRadios(Ventana vis) {
+	public static double precioRadios(Vista vis) {
 		boolean radioArray[] = {vis.panelReserva.rdbtnWifi.isSelected(),
 				vis.panelReserva.rdbtnPiscina.isSelected(),
 				vis.panelReserva.rdbtnSpa.isSelected(), 

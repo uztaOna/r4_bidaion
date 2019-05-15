@@ -9,16 +9,16 @@ import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_reserva implements ActionListener { 
 	
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Cliente cliente;
 	Hotel hotel;
 	
-	public Control_reserva(Modelo modelo, Ventana vista) {
+	public Control_reserva(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
@@ -96,7 +96,7 @@ public class Control_reserva implements ActionListener {
 	/*
 	 * Registra al usuario si no lo está
 	 */
-	public static boolean Reserva(Ventana vis, TipoHab cama) {
+	public static boolean Reserva(Vista vis, TipoHab cama) {
 		int individual=vis.panelReserva.lblCantInd.getComponentCount();
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
@@ -116,7 +116,7 @@ public class Control_reserva implements ActionListener {
 		return true;
 	}
 	
-	public static String sumaBoton (Ventana vis) {
+	public static String sumaBoton (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblInDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantInd.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())+1;
 			String texto=Integer.toString(numEntero);
@@ -125,7 +125,7 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
-	public static String sumaBoton2 (Ventana vis) {
+	public static String sumaBoton2 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblMatriDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantMatri.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())+1;
 			String texto=Integer.toString(numEntero);
@@ -134,7 +134,7 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
-	public static String sumaBoton3 (Ventana vis) {
+	public static String sumaBoton3 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblDobleDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantDoble.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())+1;
 			String texto=Integer.toString(numEntero);
@@ -143,7 +143,7 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
-	public static String restaBoton (Ventana vis) {
+	public static String restaBoton (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantInd.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())-1;
 			String texto=Integer.toString(numEntero);
@@ -152,7 +152,7 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
-	public static String restaBoton2 (Ventana vis) {
+	public static String restaBoton2 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())-1;
 			String texto=Integer.toString(numEntero);
@@ -161,7 +161,7 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
-	public static String restaBoton3 (Ventana vis) {
+	public static String restaBoton3 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())-1;
 			String texto=Integer.toString(numEntero);
@@ -170,20 +170,20 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
-	public static boolean confirmarEleccion(Ventana vis) {
+	public static boolean confirmarEleccion(Vista vis) {
 		if(vis.panelReserva.lblCantInd.getText()=="0" && vis.panelReserva.lblCantMatri.getText()=="0" &&
 				vis.panelReserva.lblCantDoble.getText()=="0") {
 			return false;
 		}else return true;
 	}
 	
-	public static void disponibilidadCamas (Ventana vis, TipoHab cama) {
+	public static void disponibilidadCamas (Vista vis, TipoHab cama) {
 		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
 		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));
 		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
 	}
 
-	public static void actualizacionCamas (Ventana vis, TipoHab cama) {
+	public static void actualizacionCamas (Vista vis, TipoHab cama) {
 		cama.setIndividual(cama.getIndividual()-Integer.parseInt(vis.panelReserva.lblCantInd.getText()));
 		cama.setMatrimonio(cama.getMatrimonio()-Integer.parseInt(vis.panelReserva.lblMatriDisp.getText()));
 		cama.setDoble(cama.getDoble()-Integer.parseInt(vis.panelReserva.lblDobleDisp.getText()));
@@ -192,7 +192,7 @@ public class Control_reserva implements ActionListener {
 		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
 	}
 	
-	public static void limpiarDispReser(Ventana vis) {
+	public static void limpiarDispReser(Vista vis) {
 		vis.panelReserva.lblCantInd.setText("0");
 		vis.panelReserva.lblCantMatri.setText("0");
 		vis.panelReserva.lblCantDoble.setText("0");
@@ -201,7 +201,7 @@ public class Control_reserva implements ActionListener {
 	
 	/*Comprueba que la fecha sea anterior a hoy*/
 	
-	public static void validarFecha(Ventana vista) {
+	public static void validarFecha(Vista vista) {
 		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
 	}
 }

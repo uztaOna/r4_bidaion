@@ -4,14 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import modelo.Modelo;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_bienvenida implements ActionListener{
 	
 	Modelo modelo;
-	Ventana vista;
+	Vista vista;
 	
-	public Control_bienvenida(Modelo modelo,Ventana vista) {
+	public Control_bienvenida(Modelo modelo,Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
 	}
@@ -21,7 +21,7 @@ public class Control_bienvenida implements ActionListener{
 		this.vista.panelBienvenida.btnInicio.addActionListener(this);
 	}
 	
-	public void addUbicacionesCombo(Modelo modelo, Ventana vista) {
+	public void addUbicacionesCombo(Modelo modelo, Vista vista) {
 		//Cargar las ciudades de la bbdd y mostrar
 		 ArrayList<String> ubicaciones = modelo.consulta.getUbicaciones();
 		

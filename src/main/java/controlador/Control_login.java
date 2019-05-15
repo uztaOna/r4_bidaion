@@ -11,7 +11,7 @@ import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_login implements ActionListener {
 		
@@ -19,12 +19,12 @@ public class Control_login implements ActionListener {
 	 * Registra al usuario en la base de datos en el caso que no estuviera
 	 */
 	
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Cliente cliente;
 	
 	//Constructor
-	public Control_login(Modelo modelo, Ventana vista) {
+	public Control_login(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
@@ -57,13 +57,13 @@ public class Control_login implements ActionListener {
 		}
 	}
 	
-	public static void comprobarInicioSesion(Ventana vis) {
+	public static void comprobarInicioSesion(Vista vis) {
 		JTextField dni = vis.panelLogin.textFieldNombre;
 		char[] contra = vis.panelLogin.textFieldContrasenia.getPassword();
 		//if()
 	}
 		
-	public static void limpiarRegistro(Ventana vis) {
+	public static void limpiarRegistro(Vista vis) {
 		vis.panelRegistro.txtNombre.setText("");
 		vis.panelRegistro.txtApellido.setText("");
 		vis.panelRegistro.txtDni.setText("");
@@ -73,13 +73,13 @@ public class Control_login implements ActionListener {
 		vis.panelRegistro.txtApellido.setBackground(new JTextField().getBackground());
 	}
 	
-	public static void limpiarLogin(Ventana vis) {
+	public static void limpiarLogin(Vista vis) {
 		vis.panelLogin.textFieldNombre.setText("");
 		vis.panelLogin.textFieldContrasenia.setText("");
 	}
 	
 	//-----------------------------------------------------------------------------------------------------------
-	public Cliente iniciarSesion(Modelo mod, Ventana vis) {
+	public Cliente iniciarSesion(Modelo mod, Vista vis) {
 		String dniUsuario = vis.panelRegistro.txtDni.getText();
 		String contraUsuario = Control_registro.encriptarContra(vis.panelRegistro.txtPassword.getPassword());
 		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
@@ -102,7 +102,7 @@ public class Control_login implements ActionListener {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	
-	public static void nombreUsuario (Ventana vis, Cliente cliente) {		
+	public static void nombreUsuario (Vista vis, Cliente cliente) {		
 		vis.panelReserva.lblUsuarioReser.setText(cliente.nombre);
 		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
 		
@@ -111,7 +111,7 @@ public class Control_login implements ActionListener {
 		
 	}
 	
-	public static void salirUsuario(Ventana vis) {
+	public static void salirUsuario(Vista vis) {
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {
 			vis.panelReserva.lblUsuarioReser.setText("");
 			vis.panelHoteles.lblUsuarioHotel.setText("");

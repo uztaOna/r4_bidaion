@@ -3,7 +3,7 @@ package vista;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 
-public class Ventana extends JFrame {
+public class Vista extends JFrame {
 
 	//private JPanel contentPane;
 	
@@ -21,7 +21,7 @@ public class Ventana extends JFrame {
 	public PanelPago panelPago;	
 	public PanelResumen panelResumen;	
 	
-	public Ventana() {
+	public Vista() {
 		
 		panelBienvenida=new PanelBienvenida();
 		panelBuscador=new PanelBuscador();

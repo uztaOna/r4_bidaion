@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_resumen implements ActionListener {
 
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Cliente cliente;
 	
-	public Control_resumen(Modelo modelo, Ventana vista) {
+	public Control_resumen(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}

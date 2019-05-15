@@ -16,15 +16,15 @@ import javax.swing.JTextField;
 
 import modelo.Cliente;
 import modelo.Modelo;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_registro implements ActionListener {
 
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Cliente cliente;
 	
-	public Control_registro(Modelo modelo, Ventana vista) {
+	public Control_registro(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
@@ -49,7 +49,7 @@ public class Control_registro implements ActionListener {
 		
 	}
 
-	public static Cliente registro(Ventana vis, Modelo modelo) {
+	public static Cliente registro(Vista vis, Modelo modelo) {
 		JTextField dni = vis.panelRegistro.txtDni;
 		JTextField nombre = vis.panelRegistro.txtNombre;
 		JTextField apellido = vis.panelRegistro.txtApellido;

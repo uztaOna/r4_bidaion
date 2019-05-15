@@ -13,18 +13,18 @@ import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_hoteles implements ListSelectionListener, ActionListener {
 
-	Ventana vista;
+	Vista vista;
 	Modelo modelo;
 	Hotel ubicacion;
 	Hotel hotel;
 	Cliente cliente;
 	
 	//Constructor
-	public Control_hoteles(Modelo modelo, Ventana vista) {
+	public Control_hoteles(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
@@ -88,7 +88,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	}
 
 	//Añadir listado de hoteles a JList según ubicación
-	public static void addHotelesJList(Modelo modelo, Ventana vista) {
+	public static void addHotelesJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
 		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
@@ -109,7 +109,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	
 	
 	//Muestra info del hotel pulsando el botón "Seleccionar"
-	public static void infoHotelSelec(Modelo modelo, Ventana vista) {
+	public static void infoHotelSelec(Modelo modelo, Vista vista) {
 		// 1 Leer JList seleccionado
 		String nombreHotel = (String)vista.panelHoteles.JListHoteles.getSelectedValue();
 		
@@ -123,7 +123,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	}
 	
 	
-	public static void tres(Ventana vis) {
+	public static void tres(Vista vis) {
 		String nombre = "";
 		if(nombre == vis.panelHoteles.lblNomHotel.getText()) {
 			if(JOptionPane.showConfirmDialog(null,"Se cerró con éxito")==JOptionPane.YES_OPTION) {
@@ -135,11 +135,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		} 
 	}
 	
-	public static void limpiarBox(Ventana vis) {		
+	public static void limpiarBox(Vista vis) {		
 		vis.panelHoteles.JListHoteles.removeAll();
 	}
 	
-	public static void cargaNombreHotel(Ventana vis, String nombre) {		
+	public static void cargaNombreHotel(Vista vis, String nombre) {		
 		vis.panelHoteles.lblNomHotel.setText(nombre);
 	}
 	

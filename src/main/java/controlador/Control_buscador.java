@@ -6,14 +6,14 @@ import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 
 import modelo.Modelo;
-import vista.Ventana;
+import vista.Vista;
 
 public class Control_buscador implements ActionListener, ContainerListener {
 
 	Modelo modelo;
-	Ventana vista;
+	Vista vista;
 	
-	public Control_buscador (Modelo modelo,Ventana vista) {
+	public Control_buscador (Modelo modelo,Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
 	}
