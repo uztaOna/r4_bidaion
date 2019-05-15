@@ -18,7 +18,8 @@ public class Controlador implements ActionListener, ContainerListener {
 
 	private Ventana vista;
 	private Modelo modelo;
-	private Control_buscador control_buscador;
+	private Control_bienvenida control_buscador;
+	private Control_hoteles control_hoteles;
 	
 	public Controlador(Ventana vista, Modelo modelo) {
 		this.vista = vista;
@@ -26,11 +27,11 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		inicializarEventos();
 		
-		
-		
-		control_buscador = new Control_buscador(this.modelo, this.vista);
-		control_buscador.inicializar_eventos_buscador();
-		
+		control_buscador = new Control_bienvenida(this.modelo, this.vista);
+		control_buscador.inicializar_eventos_bienvenida();
+			
+		control_hoteles = new Control_hoteles(this.modelo, this.vista);
+		control_hoteles.inicializar_eventos_hoteles();
 		vista.setContentPane(vista.panelBienvenida);
 	}
 	
@@ -43,9 +44,9 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		//Panel de selección de hoteles
 		this.vista.panelHoteles.btnAtras.addActionListener(this);
-		this.vista.panelHoteles.btnContinuar.addActionListener(this);
-		this.vista.panelHoteles.JListHoteles.addContainerListener(this);
-		this.vista.panelHoteles.btnSeleccionar.addActionListener(this);	
+		//this.vista.panelHoteles.btnContinuar.addActionListener(this);
+		//this.vista.panelHoteles.JListHoteles.addContainerListener(this);
+		//this.vista.panelHoteles.btnSeleccionar.addActionListener(this);	
 		this.vista.panelHoteles.btnLogin.addActionListener(this);
 		this.vista.panelHoteles.btnRegistro.addActionListener(this);
 		
@@ -82,6 +83,8 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		//Panel de resumen
 		this.vista.panelResumen.btnFin.addActionListener(this);
+		
+		
 	}
 	
 	
@@ -92,20 +95,20 @@ public class Controlador implements ActionListener, ContainerListener {
 		Date miFecha= new Date(115, 6, 2, 15, 30);
 
 		Cliente cliente1=new Cliente("Juan", "BRRRRR","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
-		Hotel hotel1=new Hotel("gdsgdg", "cdfhxf", "fdh", 10, 5, 50);
+		Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 
 
 		MetodosReserva.disponibilidadCamas(vista, cama1);
 		
-		if(e.getSource() == vista.panelBuscador.btnContinuar) {
-			Control_hoteles.addHotelesJList();	
-			vista.setContentPane(vista.panelHoteles);
-		}
-		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
-			Control_hoteles.infoHotelSelec();
-			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
-		}
-		else if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
+//		if(e.getSource() == vista.panelBuscador.btnContinuar) {
+//			Control_hoteles.addHotelesJList(modelo, vista);	
+//			vista.setContentPane(vista.panelHoteles);
+//		}
+//		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
+//			Control_hoteles.infoHotelSelec(modelo, vista);
+//			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+//		}
+		if(e.getSource() == vista.panelHoteles.btnAtras || e.getSource() == vista.panelLogin.btnCancelar
 				||e.getSource() == vista.panelRegistro.btnCancelar || e.getSource() == vista.panelReserva.btnCancelar
 				|| e.getSource() == vista.panelRegistro.btnCancelar) {			
 			vista.setContentPane(vista.panelBuscador);

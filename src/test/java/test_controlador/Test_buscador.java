@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import org.junit.Test;
-import controlador.Control_buscador;
+import controlador.Control_bienvenida;
 import modelo.Modelo;
 import vista.Ventana;
 
