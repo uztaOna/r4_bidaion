@@ -1,76 +1,77 @@
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import app_launcher.Launcher_sprint1;
 import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
 
-public abstract class Control_hoteles implements ListSelectionListener {
+public class Control_hoteles implements ListSelectionListener, ActionListener {
 
-	public Ventana vista;
-	public Modelo modelo;
+	Ventana vista;
+	Modelo modelo;
 	Hotel ubicacion;
 	Hotel hotel;
 	
 	//Constructor
-	public Control_hoteles(Ventana vista, Modelo modelo) {
+	public Control_hoteles(Modelo modelo, Ventana vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
 	
-	
 	//Añadir listeners a los botones del panel 'hoteles'
-	public void addListeners() {
-		vista.panelHoteles.JListHoteles.addListSelectionListener(this);
+	public void inicializar_eventos_hoteles() {
+		this.vista.panelHoteles.JListHoteles.addListSelectionListener(this);
+		this.vista.panelBuscador.btnContinuar.addActionListener(this);
+		this.vista.panelHoteles.btnSeleccionar.addActionListener(this);
 	}
 	
-
-	public static void infoHotelSelec() {
+	public static void infoHotelSelec(Modelo modelo, Ventana vista) {
 		// 1 Leer JList seleccionado
-		String nombreHotel = (String)Launcher_sprint1.vista.panelHoteles.JListHoteles.getSelectedValue();
+		String nombreHotel = (String)vista.panelHoteles.JListHoteles.getSelectedValue();
 		
 		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
-		Hotel hotel = Launcher_sprint1.modelo.consulta.getDatosHotel(nombreHotel);
+		Hotel hotel = modelo.consulta.getDatosHotel(nombreHotel);
 		
 		// 3 Cambiar labels de pan hoteles con datos de bbdd
-		Launcher_sprint1.vista.panelHoteles.ubicacion.setText(hotel.getUbicacion());
-		Launcher_sprint1.vista.panelHoteles.categoria.setText(Integer.toString(hotel.getCategoria()) + " estrellas");
-		Launcher_sprint1.vista.panelHoteles.precio.setText(Double.toString(hotel.getPrecio()) + " €");
+		vista.panelHoteles.ubicacion.setText(hotel.getUbicacion());
+		vista.panelHoteles.categoria.setText(Integer.toString(hotel.getCategoria()) + " estrellas");
+		vista.panelHoteles.precio.setText(Double.toString(hotel.getPrecio()) + " €");
 	}
 	
 	//Añadir listado de hoteles a JList según ubicación
-	public static void addHotelesJList() {
+	public static void addHotelesJList(Modelo modelo, Ventana vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
-		String ubicacion = Launcher_sprint1.vista.panelBuscador.comboBox.getSelectedItem().toString();
+		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
 
 		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
-		ArrayList <Hotel> hotelesList =	Launcher_sprint1.modelo.consulta.getHotelesUbicacion(ubicacion);
+		ArrayList <Hotel> hotelesList =	modelo.consulta.getHotelesUbicacion(ubicacion);
 		Control_hoteles.listadoHoteles(hotelesList); 
 		
 		//Limpiar el JList de hoteles
-		Launcher_sprint1.vista.panelHoteles.modeloHoteles.clear();
+		vista.panelHoteles.modeloHoteles.clear();
 			
 		//Mostrar hoteles en JList
 		for(int i=0; i<hotelesList.size(); i++) {
-			Launcher_sprint1.vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i).getNombreAloj());
+			vista.panelHoteles.modeloHoteles.addElement(hotelesList.get(i).getNombreAloj());
 		}
-		Launcher_sprint1.vista.panelHoteles.JListHoteles.setModel(Launcher_sprint1.vista.panelHoteles.modeloHoteles);
+		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
 	
 	public static void tres(Ventana vis) {
 		String nombre = "";
-		if(nombre==vis.panelHoteles.lblNomHotel.getText()) {
-			if(JOptionPane.showConfirmDialog(null,"gxdd")==JOptionPane.YES_OPTION) {
+		if(nombre == vis.panelHoteles.lblNomHotel.getText()) {
+			if(JOptionPane.showConfirmDialog(null,"Se cerró con éxito")==JOptionPane.YES_OPTION) {
 				System.exit(0);
 			}
 			else {
-				JOptionPane.showConfirmDialog(null,"no has cerrado nada");
+				JOptionPane.showConfirmDialog(null,"No se pudo cerrar");
 			}
 		} 
 	}
@@ -89,5 +90,24 @@ public abstract class Control_hoteles implements ListSelectionListener {
 			listHoteles.get(i);
 		}
 		return listHoteles;
+	}
+	
+	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == vista.panelBuscador.btnContinuar) {
+			Control_hoteles.addHotelesJList(modelo, vista);	
+			vista.setContentPane(vista.panelHoteles);
+		}
+		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
+			Control_hoteles.infoHotelSelec(modelo, vista);
+			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
