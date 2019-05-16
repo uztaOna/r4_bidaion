@@ -45,8 +45,9 @@ public class Control_registro implements ActionListener {
 		}
 		else if(e.getSource() == this.vista.panelRegistro.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
+			Control_login.limpiarRegistro(this.vista);
+			Control_login.limpiarLogin(this.vista);
 		}
-		
 	}
 
 	public static Cliente registro(Vista vis, Modelo modelo) {

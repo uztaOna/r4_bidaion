@@ -82,10 +82,13 @@ public class Control_reserva implements ActionListener {
 			vista.setContentPane(vista.panelHoteles);			
 		}
 		else if(e.getSource() == vista.panelReserva.btnCancelar) {
-			vista.setContentPane(vista.panelBienvenida);			
+			vista.setContentPane(vista.panelBienvenida);
+			limpiarDispReser(this.vista);
 		}
 		else if(e.getSource() == this.vista.panelReserva.btnLogin) {
-			this.vista.setContentPane(this.vista.panelLogin);
+			Control_login.salirUsuario(vista);
+			this.vista.setContentPane(this.vista.panelLogin);					
+			
 		}
 		else if(e.getSource() == this.vista.panelReserva.btnRegistro) {
 			this.vista.setContentPane(this.vista.panelRegistro);

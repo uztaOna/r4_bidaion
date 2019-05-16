@@ -51,14 +51,14 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			infoHotelSelec(modelo, vista);
 			this.vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
 		}
-		else if(e.getSource() == this.vista.panelHoteles.btnAtras || e.getSource() == this.vista.panelRegistro.btnCancelar
-				|| e.getSource() == this.vista.panelReserva.btnCancelar || e.getSource() == this.vista.panelRegistro.btnCancelar
-				|| e.getSource() == this.vista.panelLogin.btnCancelar) {			
+		else if(e.getSource() == this.vista.panelHoteles.btnAtras) {			
 			this.vista.setContentPane(this.vista.panelBuscador);
 			limpiarBox(this.vista);
-			Control_login.limpiarRegistro(this.vista);
-			Control_login.limpiarLogin(this.vista);
-			Control_reserva.limpiarDispReser(this.vista);
+//			Control_login.limpiarRegistro(this.vista);
+//			Control_login.limpiarLogin(this.vista);
+//			Control_reserva.limpiarDispReser(this.vista);
+			System.out.println("Limpias o q aseeeeee???");
+//			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
 			if(this.vista.panelReserva.btnLogin.getText() == "Desconexión") {				
@@ -70,6 +70,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
 			this.vista.setContentPane(this.vista.panelLogin);
+			Control_login.salirUsuario(vista);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnRegistro) {
 			this.vista.setContentPane(this.vista.panelRegistro);
@@ -116,6 +117,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
 		Hotel hotel = modelo.consulta.getDatosHotel(nombreHotel);
 		
+		// Limpiar elementos anteriores
+//		vista.panelHoteles.ubicacion.removeAll();
+//		vista.panelHoteles.categoria.removeAll();
+//		vista.panelHoteles.precio.removeAll();
+
 		// 3 Cambiar labels de pan hoteles con datos de bbdd
 		vista.panelHoteles.ubicacion.setText(hotel.getUbicacion());
 		vista.panelHoteles.categoria.setText(Integer.toString(hotel.getCategoria()) + " estrellas");

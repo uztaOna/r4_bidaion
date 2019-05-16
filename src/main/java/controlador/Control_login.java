@@ -54,6 +54,8 @@ public class Control_login implements ActionListener {
 		}
 		else if(e.getSource() == this.vista.panelLogin.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
+			limpiarLogin(this.vista);
+			limpiarRegistro(this.vista);
 		}
 	}
 	
@@ -111,17 +113,19 @@ public class Control_login implements ActionListener {
 		
 	}
 	
-	public static void salirUsuario(Vista vis) {
+	public static boolean salirUsuario(Vista vis) {
+		boolean log=false;
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {
 			vis.panelReserva.lblUsuarioReser.setText("");
 			vis.panelHoteles.lblUsuarioHotel.setText("");
 			
 			vis.panelReserva.btnLogin.setText("Loguearme");
 			vis.panelHoteles.btnLogin.setText("Loguearme");
+			log =true;
 		}
 		else {
-			System.out.println("Debes estar en log out");
+			log = false;
 		}
+		return log;
 	}
-
 }
