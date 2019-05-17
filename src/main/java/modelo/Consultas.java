@@ -313,7 +313,11 @@ public class Consultas {
 			//return ArrayList
 			return apartamento;
 		}
-	
+	/**
+	 * Metodo que comprueba la existencia del DNI introducido en la BBDD
+	 * @param dni
+	 * @return
+	 */
 	public boolean comprobarDNIenBD(String dni) {		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -332,6 +336,7 @@ public class Consultas {
 				return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}
 		return false;
 	}
