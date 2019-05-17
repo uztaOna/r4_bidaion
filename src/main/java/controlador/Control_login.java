@@ -53,7 +53,7 @@ public class Control_login implements ActionListener {
 			this.vista.setContentPane(vista.panelRegistro);
 		}
 		else if(e.getSource() == this.vista.panelLogin.btnCancelar) {
-			this.vista.setContentPane(vista.panelBienvenida);
+			this.vista.setContentPane(vista.panelBienvenida);		
 			limpiarLogin(this.vista);
 			limpiarRegistro(this.vista);
 		}

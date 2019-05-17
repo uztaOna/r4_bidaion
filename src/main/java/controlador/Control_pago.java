@@ -43,7 +43,7 @@ public class Control_pago implements ActionListener {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
 			Control_pago.pagar(vista, cliente1);
 			Control_reserva.actualizacionCamas(vista, cama1);
-			Control_reserva.disponibilidadCamas(vista, cama1);
+			Control_reserva.disponibilidadCamas(vista, cama1);			
 		}
 		else if(e.getSource() == vista.panelPago.btnAtras) {
 			vista.setContentPane(vista.panelReserva);
@@ -67,6 +67,8 @@ public class Control_pago implements ActionListener {
 			System.out.println(cliente.saldo);
 			vis.panelPago.btnPagar.setEnabled(false);
 			vis.panelPago.btnConfirmar.setEnabled(true);
+			vis.panelPago.btnAtras.setEnabled(false);
+			vis.panelPago.btnCancelar.setEnabled(false);
 		}
 
 		else
@@ -78,6 +80,7 @@ public class Control_pago implements ActionListener {
 				(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1))+
 				(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())*(hotel.getPrecio()*1.2));
 		System.out.println(vis.panelReserva.rdbtnWifi.getActionCommand());
+		System.out.println(vis.panelBuscador.spinnerDias.getValue());
 		return Math.round(precio);
 	}
 	
