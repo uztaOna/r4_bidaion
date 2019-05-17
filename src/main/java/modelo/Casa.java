@@ -3,6 +3,9 @@ package modelo;
 public class Casa extends Alojamiento{
 	protected int nbanos;
 	protected double tamano;
+	protected double precio;
+	
+	public Casa() {}
 	
 	public Casa(String id, String nombre, String ubicacion, int nhabitaciones, int nbanos, double tamano) {
 		super(id, nombre, ubicacion, nhabitaciones);
@@ -22,6 +25,12 @@ public class Casa extends Alojamiento{
 	}
 	public void setTamano(double tamano) {
 		this.tamano = tamano;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	

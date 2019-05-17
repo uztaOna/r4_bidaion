@@ -113,19 +113,16 @@ public class Control_login implements ActionListener {
 		
 	}
 	
-	public static boolean salirUsuario(Vista vis) {
-		boolean log=false;
+	public static void salirUsuario(Vista vis) {
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {
 			vis.panelReserva.lblUsuarioReser.setText("");
 			vis.panelHoteles.lblUsuarioHotel.setText("");
 			
 			vis.panelReserva.btnLogin.setText("Loguearme");
 			vis.panelHoteles.btnLogin.setText("Loguearme");
-			log =true;
 		}
 		else {
-			log = false;
+			System.out.println("Debes estar en log out");
 		}
-		return log;
 	}
 }

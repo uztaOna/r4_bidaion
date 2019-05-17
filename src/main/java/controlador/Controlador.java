@@ -51,11 +51,6 @@ public class Controlador implements ActionListener, ContainerListener {
 		
 		vista.setContentPane(vista.panelBienvenida);
 	}
-	
-	@Override
-	public void componentAdded(ContainerEvent arg0) {
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public void componentRemoved(ContainerEvent arg0) {
@@ -64,6 +59,12 @@ public class Controlador implements ActionListener, ContainerListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void componentAdded(ContainerEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

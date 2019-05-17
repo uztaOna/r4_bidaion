@@ -4,12 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import modelo.Cliente;
+import modelo.Apartamento;
+import modelo.Casa;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
@@ -81,6 +81,22 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			Control_reserva.disponibilidadCamas(vista, cama1);
 			//CerrarVentana.VistaPrincipal();
 		}
+		if(e.getSource() == vista.panelBuscador.btnContinuar) {
+			Control_hoteles.addHotelesJList(modelo, vista);	
+			vista.setContentPane(vista.panelHoteles);
+		}
+		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
+			Control_hoteles.infoHotelSelec(modelo, vista);
+			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+		}
+		if(e.getSource() == vista.panelBuscador.btnContinuar) {
+			Control_hoteles.addHotelesJList(modelo, vista);	
+			vista.setContentPane(vista.panelHoteles);
+		}
+		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
+			Control_hoteles.infoHotelSelec(modelo, vista);
+			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+		}
 	}
 
 	@Override
@@ -108,6 +124,43 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
+	public static void addCasaJList(Modelo modelo, Vista vista) {
+		//Panel esta creado en el constructor de vista.
+		//Guardar ubicacion seleccionada
+		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
+
+		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
+		ArrayList <Casa> casasList =	modelo.consulta.getCasasUbicacion(ubicacion);
+		Control_hoteles.listadoCasas(casasList); 
+		
+		//Limpiar el JList de hoteles
+		vista.panelHoteles.modeloHoteles.clear();
+			
+		//Mostrar hoteles en JList
+		for(int i=0; i<casasList.size(); i++) {
+			vista.panelHoteles.modeloHoteles.addElement(casasList.get(i).getNombreAloj());
+		}
+		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
+	}
+	
+	public static void addApartamentoJList(Modelo modelo, Vista vista) {
+		//Panel esta creado en el constructor de vista.
+		//Guardar ubicacion seleccionada
+		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
+
+		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
+		ArrayList <Apartamento> apartamentoList =	modelo.consulta.getApartamentosUbicacion(ubicacion);
+		Control_hoteles.listadoApartamento(apartamentoList); 
+		
+		//Limpiar el JList de hoteles
+		vista.panelHoteles.modeloHoteles.clear();
+			
+		//Mostrar hoteles en JList
+		for(int i=0; i<apartamentoList.size(); i++) {
+			vista.panelHoteles.modeloHoteles.addElement(apartamentoList.get(i).getNombreAloj());
+		}
+		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
+	}
 	
 	//Muestra info del hotel pulsando el botón "Seleccionar"
 	public static void infoHotelSelec(Modelo modelo, Vista vista) {
@@ -157,4 +210,18 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		return listHoteles;
 	}
 	
+	
+	public static ArrayList<Casa> listadoCasas (ArrayList<Casa> listCasas) {	
+		for (int i = 0; i <listCasas.size(); i++) {
+			listCasas.get(i);
+		}
+		return listCasas;
+	}
+	
+	public static ArrayList<Apartamento> listadoApartamento (ArrayList<Apartamento> listApartamento) {	
+		for (int i = 0; i <listApartamento.size(); i++) {
+			listApartamento.get(i);
+		}
+		return listApartamento;
+	}
 }

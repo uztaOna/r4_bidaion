@@ -137,6 +137,183 @@ public class Consultas {
 		//return ArrayList
 		return hotel;
 	}
+	
+
+	//****************************************
+		
+		public ArrayList<Casa> getCasasUbicacion(String ubicacion){
+			//read * casas
+			Casa casa = null;
+			ArrayList<Casa> listaCasas = new ArrayList<Casa>();
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			
+			String query = "SELECT * FROM casas WHERE Ubicacion=?";
+
+			
+			try {
+				//levantar la conexion
+				connection = conexion.conectar();
+				
+				//preparar la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				stmt.setString(1, ubicacion);
+				System.out.println(ubicacion);
+				
+				//execute la consulta y guardarla en un ResultSet
+				result = stmt.executeQuery();
+				
+				//crear un objeto Casa y añade las casas que limita la consulta a un ArrayList
+				while (result.next()) {
+					casa = new Casa();
+					casa.setId(result.getString("Id"));
+					casa.setNombreAloj(result.getString("Nombre"));
+					casa.setUbicacion(result.getString("Ubicacion"));
+					casa.setPrecio(result.getDouble("Precio"));
+					//hotel.setCategoria(result.getInt("Categoria"));
+					listaCasas.add(casa);
+				}
+			} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+				    //cerrar la conexion
+				    try { result.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+				} 
+			//return ArrayList
+			return listaCasas;
+		}
+		
+		//Método que recibe nombre de una casa y saca sus datos
+		public Casa getDatosCasa(String nombreCasa){
+			//read * hotels
+			Casa casa = null;
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			
+			String query = "SELECT * FROM casas WHERE Nombre=?";
+
+			try {
+				//levantar la conexion
+				connection = conexion.conectar();
+				
+				//preparar la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				stmt.setString(1, nombreCasa);
+				System.out.println(nombreCasa);
+				
+				//execute la consulta y guardarla en un ResultSet
+				result = stmt.executeQuery();
+				
+				//crear un objeto Hotel sus datos propios
+				while (result.next()) {
+					casa = new Casa();
+					casa.setId(result.getString("Id"));
+					casa.setNombreAloj(result.getString("Nombre"));
+					casa.setNbanos(result.getInt("Nbanos"));
+					casa.setUbicacion(result.getString("Ubicacion"));
+					casa.setPrecio(result.getDouble("Precio"));
+				}
+			} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+				    //cerrar la conexion
+				    try { result.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+				} 
+			//return ArrayList
+			return casa;
+		}
+		
+	//***************************
+		
+		public ArrayList<Apartamento> getApartamentosUbicacion(String ubicacion){
+			//read * apartamentos
+			Apartamento apartamento = null;
+			ArrayList<Apartamento> listaApartamento = new ArrayList<Apartamento>();
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			
+			String query = "SELECT * FROM apartamentos WHERE Ubicacion=?";
+
+			
+			try {
+				//levantar la conexion
+				connection = conexion.conectar();
+				
+				//preparar la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				stmt.setString(1, ubicacion);
+				System.out.println(ubicacion);
+				
+				//execute la consulta y guardarla en un ResultSet
+				result = stmt.executeQuery();
+				
+				//crear un objeto Apartamento y añade los apartamentos que limita la consulta a un ArrayList
+				while (result.next()) {
+					apartamento = new Apartamento();
+					apartamento.setId(result.getString("Id"));
+					apartamento.setNombreAloj(result.getString("Nombre"));
+					apartamento.setUbicacion(result.getString("Ubicacion"));
+					apartamento.setPrecio(result.getDouble("Precio"));
+					listaApartamento.add(apartamento);
+				}
+			} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+				    //cerrar la conexion
+				    try { result.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+				} 
+			//return ArrayList
+			return listaApartamento;
+		}
+		
+		//Método que recibe nombre de un apartamento y saca sus datos
+		public Apartamento getDatosApartamento(String nombreApartamento){
+			//read * hotels
+			Apartamento apartamento = null;
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			
+			String query = "SELECT * FROM apartamentos WHERE Nombre=?";
+
+			try {
+				//levantar la conexion
+				connection = conexion.conectar();
+				
+				//preparar la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(query);
+				stmt.setString(1, nombreApartamento);
+				System.out.println(nombreApartamento);
+				
+				//execute la consulta y guardarla en un ResultSet
+				result = stmt.executeQuery();
+				
+				//crear un objeto Apartamento sus datos propios
+				while (result.next()) {
+					apartamento = new Apartamento();
+					apartamento.setId(result.getString("Id"));
+					apartamento.setNombreAloj(result.getString("Nombre"));
+					apartamento.setNpiso(result.getInt("Npiso"));
+					apartamento.setUbicacion(result.getString("Ubicacion"));
+					apartamento.setPrecio(result.getDouble("Precio"));
+				}
+			} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+				    //cerrar la conexion
+				    try { result.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { stmt.close(); } catch (Exception e) { e.printStackTrace(); }
+				    try { connection.close(); } catch (Exception e) { e.printStackTrace(); }
+				} 
+			//return ArrayList
+			return apartamento;
+		}
+	
 	public boolean comprobarDNIenBD(String dni) {		
 		PreparedStatement stmt = null;
 		ResultSet result = null;
@@ -165,10 +342,11 @@ public class Consultas {
 	 * @param usuario el cliente que se registrara en la base de datos
 	 * @param mod     modelo con la conexion a la base de datos
 	 */
-	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) {
+	public void insertarUsuarioEnBaseDeDatos(Cliente usuario) { 
+				System.out.println(usuario.dni + usuario.nombre + usuario.apellido +  usuario.fechaNac.getTime() + usuario.sexo + usuario.getContrasenia() );
 		try {
 			String query = "insert into clientes (DNI,Nombre,Apellido,Fnac,Sexo,Password) values(?,?,?,?,?,?);";
-			PreparedStatement insertarUsuario = this.connection.prepareStatement(query);
+			PreparedStatement insertarUsuario = this.conexion.cnx.prepareStatement(query);
 			insertarUsuario.setString(1, usuario.dni);
 			insertarUsuario.setString(2, usuario.nombre);
 			insertarUsuario.setString(3, usuario.apellido);
