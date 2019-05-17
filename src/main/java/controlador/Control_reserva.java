@@ -68,9 +68,10 @@ public class Control_reserva implements ActionListener {
 			vista.panelReserva.lblCantDoble.setText(restaBoton3(vista));
 		}
 		else if(e.getSource() == vista.panelReserva.btnReservar) {
+			int prueba=(Integer)vista.panelBuscador.spinnerDias.getValue();
 			if(vista.panelReserva.btnLogin.getText()=="Log out") {
 				if(Reserva(vista, cama1)==true && confirmarEleccion(vista)==true) {
-					vista.panelPago.textAPagar.setText(String.valueOf(Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista)));
+					vista.panelPago.textAPagar.setText(String.valueOf((Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*prueba));
 					vista.setContentPane(vista.panelPago);
 				}
 			}
@@ -78,6 +79,17 @@ public class Control_reserva implements ActionListener {
 				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
+		
+//		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
+//			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {				
+//				Control_login.salirUsuario(this.vista);
+////				Control_login.vista = vista.panelHoteles;
+//			}
+//			else {
+//				this.vista.setContentPane(this.vista.panelLogin);
+//			}
+//		}
+		
 		else if(e.getSource() == vista.panelReserva.btnAtras) {
 			vista.setContentPane(vista.panelHoteles);			
 		}
@@ -85,10 +97,14 @@ public class Control_reserva implements ActionListener {
 			vista.setContentPane(vista.panelBienvenida);
 			limpiarDispReser(this.vista);
 		}
-		else if(e.getSource() == this.vista.panelReserva.btnLogin) {
-			Control_login.salirUsuario(vista);
-			this.vista.setContentPane(this.vista.panelLogin);					
-			
+		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
+			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {				
+				Control_login.salirUsuario(this.vista);
+//				Control_login.vista = vista.panelHoteles;
+			}
+			else {
+				this.vista.setContentPane(this.vista.panelLogin);
+			}
 		}
 		else if(e.getSource() == this.vista.panelReserva.btnRegistro) {
 			this.vista.setContentPane(this.vista.panelRegistro);

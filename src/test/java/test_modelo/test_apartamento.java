@@ -6,7 +6,7 @@ import modelo.Apartamento;
 
 public class test_apartamento {
 	
-	private Apartamento apto2 = new Apartamento("A1", "Alojamiento1", "Bilbao", 100, 10);
+	private Apartamento apto2 = new Apartamento("A1", "Alojamiento1", "Bilbao", 100, 10, 0);
 	
 	@Test
 	public void testConstructorAlojamiento2() {		

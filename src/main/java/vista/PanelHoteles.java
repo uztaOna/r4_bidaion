@@ -28,6 +28,7 @@ public class PanelHoteles extends JPanel {
 		btnContinuar = new JButton("Continuar");
 		btnContinuar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnContinuar.setBounds(653, 536, 101, 23);
+		btnContinuar.setEnabled(false);
 		add(btnContinuar);
 		
 		btnAtras = new JButton("Atr\u00E1s");
@@ -68,7 +69,7 @@ public class PanelHoteles extends JPanel {
 		lblCategoría = new JLabel("Categoria");
 		lblCategoría.setBounds(436, 242, 101, 23);
 		add(lblCategoría);
-		
+
 		ubicacion = new JLabel("");
 		ubicacion.setBounds(574, 208, 101, 23);
 		add(ubicacion);

@@ -48,9 +48,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {			
+		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {
+			this.vista.panelHoteles.btnContinuar.setEnabled(true);
 			infoHotelSelec(modelo, vista);
 			this.vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+			this.vista.panelHoteles.btnContinuar.setEnabled(true);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnAtras) {			
 			this.vista.setContentPane(this.vista.panelBuscador);
@@ -64,18 +66,14 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			this.vista.setContentPane(vista.panelBienvenida);
 			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
-		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
-			if(this.vista.panelReserva.btnLogin.getText() == "Log Out") {				
+		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
+			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {		
 				Control_login.salirUsuario(this.vista);
 //				Control_login.vista = vista.panelHoteles;
 			}
 			else {
 				this.vista.setContentPane(this.vista.panelLogin);
 			}
-		}
-		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
-			this.vista.setContentPane(this.vista.panelLogin);
-			Control_login.salirUsuario(vista);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnRegistro) {
 			this.vista.setContentPane(this.vista.panelRegistro);

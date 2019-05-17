@@ -16,7 +16,7 @@ import modelo.Hotel;
 import modelo.Modelo;
 import vista.Vista;
 
-public class Control_buscador implements ActionListener, ContainerListener, PropertyChangeListener {
+public class Control_buscador implements ActionListener, ContainerListener {
 
 	Modelo modelo;
 	Vista vista;
@@ -26,16 +26,23 @@ public class Control_buscador implements ActionListener, ContainerListener, Prop
 		this.vista = vista;
 	}
 	
-	//Inicializacion de eventos Listeners del panel
 	public void inicializar_eventos_buscador()
 	{
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
 		this.vista.panelBuscador.btnCancelar.addActionListener(this);
 		this.vista.panelBuscador.spinnerDias.addContainerListener(this);
-		this.vista.panelBuscador.dateInicio.addPropertyChangeListener(this);
 	}
 
-	//Acciones de los eventos de ActionListeners
+	@Override
+	public void componentAdded(ContainerEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void componentRemoved(ContainerEvent e) {
+		// TODO Auto-generated method stub
+	}
+
 	public void actionPerformed(ActionEvent e) {
 		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
@@ -77,20 +84,11 @@ public class Control_buscador implements ActionListener, ContainerListener, Prop
 		
 	}
 	
-	
 	public static void limpiarinfoHotelSelec(Vista vista) {
 		vista.panelHoteles.ubicacion.setText("");
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");
+		vista.panelHoteles.btnContinuar.setEnabled(false);
 	}
-
-	@Override
-	public void componentAdded(ContainerEvent e) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void componentRemoved(ContainerEvent e) {
-		// TODO Auto-generated method stub
-	}
+	
 }
