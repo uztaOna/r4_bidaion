@@ -65,6 +65,18 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		}
 	}
 	
+	//Determinar si la fecha seleccionada esta dentro de temporada alta o temporada baja
+//	public static boolean evaluarLimite(Date date1, Date date2) {
+//	    boolean correcto = false;
+//	    long diferencia = (Math.abs(date1.getTime() - date2.getTime())) / 1000;
+//	    long limit = (60 * 1000) / 1000L;//limite de tiempo
+//
+//	    if (diferencia <= limit) {
+//	        correcto= true;
+//	    }
+//	    return correcto;
+//	}
+	
 	public static int getPernoctaciones(Vista vista) {
 		 int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		 return pernoctaciones;
