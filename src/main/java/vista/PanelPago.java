@@ -20,14 +20,14 @@ public class PanelPago extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	
-	public JButton btnConfirmar, btnCancelar, btnPagar;
+	public JButton btnConfirmar, btnAtras, btnCancelar, btnPagar;
 	public JLabel label_2, lblNCuenta, lblPrecioTotal;
 	public JTextField textAPagar, textCuenta;
 	@SuppressWarnings("rawtypes")
 	public DefaultListModel modeloCambio;
 
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ })
 	public PanelPago() {
 		setLayout(null);
 		setBounds(0, 0, 800, 600);
@@ -41,6 +41,12 @@ public class PanelPago extends JPanel {
 		//btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnConfirmar.setBounds(653, 536, 101, 23);
 		add(btnConfirmar);
+		
+		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
+		btnAtras.setAlignmentY(0.0f);
+		btnAtras.setBounds(56, 502, 101, 23);
+		add(btnAtras);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
@@ -85,13 +91,4 @@ public class PanelPago extends JPanel {
 		lblPrecioTotal.setBounds(56, 66, 254, 35);
 		add(lblPrecioTotal);
 	}
-	
-	/*
-	public void ActDesBotones(boolean estado) {
-		for (int i = 0; i < arrayBtn.length; i++) {
-			arrayBtn[i].setEnabled(estado);
-		}
-	}
-	*/
-
 }

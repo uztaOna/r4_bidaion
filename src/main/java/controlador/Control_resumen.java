@@ -2,7 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import vista.Vista;
@@ -23,7 +22,6 @@ public class Control_resumen implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Apéndice de método generado automáticamente
 		
 	}
 	
@@ -46,4 +44,5 @@ public class Control_resumen implements ActionListener {
 		
 		tablaModel.addRow(datosRva);
 	}
+	
 }
