@@ -68,10 +68,9 @@ public class Control_reserva implements ActionListener {
 			vista.panelReserva.lblCantDoble.setText(restaBoton3(vista));
 		}
 		else if(e.getSource() == vista.panelReserva.btnReservar) {
-			int prueba=(Integer)vista.panelBuscador.spinnerDias.getValue();
 			if(vista.panelReserva.btnLogin.getText()=="Log out") {
 				if(Reserva(vista, cama1)==true && confirmarEleccion(vista)==true) {
-					vista.panelPago.textAPagar.setText(String.valueOf((Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*prueba));
+					vista.panelPago.textAPagar.setText(String.valueOf((Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*Control_buscador.getPernoctaciones(vista)));
 					vista.setContentPane(vista.panelPago);
 				}
 			}

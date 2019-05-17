@@ -44,14 +44,13 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
 		
 		if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList(modelo, vista);	
 			this.vista.setContentPane(vista.panelHoteles);
-			sumarDiasAFecha(fechaInicio, pernoctaciones);
-			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + pernoctaciones);
+			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
+			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + getPernoctaciones(vista));
 		}
 		else if(e.getSource() == this.vista.panelBuscador.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
@@ -61,9 +60,14 @@ public class Control_buscador implements ActionListener, ContainerListener {
 //			Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
 //		}
 		else if (e.getSource() == this.vista.panelBuscador.spinnerDias) {
-			sumarDiasAFecha(fechaInicio, pernoctaciones);
-			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + pernoctaciones);
+			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
+			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + getPernoctaciones(vista));
 		}
+	}
+	
+	public static int getPernoctaciones(Vista vista) {
+		 int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
+		 return pernoctaciones;
 	}
 	
 	public static Date sumarDiasAFecha(Date fechaInicio, int pernoctaciones){
