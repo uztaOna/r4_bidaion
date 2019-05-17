@@ -35,6 +35,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		this.vista.panelHoteles.btnContinuar.addActionListener(this);
 		this.vista.panelHoteles.btnSeleccionar.addActionListener(this);
 		this.vista.panelHoteles.btnAtras.addActionListener(this);
+		this.vista.panelHoteles.btnCancelar.addActionListener(this);
 		//Eventos de control de usuarios
 		this.vista.panelHoteles.btnLogin.addActionListener(this);
 		this.vista.panelHoteles.btnRegistro.addActionListener(this);
@@ -61,9 +62,14 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			System.out.println("Limpias o q aseeeeee???");
 			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
+		else if(e.getSource() == this.vista.panelHoteles.btnCancelar) {
+			this.vista.setContentPane(vista.panelBienvenida);
+			Control_buscador.limpiarinfoHotelSelec(vista);
+		}
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
 			if(this.vista.panelReserva.btnLogin.getText() == "Desconexión") {				
 				Control_login.salirUsuario(this.vista);
+//				Control_login.vista = vista.panelHoteles;
 			}
 			else {
 				this.vista.setContentPane(this.vista.panelLogin);

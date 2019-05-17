@@ -26,6 +26,7 @@ public class Control_pago implements ActionListener {
 	
 	public void inicializar_eventos_pago() {
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
+		this.vista.panelPago.btnAtras.addActionListener(this);
 		this.vista.panelPago.btnCancelar.addActionListener(this);
 		this.vista.panelPago.btnPagar.addActionListener(this);
 	}
@@ -43,6 +44,9 @@ public class Control_pago implements ActionListener {
 			Control_pago.pagar(vista, cliente1);
 			Control_reserva.actualizacionCamas(vista, cama1);
 			Control_reserva.disponibilidadCamas(vista, cama1);
+		}
+		else if(e.getSource() == vista.panelPago.btnAtras) {
+			vista.setContentPane(vista.panelReserva);
 		}
 		else if(e.getSource() == vista.panelPago.btnCancelar) {
 			Control_hoteles.limpiarBox(vista);

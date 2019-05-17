@@ -41,7 +41,6 @@ public class Control_buscador implements ActionListener, ContainerListener {
 			this.vista.setContentPane(vista.panelHoteles);
 		}
 		else if(e.getSource() == this.vista.panelBuscador.btnCancelar) {
-			this.vista.panelHoteles.btnContinuar.setEnabled(false);
 			this.vista.setContentPane(vista.panelBienvenida);
 			limpiarinfoHotelSelec(vista);
 			
@@ -52,6 +51,7 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		vista.panelHoteles.ubicacion.setText("");
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");
+		vista.panelHoteles.btnContinuar.setEnabled(false);
 	}
 	
 }
