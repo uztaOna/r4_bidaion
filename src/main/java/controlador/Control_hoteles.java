@@ -47,18 +47,19 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {			
+		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {
+			this.vista.panelHoteles.btnContinuar.setEnabled(true);
 			infoHotelSelec(modelo, vista);
 			this.vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnAtras) {			
 			this.vista.setContentPane(this.vista.panelBuscador);
 			limpiarBox(this.vista);
-//			Control_login.limpiarRegistro(this.vista);
-//			Control_login.limpiarLogin(this.vista);
-//			Control_reserva.limpiarDispReser(this.vista);
+			Control_login.limpiarRegistro(this.vista);
+			Control_login.limpiarLogin(this.vista);
+			Control_reserva.limpiarDispReser(this.vista);
 			System.out.println("Limpias o q aseeeeee???");
-//			Control_buscador.limpiarinfoHotelSelec(this.vista);
+			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
 			if(this.vista.panelReserva.btnLogin.getText() == "Desconexión") {				

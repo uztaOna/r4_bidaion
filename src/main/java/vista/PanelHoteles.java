@@ -50,6 +50,7 @@ public class PanelHoteles extends JPanel {
 		btnContinuar = new JButton("Continuar");
 		btnContinuar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnContinuar.setBounds(653, 536, 101, 23);
+		btnContinuar.setEnabled(false);
 		add(btnContinuar);
 		
 		ubicacion = new JLabel("");

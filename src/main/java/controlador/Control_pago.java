@@ -45,6 +45,7 @@ public class Control_pago implements ActionListener {
 			Control_reserva.disponibilidadCamas(vista, cama1);
 		}
 		else if(e.getSource() == vista.panelPago.btnCancelar) {
+			Control_hoteles.limpiarBox(vista);
 			vista.setContentPane(vista.panelBienvenida);
 		}else if(e.getSource() == vista.panelPago.btnConfirmar) {
 			vista.setContentPane(vista.panelResumen);
