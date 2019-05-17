@@ -55,18 +55,17 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		else if(e.getSource() == this.vista.panelHoteles.btnAtras) {			
 			this.vista.setContentPane(this.vista.panelBuscador);
 			limpiarBox(this.vista);
-//			Control_login.limpiarRegistro(this.vista);
-//			Control_login.limpiarLogin(this.vista);
-//			Control_reserva.limpiarDispReser(this.vista);
-			System.out.println("Limpias o q aseeeeee???");
-//			Control_buscador.limpiarinfoHotelSelec(this.vista);
+			Control_login.limpiarRegistro(this.vista);
+			Control_login.limpiarLogin(this.vista);
+			Control_reserva.limpiarDispReser(this.vista);
+			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
-			Control_buscador.limpiarinfoHotelSelec(vista);
+			Control_buscador.limpiarinfoHotelSelec(this.vista);
 		}
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
-			if(this.vista.panelReserva.btnLogin.getText() == "Desconexión") {				
+			if(this.vista.panelReserva.btnLogin.getText() == "Log Out") {				
 				Control_login.salirUsuario(this.vista);
 //				Control_login.vista = vista.panelHoteles;
 			}

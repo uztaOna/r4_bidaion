@@ -6,7 +6,13 @@ import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javafx.scene.control.Spinner;
+import modelo.Hotel;
 import modelo.Modelo;
 import vista.Vista;
 
@@ -31,26 +37,46 @@ public class Control_buscador implements ActionListener, ContainerListener, Prop
 
 	//Acciones de los eventos de ActionListeners
 	public void actionPerformed(ActionEvent e) {
+		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
+		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
+		
 		if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList(modelo, vista);	
 			this.vista.setContentPane(vista.panelHoteles);
+			sumarDiasAFecha(fechaInicio, pernoctaciones);
+			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + pernoctaciones);
 		}
 		else if(e.getSource() == this.vista.panelBuscador.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
 			limpiarinfoHotelSelec(vista);
 		}
-		else if (e.getSource() == this.vista.panelBuscador.dateInicio) {
-			
-		}
+//		else if(e.getSource() == this.vista.panelBuscador.dateInicio) {
+//			Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
+//		}
 		else if (e.getSource() == this.vista.panelBuscador.spinnerDias) {
-			
+			sumarDiasAFecha(fechaInicio, pernoctaciones);
+			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + pernoctaciones);
 		}
 	}
 	
-	//Acciones de los eventos de PropertyChangeListener (date)
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
+	public static Date sumarDiasAFecha(Date fechaInicio, int pernoctaciones){
+		int dias = pernoctaciones;
+		if (dias==0) {
+			  return fechaInicio;
+		}
+		Calendar calendar = Calendar.getInstance();
+		
+		calendar.setTime(fechaInicio); 
+		calendar.add(Calendar.DAY_OF_MONTH, dias);  
+		return calendar.getTime();   
 	}
+//	Date fechaFinal = variarFecha(fechaInicio, Calendar.HOUR, 1000);
+	
+	//Acciones de los eventos de PropertyChangeListener (date)
+	public void propertyChange(PropertyChangeEvent e) {
+		
+	}
+	
 	
 	public static void limpiarinfoHotelSelec(Vista vista) {
 		vista.panelHoteles.ubicacion.setText("");

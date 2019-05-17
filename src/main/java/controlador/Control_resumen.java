@@ -44,4 +44,5 @@ public class Control_resumen implements ActionListener {
 		
 		tablaModel.addRow(datosRva);
 	}
+	
 }
