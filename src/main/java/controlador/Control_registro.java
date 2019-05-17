@@ -54,13 +54,15 @@ public class Control_registro implements ActionListener {
 		JTextField dni = vis.panelRegistro.txtDni;
 		JTextField nombre = vis.panelRegistro.txtNombre;
 		JTextField apellido = vis.panelRegistro.txtApellido;
+		JTextField numerocuenta = vis.panelRegistro.txtNcuenta;
+		
 		Date fechaNac = vis.panelRegistro.dateFnac.getDate();
 		char sexo = cambiarSexoAChar(vis.panelRegistro.boxSexo);
 		final char[] contra = vis.panelRegistro.txtPassword.getPassword();
 		//JTextField contrasenia = vis.panelLogin.txtPassword;
 		if (validarSoloLetras(nombre) && validarSoloLetras(apellido) && (nombre.getText().length() > 0) && (apellido.getText().length() > 0) && validarDNI(dni) && validarContrasenia(contra)) {
 			if (modelo.consulta.comprobarDNIenBD(vis.panelRegistro.txtDni.getText()) == false) {
-				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, encriptarContra(contra), 99, (double)(9999)));
+				return (new Cliente(nombre.getText(), apellido.getText(), dni.getText(), sexo, fechaNac, encriptarContra(contra), Integer.parseInt(numerocuenta.getText()), (double)(9999)));
 			} else {
 				JOptionPane.showMessageDialog(null, "El usuario introducido ya está registrado, por favor, inicie sesión", "Usuario ya registrado", JOptionPane.INFORMATION_MESSAGE);
 			}

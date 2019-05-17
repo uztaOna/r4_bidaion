@@ -23,12 +23,13 @@ public class PanelRegistro extends JPanel {
 	 * Create the panel.
 	 */
 	
-	public JLabel lblTitulo, lblNombre, lblApellido, lblDni, lblSexo, lblPassword, lblFnac;
-	public JTextField txtNombre, txtApellido, txtDni;
+	public JLabel lblTitulo, lblNombre, lblApellido, lblDni, lblSexo, lblPassword, lblFnac,lblCuenta;
+	public JTextField txtNombre, txtApellido, txtDni,txtNcuenta;
 	public JButton btnRegistrarme, btnCancelar;
 	public JComboBox boxSexo;
 	public JDateChooser dateFnac;
 	public JPasswordField txtPassword;
+	private JPasswordField passwordField;
 	
 	public PanelRegistro() {
 		setLayout(null);
@@ -38,58 +39,58 @@ public class PanelRegistro extends JPanel {
 		lblTitulo = new JLabel("ALTA NUEVA");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblTitulo.setBounds(229, 35, 269, 39);
+		lblTitulo.setBounds(229, 11, 269, 39);
 		add(lblTitulo);
 		
 		lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(218, 106, 78, 39);
+		lblNombre.setBounds(218, 75, 78, 39);
 		add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(383, 106, 192, 39);
+		txtNombre.setBounds(383, 75, 192, 39);
 		add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(218, 170, 78, 39);
+		lblApellido.setBounds(218, 139, 78, 39);
 		add(lblApellido);
 		
 		txtApellido = new JTextField();
 		txtApellido.setColumns(10);
-		txtApellido.setBounds(383, 171, 192, 39);
+		txtApellido.setBounds(383, 139, 192, 39);
 		add(txtApellido);
 		
 		lblDni = new JLabel("DNI");
-		lblDni.setBounds(218, 371, 65, 39);
+		lblDni.setBounds(218, 340, 65, 39);
 		add(lblDni);
 		
 		txtDni = new JTextField();
-		txtDni.setBounds(385, 371, 190, 39);
+		txtDni.setBounds(385, 340, 190, 39);
 		add(txtDni);
 		
 		lblFnac = new JLabel("Fecha de nacimiento");
-		lblFnac.setBounds(218, 304, 160, 39);
+		lblFnac.setBounds(218, 273, 160, 39);
 		add(lblFnac);
 		
 		dateFnac = new JDateChooser();
-		dateFnac.setBounds(383, 304, 192, 39);
+		dateFnac.setBounds(383, 273, 192, 39);
 		add(dateFnac);
 		
 		lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(218, 239, 78, 39);
+		lblSexo.setBounds(218, 208, 78, 39);
 		add(lblSexo);
 		
 		boxSexo = new JComboBox();
-		boxSexo.setBounds(383, 239, 192, 39);
+		boxSexo.setBounds(383, 208, 192, 39);
 		boxSexo.setModel(new DefaultComboBoxModel(new String[] {"Hombre", "Mujer"}));
 		add(boxSexo);
 		
 		lblPassword = new JLabel("Contrase\u00F1a");
-		lblPassword.setBounds(218, 434, 65, 39);
+		lblPassword.setBounds(218, 403, 134, 39);
 		add(lblPassword);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(385, 434, 190, 39);
+		txtPassword.setBounds(385, 403, 190, 39);
 		add(txtPassword);
 		
 		btnRegistrarme = new JButton("REGISTRARME");
@@ -99,5 +100,13 @@ public class PanelRegistro extends JPanel {
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setBounds(90, 526, 134, 39);
 		add(btnCancelar);	
+		
+		lblCuenta = new JLabel("Numero de cuenta");
+		lblCuenta.setBounds(218, 476, 160, 39);
+		add(lblCuenta);
+		
+		txtNcuenta = new JTextField();
+		txtNcuenta.setBounds(385, 476, 190, 39);
+		add(txtNcuenta);
 	}
 }

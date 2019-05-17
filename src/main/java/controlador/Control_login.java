@@ -69,10 +69,12 @@ public class Control_login implements ActionListener {
 		vis.panelRegistro.txtNombre.setText("");
 		vis.panelRegistro.txtApellido.setText("");
 		vis.panelRegistro.txtDni.setText("");
+		vis.panelRegistro.txtNcuenta.setText("");
 //		vis.panelLogin.dateFnac.setTex("");
 		vis.panelRegistro.txtPassword.setText("");
 		vis.panelRegistro.txtNombre.setBackground(new JTextField().getBackground());
 		vis.panelRegistro.txtApellido.setBackground(new JTextField().getBackground());
+		
 	}
 	
 	public static void limpiarLogin(Vista vis) {
