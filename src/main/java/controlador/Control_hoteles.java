@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -12,6 +14,7 @@ import modelo.Apartamento;
 import modelo.Casa;
 import modelo.Hotel;
 import modelo.Modelo;
+import modelo.Reserva;
 import modelo.TipoHab;
 import vista.Vista;
 
@@ -84,29 +87,28 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			Control_reserva.disponibilidadCamas(vista, cama1);
 			//CerrarVentana.VistaPrincipal();
 		}
-		if(e.getSource() == vista.panelBuscador.btnContinuar) {
-			Control_hoteles.addHotelesJList(modelo, vista);	
-			vista.setContentPane(vista.panelHoteles);
-		}
-		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
-			Control_hoteles.infoHotelSelec(modelo, vista);
-			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
-		}
-		if(e.getSource() == vista.panelBuscador.btnContinuar) {
-			Control_hoteles.addHotelesJList(modelo, vista);	
-			vista.setContentPane(vista.panelHoteles);
-		}
-		else if(e.getSource() == vista.panelHoteles.btnSeleccionar) {			
-			Control_hoteles.infoHotelSelec(modelo, vista);
-			vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
-		}
 	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
+	public static void showDestinoBuscador(Vista vista) {
+		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
+		
+		vista.panelHoteles.destino.setText(ubicacion);		
+	}
 
+	public static void showFechaBuscador(Vista vista) {
+		Date fInicio = vista.panelBuscador.dateInicio.getDate();
+		Date fFin = Control_buscador.sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
+		
+		vista.panelHoteles.fLLegada.setText(Control_buscador.diasAFecha(fInicio));
+		vista.panelHoteles.fSalida.setText(Control_buscador.diasAFecha(fFin));
+	}
+	
+	
 	//Añadir listado de hoteles a JList según ubicación
 	public static void addHotelesJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
