@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
+
 import modelo.Modelo;
 import vista.Vista;
 
@@ -40,8 +42,12 @@ public class Control_bienvenida implements ActionListener{
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
 			addUbicacionesCombo(this.modelo, this.vista);
 			this.vista.setContentPane(this.vista.panelBuscador);
-			Control_reserva.validarFecha(vista);
+			validarFecha(vista);
 		}
 	}
 	
+	/*Comprueba que la fecha sea anterior a hoy*/
+	public static void validarFecha(Vista vista) {
+		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
+	}
 }

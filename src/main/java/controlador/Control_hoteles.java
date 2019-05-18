@@ -2,19 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import modelo.Cliente;
 import modelo.Apartamento;
 import modelo.Casa;
 import modelo.Hotel;
 import modelo.Modelo;
-import modelo.Reserva;
 import modelo.TipoHab;
 import vista.Vista;
 
@@ -22,9 +18,6 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 
 	Vista vista;
 	Modelo modelo;
-	Hotel ubicacion;
-	Hotel hotel;
-	Cliente cliente;
 	
 	//Constructor
 	public Control_hoteles(Modelo modelo, Vista vista) {
@@ -45,16 +38,15 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	}
 	
 	TipoHab cama1=new TipoHab(40, 10,14,16);
-	Date miFecha= new Date(115, 6, 2, 15, 30);
-
-	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
-	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
+//	Date miFecha= new Date(115, 6, 2, 15, 30);
+//	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+//	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {
 			this.vista.panelHoteles.btnContinuar.setEnabled(true);
 			infoHotelSelec(modelo, vista);
-			this.vista.panelReserva.lblHotelSelc.setText(hotel1.getNombreAloj());
+			this.vista.panelReserva.nomHotel.setText((String)vista.panelHoteles.JListHoteles.getSelectedValue());
 			this.vista.panelHoteles.btnContinuar.setEnabled(true);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnAtras) {			
@@ -82,10 +74,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 			this.vista.setContentPane(this.vista.panelRegistro);
 		}
 		else if(e.getSource() == this.vista.panelHoteles.btnContinuar) {
-//			MetodosReserva.infoRva();
 			this.vista.setContentPane(this.vista.panelReserva);
 			Control_reserva.disponibilidadCamas(vista, cama1);
-			//CerrarVentana.VistaPrincipal();
+
+			showDestinoBuscador(vista);
+			showFechaBuscador(vista);
 		}
 	}
 
@@ -97,15 +90,19 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public static void showDestinoBuscador(Vista vista) {
 		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
 		
-		vista.panelHoteles.destino.setText(ubicacion);		
+		vista.panelHoteles.destino.setText(ubicacion);
+		vista.panelReserva.destino.setText(ubicacion);	
 	}
 
 	public static void showFechaBuscador(Vista vista) {
 		Date fInicio = vista.panelBuscador.dateInicio.getDate();
 		Date fFin = Control_buscador.sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
 		
-		vista.panelHoteles.fLLegada.setText(Control_buscador.diasAFecha(fInicio));
-		vista.panelHoteles.fSalida.setText(Control_buscador.diasAFecha(fFin));
+		vista.panelHoteles.fLLegada.setText(Control_buscador.fechaToString(fInicio));
+		vista.panelHoteles.fSalida.setText(Control_buscador.fechaToString(fFin));
+		
+		vista.panelReserva.fLLegada.setText(Control_buscador.fechaToString(fInicio));
+		vista.panelReserva.fSalida.setText(Control_buscador.fechaToString(fFin));
 	}
 	
 	
@@ -181,9 +178,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 //		vista.panelHoteles.precio.removeAll();
 
 		// 3 Cambiar labels de pan hoteles con datos de bbdd
-		vista.panelHoteles.ubicacion.setText(hotel.getUbicacion());
 		vista.panelHoteles.categoria.setText(Integer.toString(hotel.getCategoria()) + " estrellas");
 		vista.panelHoteles.precio.setText(Double.toString(hotel.getPrecio()) + " €");
+		
+		vista.panelReserva.nomHotel.setText(hotel.getNombreAloj());
 	}
 	
 	

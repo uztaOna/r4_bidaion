@@ -20,8 +20,10 @@ public class PanelHoteles extends JPanel {
 	public JList<String> JListHoteles;
 	public DefaultListModel<String> modeloHoteles = new DefaultListModel<String>();
 	public JButton btnAtras, btnContinuar, btnSeleccionar, btnLogin, btnRegistro, btnCancelar;
-	public JLabel lblNomHotel, ubicacion, precio, categoria, lblNombreHotel, lblUbicacion, lblPrecio, 
+	public JLabel lblNomHotel, precio, categoria, lblNombreHotel, lblPrecio, 
 	lblCategoría, lblUser, lblUsuarioHotel, lblDestino, destino, lblFLlegada, lblFechaSalida, fLLegada,fSalida;
+	private JLabel lblHabitaciones;
+	private JLabel qHabs;
 	
 	public PanelHoteles() {
 		setBackground(new Color(255, 201, 164));
@@ -48,7 +50,7 @@ public class PanelHoteles extends JPanel {
 		btnSeleccionar.setBounds(252, 300, 111, 26);
 		add(btnSeleccionar);
 		
-		btnLogin = new JButton("Loguearme");
+		btnLogin = new JButton("Iniciar Sesi\u00F3n");
 		btnLogin.setBounds(643, 29, 111, 20);
 		add(btnLogin);
 		
@@ -60,32 +62,24 @@ public class PanelHoteles extends JPanel {
 		JListHoteles.setBounds(48, 164, 194, 260);
 		add(JListHoteles);
 		
-		
-		lblUbicacion = new JLabel("Ubicaci\u00F3n");
-		lblUbicacion.setBounds(426, 269, 101, 23);
-		add(lblUbicacion);
-		
 		lblPrecio = new JLabel("Precio");
-		lblPrecio.setBounds(426, 337, 101, 23);
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblPrecio.setBounds(426, 368, 101, 23);
 		add(lblPrecio);
 		
 		lblCategoría = new JLabel("Categoria");
-		lblCategoría.setBounds(426, 303, 101, 23);
+		lblCategoría.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCategoría.setBounds(426, 300, 101, 23);
 		add(lblCategoría);
-
-		ubicacion = new JLabel("");
-		ubicacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		ubicacion.setBounds(574, 269, 101, 23);
-		add(ubicacion);
 		
 		precio = new JLabel("");
-		precio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		precio.setBounds(574, 337, 101, 23);
+		precio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		precio.setBounds(574, 368, 101, 23);
 		add(precio);
 		
 		categoria = new JLabel("");
 		categoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		categoria.setBounds(574, 303, 101, 23);
+		categoria.setBounds(574, 300, 101, 23);
 		add(categoria);
 		
 		lblUser = new JLabel("");
@@ -106,11 +100,13 @@ public class PanelHoteles extends JPanel {
 		add(destino);
 		
 		lblFLlegada = new JLabel("Fecha de llegada");
+		lblFLlegada.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFLlegada.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFLlegada.setBounds(426, 164, 112, 23);
 		add(lblFLlegada);
 		
 		lblFechaSalida = new JLabel("Fecha de salida");
+		lblFechaSalida.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFechaSalida.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFechaSalida.setBounds(574, 164, 111, 23);
 		add(lblFechaSalida);
@@ -128,5 +124,15 @@ public class PanelHoteles extends JPanel {
 		fSalida.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		fSalida.setBounds(574, 200, 112, 35);
 		add(fSalida);
+		
+		lblHabitaciones = new JLabel("Habitaciones");
+		lblHabitaciones.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblHabitaciones.setBounds(426, 269, 101, 23);
+		add(lblHabitaciones);
+		
+		qHabs = new JLabel("");
+		qHabs.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		qHabs.setBounds(574, 269, 101, 23);
+		add(qHabs);
 	}
 }

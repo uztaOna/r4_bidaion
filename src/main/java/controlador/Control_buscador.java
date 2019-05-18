@@ -5,24 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
-import javafx.scene.control.Spinner;
-import modelo.Hotel;
 import modelo.Modelo;
-import modelo.Reserva;
 import vista.Vista;
 
 public class Control_buscador implements ActionListener, ContainerListener {
 
 	Modelo modelo;
 	Vista vista;
-	Reserva reserva;
 	
 	public Control_buscador (Modelo modelo,Vista vista) {
 		this.modelo = modelo;
@@ -49,7 +42,10 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	public void actionPerformed(ActionEvent e) {
 		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
 		
-		if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
+		if(e.getSource() == this.vista.panelBuscador.dateInicio) {
+			this.vista.panelBuscador.btnContinuar.setEnabled(true);
+		}
+		else if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList(modelo, vista);	
 			this.vista.setContentPane(vista.panelHoteles);
 			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
@@ -61,22 +57,13 @@ public class Control_buscador implements ActionListener, ContainerListener {
 			this.vista.setContentPane(vista.panelBienvenida);
 			limpiarinfoHotelSelec(vista);
 		}
-//		else if(e.getSource() == this.vista.panelBuscador.dateInicio) {
-//			Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
-//		}
 		else if (e.getSource() == this.vista.panelBuscador.spinnerDias) {
 			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
 			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + getPernoctaciones(vista));
 		}
 	}
 	
-	
-//	public static Date getFechaLLegada(Date fechaInicio, Vista vista) {
-//		 Date fInicio = vista.panelBuscador.dateInicio.getDate();
-//		 return fInicio;
-//	}
-	
-	public static String diasAFecha(Date fechaInicio){
+	public static String fechaToString(Date fechaInicio){
 		String patron = "dd/MM/yyyy";
 		DateFormat df = new SimpleDateFormat(patron);
 		Date fInicio = fechaInicio;
@@ -119,7 +106,6 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	}
 	
 	public static void limpiarinfoHotelSelec(Vista vista) {
-		vista.panelHoteles.ubicacion.setText("");
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");
 		vista.panelHoteles.destino.setText("");

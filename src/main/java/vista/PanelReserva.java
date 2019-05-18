@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelReserva extends JPanel {
 
@@ -22,8 +24,9 @@ public class PanelReserva extends JPanel {
 	 * Create the panel.
 	 */
 	
-	public JLabel lblHotelSelc, lblUsuarioReser, lblInDisp, lblMatriDisp, lblDobleDisp, lblCantInd, lblCantMatri, lblCantDoble,
-				  lblCamasDiponibles, lblCantSeleccionada, lblServicios, lblCamasInd, lblCamasMatri, lblCamasDoble;
+	public JLabel nomHotel, lblUsuarioReser, lblInDisp, lblMatriDisp, lblDobleDisp, lblCantInd, lblCantMatri, lblCantDoble,
+				  lblCamasDiponibles, lblCantSeleccionada, lblServicios, lblCamasInd, lblCamasMatri, lblCamasDoble,
+				  lblFllegada, lblFSalida, fLLegada, fSalida, destino;
 	public JButton btnReservar, btnLogin, btnRegistro, btnIndividual, btnMatrimonio, btnDoble, btnCancelar, btnAtras,
 				   btnMasInd,btnMenosInd, btnMasMatri, btnMenosMatri, btnMasDoble, btnMenosDoble;
 	public JRadioButton rdbtnWifi, rdbtnPiscina, rdbtnSpa, rdbtnParking, rdbtnAireAcon, rdbtnRestaurante, rdbtnBar, rdbtnGYM;
@@ -33,10 +36,11 @@ public class PanelReserva extends JPanel {
 		setBounds(0, 0, 800, 600);
 		setBackground(new Color(255, 201, 164));
 		
-		lblHotelSelc = new JLabel("El Hotel Seleccionado");
-		lblHotelSelc.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHotelSelc.setBounds(37, 40, 210, 62);
-		add(lblHotelSelc);
+		nomHotel = new JLabel("Hotel Seleccionado");
+		nomHotel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		nomHotel.setHorizontalAlignment(SwingConstants.LEFT);
+		nomHotel.setBounds(37, 67, 210, 36);
+		add(nomHotel);
 		
 		btnReservar= new JButton("Reservar");
 		btnReservar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
@@ -45,7 +49,11 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBounds(653, 536, 101, 23);
 		add(btnReservar);
 		
-		btnLogin = new JButton("Loguearme");
+		btnLogin = new JButton("Iniciar Sesi\u00F3n");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnLogin.setBounds(653, 31, 112, 20);
 		add(btnLogin);
 		
@@ -53,7 +61,7 @@ public class PanelReserva extends JPanel {
 		lblUsuarioReser.setBounds(508, 31, 135, 50);
 		add(lblUsuarioReser);
 		
-		btnRegistro = new JButton("Registrarme");
+		btnRegistro = new JButton("Registrarse");
 		btnRegistro.setBounds(653, 61, 112, 20);
 		add(btnRegistro);	
 		
@@ -132,6 +140,7 @@ public class PanelReserva extends JPanel {
 		lblCantInd.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCantInd.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCantInd.setBounds(126, 390, 165, 23);
+		lblCantInd.setBackground(new Color(153, 255, 153));
 		add(lblCantInd);
 		
 		lblCantMatri = new JLabel("0");
@@ -154,15 +163,15 @@ public class PanelReserva extends JPanel {
 		
 		
 		lblCamasDiponibles = new JLabel("Disponibles");
-		lblCamasDiponibles.setBounds(10, 344, 110, 21);
+		lblCamasDiponibles.setBounds(37, 344, 118, 21);
 		add(lblCamasDiponibles);
 		
-		lblCantSeleccionada = new JLabel("Cant. seleccionada:");
-		lblCantSeleccionada.setBounds(10, 391, 118, 21);
+		lblCantSeleccionada = new JLabel("Seleccionadas");
+		lblCantSeleccionada.setBounds(37, 391, 118, 21);
 		add(lblCantSeleccionada);
 		
-		lblServicios = new JLabel("Servicios Adicionales:");
-		lblServicios.setBounds(10, 469, 110, 21);
+		lblServicios = new JLabel("Servicios Extra");
+		lblServicios.setBounds(27, 470, 110, 21);
 		add(lblServicios);
 		
 		lblCamasInd = new JLabel("Habitaci\u00F3n Individual");
@@ -209,6 +218,36 @@ public class PanelReserva extends JPanel {
 		btnMenosDoble = new JButton("-");
 		btnMenosDoble.setBounds(663, 296, 64, 23);
 		add(btnMenosDoble);
+		
+		lblFllegada = new JLabel("Fecha de llegada");
+		lblFllegada.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFllegada.setBounds(257, 28, 112, 23);
+		add(lblFllegada);
+		
+		lblFSalida = new JLabel("Fecha de salida");
+		lblFSalida.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFSalida.setBounds(405, 28, 111, 23);
+		add(lblFSalida);
+		
+		fLLegada = new JLabel("");
+		fLLegada.setVerticalAlignment(SwingConstants.TOP);
+		fLLegada.setHorizontalAlignment(SwingConstants.CENTER);
+		fLLegada.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		fLLegada.setBounds(257, 46, 112, 35);
+		add(fLLegada);
+		
+		fSalida = new JLabel("");
+		fSalida.setVerticalAlignment(SwingConstants.TOP);
+		fSalida.setHorizontalAlignment(SwingConstants.CENTER);
+		fSalida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		fSalida.setBounds(405, 46, 112, 35);
+		add(fSalida);
+		
+		destino = new JLabel("");
+		destino.setHorizontalAlignment(SwingConstants.LEFT);
+		destino.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		destino.setBounds(37, 31, 194, 36);
+		add(destino);
 
 	}
 }
