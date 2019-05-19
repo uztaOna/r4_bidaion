@@ -21,7 +21,7 @@ public class Control_login implements ActionListener {
 	
 	Vista vista;
 	Modelo modelo;
-	Cliente cliente;
+	public static boolean pulsado;
 	
 	//Constructor
 	public Control_login(Modelo modelo, Vista vista) {
@@ -34,6 +34,7 @@ public class Control_login implements ActionListener {
 		this.vista.panelLogin.btnCancelar.addActionListener(this);
 		this.vista.panelLogin.btnNoAcc.addActionListener(this);
 		this.vista.panelLogin.btnLogin.addActionListener(this);
+		this.vista.panelLogin.btnAtras.addActionListener(this);
 	}
 
 	//Datos provisionales para prueba
@@ -46,35 +47,36 @@ public class Control_login implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelLogin.btnLogin) {		
-			nombreUsuario(vista, cliente1);
-			comprobarInicioSesion(vista);
+			nombreUsuario(this.vista, cliente1);
+			comprobarInicioSesion(this.vista);
+			
+			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
+					pulsado == false)
+				this.vista.setContentPane(vista.panelHoteles);
+			else
+				this.vista.setContentPane(vista.panelReserva);
 		}
 		else if(e.getSource() == this.vista.panelLogin.btnNoAcc) {
 			this.vista.setContentPane(vista.panelRegistro);
 		}
-		else if(e.getSource() == this.vista.panelLogin.btnCancelar) {
-			this.vista.setContentPane(vista.panelBienvenida);		
-			limpiarLogin(this.vista);
-			limpiarRegistro(this.vista);
+		else if(e.getSource() == this.vista.panelLogin.btnAtras) {
+			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
+					pulsado == false)
+				this.vista.setContentPane(vista.panelHoteles);
+			else
+				this.vista.setContentPane(vista.panelReserva);
 		}
+		else if(e.getSource() == this.vista.panelLogin.btnCancelar) {
+			this.vista.setContentPane(vista.panelBienvenida);
+		}		
+		limpiarLogin(this.vista);
+		Control_registro.limpiarRegistro(this.vista);
 	}
 	
 	public static void comprobarInicioSesion(Vista vis) {
 		JTextField dni = vis.panelLogin.textFieldNombre;
 		char[] contra = vis.panelLogin.textFieldContrasenia.getPassword();
 		//if()
-	}
-		
-	public static void limpiarRegistro(Vista vis) {
-		vis.panelRegistro.txtNombre.setText("");
-		vis.panelRegistro.txtApellido.setText("");
-		vis.panelRegistro.txtDni.setText("");
-		vis.panelRegistro.txtNcuenta.setText("");
-//		vis.panelLogin.dateFnac.setTex("");
-		vis.panelRegistro.txtPassword.setText("");
-		vis.panelRegistro.txtNombre.setBackground(new JTextField().getBackground());
-		vis.panelRegistro.txtApellido.setBackground(new JTextField().getBackground());
-		
 	}
 	
 	public static void limpiarLogin(Vista vis) {

@@ -9,11 +9,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Vista;
@@ -22,7 +20,7 @@ public class Control_registro implements ActionListener {
 
 	Vista vista;
 	Modelo modelo;
-	Cliente cliente;
+	public static boolean pulsado;
 	
 	public Control_registro(Modelo modelo, Vista vista) {
 		this.vista = vista;
@@ -32,6 +30,7 @@ public class Control_registro implements ActionListener {
 	public void inicializar_eventos_registro() {
 		this.vista.panelRegistro.btnCancelar.addActionListener(this);
 		this.vista.panelRegistro.btnRegistrarme.addActionListener(this);
+		this.vista.panelRegistro.btnAtras.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -39,15 +38,22 @@ public class Control_registro implements ActionListener {
 			modelo.clienteRegistrado = registro(vista,modelo);
 			if(modelo.clienteRegistrado != null) {
 				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
-				vista.setContentPane(vista.panelReserva);
+				this.vista.setContentPane(vista.panelHoteles);
 			}
 			registro(vista,modelo);
 		}
 		else if(e.getSource() == this.vista.panelRegistro.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
-			Control_login.limpiarRegistro(this.vista);
-			Control_login.limpiarLogin(this.vista);
 		}
+		else if(e.getSource() == this.vista.panelRegistro.btnAtras) {
+			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
+					pulsado == false)
+				this.vista.setContentPane(vista.panelHoteles);
+			else
+				this.vista.setContentPane(vista.panelReserva);
+		}
+		limpiarRegistro(this.vista);
+		Control_login.limpiarLogin(this.vista);
 	}
 
 	public static Cliente registro(Vista vis, Modelo modelo) {
@@ -141,6 +147,17 @@ public class Control_registro implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Introduce una letra minúscula, una mayúscula, un número y al menos 8 caracteres", "Contraseña poco segura", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
-
 	}
+	
+	public static void limpiarRegistro(Vista vis) {
+		vis.panelRegistro.txtNombre.setText("");
+		vis.panelRegistro.txtApellido.setText("");
+		vis.panelRegistro.txtDni.setText("");
+		vis.panelRegistro.txtNcuenta.setText("");
+//		vis.panelLogin.dateFnac.setTex("");
+		vis.panelRegistro.txtPassword.setText("");
+		vis.panelRegistro.txtNombre.setBackground(new JTextField().getBackground());
+		vis.panelRegistro.txtApellido.setBackground(new JTextField().getBackground());
+	}
+	
 }

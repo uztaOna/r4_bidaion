@@ -49,5 +49,6 @@ public class Control_bienvenida implements ActionListener{
 	/*Comprueba que la fecha sea anterior a hoy*/
 	public static void validarFecha(Vista vista) {
 		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
+		vista.panelBuscador.dateInicio.setDate(new Date());
 	}
 }

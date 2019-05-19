@@ -12,6 +12,7 @@ public class Control_reserva implements ActionListener {
 	
 	Vista vista;
 	Modelo modelo;
+	public static boolean pulsado;
 	
 	public Control_reserva(Modelo modelo, Vista vista) {
 		this.vista = vista;
@@ -83,7 +84,6 @@ public class Control_reserva implements ActionListener {
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
 			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {				
 				Control_login.salirUsuario(this.vista);
-//				Control_login.vista = vista.panelHoteles;
 			}
 			else {
 				this.vista.setContentPane(this.vista.panelLogin);

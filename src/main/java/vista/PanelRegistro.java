@@ -25,7 +25,7 @@ public class PanelRegistro extends JPanel {
 	
 	public JLabel lblTitulo, lblNombre, lblApellido, lblDni, lblSexo, lblPassword, lblFnac,lblCuenta;
 	public JTextField txtNombre, txtApellido, txtDni,txtNcuenta;
-	public JButton btnRegistrarme, btnCancelar;
+	public JButton btnRegistrarme, btnCancelar, btnAtras;
 	public JComboBox boxSexo;
 	public JDateChooser dateFnac;
 	public JPasswordField txtPassword;
@@ -97,8 +97,8 @@ public class PanelRegistro extends JPanel {
 		btnRegistrarme.setBounds(545, 526, 171, 39);
 		add(btnRegistrarme);
 		
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setBounds(90, 526, 134, 39);
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(35, 526, 100, 29);
 		add(btnCancelar);	
 		
 		lblCuenta = new JLabel("Numero de cuenta");
@@ -108,5 +108,9 @@ public class PanelRegistro extends JPanel {
 		txtNcuenta = new JTextField();
 		txtNcuenta.setBounds(385, 476, 190, 39);
 		add(txtNcuenta);
+		
+		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setBounds(35, 486, 100, 29);
+		add(btnAtras);
 	}
 }
