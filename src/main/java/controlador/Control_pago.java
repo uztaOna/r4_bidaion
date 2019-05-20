@@ -93,7 +93,7 @@ public class Control_pago implements ActionListener {
 				vis.panelReserva.rdbtnRestaurante.isSelected(),
 				vis.panelReserva.rdbtnBar.isSelected(),
 				vis.panelReserva.rdbtnGYM.isSelected()};
-		double radioPrecio[] = {100,200,300,400,500,600,700,800};
+		double radioPrecio[] = {5,8,15,10,3,25,12,6};
 		double cadena=0;
 		for (int i = 0; i < 8; i++) {
 			if(radioArray[i]==true) {
