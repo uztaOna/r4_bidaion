@@ -191,12 +191,22 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
+//	/*
+//	 * Confirma que hay al menos una cama seleccionada
+//	 */
+//	public static boolean confirmarEleccion(Vista vis) {
+//		if(vis.panelReserva.lblCantInd.getText()=="0" && vis.panelReserva.lblCantMatri.getText()=="0" &&
+//				vis.panelReserva.lblCantDoble.getText()=="0") {
+//			return false;
+//		}else return true;
+//	}
+	
 	/*
 	 * Confirma que hay al menos una cama seleccionada
 	 */
 	public static boolean confirmarEleccion(Vista vis) {
-		if(vis.panelReserva.lblCantInd.getText()=="0" && vis.panelReserva.lblCantMatri.getText()=="0" &&
-				vis.panelReserva.lblCantDoble.getText()=="0") {
+		if(Integer.parseInt(vis.panelReserva.lblCantInd.getText())<1 && Integer.parseInt(vis.panelReserva.lblCantMatri.getText())<1 &&
+				Integer.parseInt(vis.panelReserva.lblCantDoble.getText())<1) {
 			return false;
 		}else return true;
 	}
