@@ -93,6 +93,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		
 		vista.panelHoteles.destino.setText(ubicacion);
 		vista.panelReserva.destino.setText(ubicacion);	
+		vista.panelResumen.txtaDatosRva.setText(ubicacion);
 	}
 
 	public static void showFechaBuscador(Vista vista) {

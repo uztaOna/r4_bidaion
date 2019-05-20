@@ -3,11 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 import modelo.Cliente;
+import modelo.Habitacion;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.Reserva;
@@ -55,8 +54,8 @@ public class Control_pago implements ActionListener {
 			this.vista.setContentPane(vista.panelBienvenida);
 		}
 		else if(e.getSource() == vista.panelPago.btnConfirmar) {
-//			vista.setContentPane(vista.panelResumen);
-			actualizarFrame();
+			this.vista.setContentPane(vista.panelResumen);
+//			actualizarFrame();
 		}
 	}
 	
@@ -85,11 +84,18 @@ public class Control_pago implements ActionListener {
 	 */
 	public static double precio(Vista vis, Hotel hotel) {	
 		double precio = (Double.parseDouble(vis.panelReserva.lblCantInd.getText())*hotel.getPrecio()) + 
-				(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1)) + 
-				(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())*(hotel.getPrecio()*1.2));
+		(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1)) + 
+		(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())*(hotel.getPrecio()*1.2));
 		
-		System.out.println(vis.panelReserva.rdbtnWifi.getActionCommand());
-		System.out.println(vis.panelBuscador.spinnerDias.getValue());
+		System.out.println("Hab individual: " + vis.panelReserva.lblCantInd.getText() + "		Precio: " + 
+				(Double.parseDouble(vis.panelReserva.lblCantInd.getText())*hotel.getPrecio()));
+		System.out.println("Hab Matrimonio: " + vis.panelReserva.lblCantMatri.getText() + "		Precio: " +
+				(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1)));
+		System.out.println("Hab Doble: 	" + vis.panelReserva.lblCantDoble.getText() + "		Precio: " +
+				(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())*(hotel.getPrecio()*1.2)));
+		System.out.println("PRECIO TOTAL == " + precio + "\n");
+		System.out.println("Wifi = " + vis.panelReserva.rdbtnWifi.getActionCommand());
+		System.out.println("Total dias = " + vis.panelBuscador.spinnerDias.getValue());
 		return Math.round(precio);
 	}
 	

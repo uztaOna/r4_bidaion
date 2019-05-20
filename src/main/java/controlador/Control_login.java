@@ -49,6 +49,7 @@ public class Control_login implements ActionListener {
 		if(e.getSource() == vista.panelLogin.btnLogin) {		
 			nombreUsuario(this.vista, cliente1);
 			comprobarInicioSesion(this.vista);
+			System.out.println("Sesión iniciada");
 			
 			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
 					pulsado == false)

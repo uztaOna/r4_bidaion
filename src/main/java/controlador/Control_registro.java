@@ -38,7 +38,11 @@ public class Control_registro implements ActionListener {
 			modelo.clienteRegistrado = registro(vista,modelo);
 			if(modelo.clienteRegistrado != null) {
 				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
-				this.vista.setContentPane(vista.panelHoteles);
+				if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
+						pulsado == false)
+					this.vista.setContentPane(vista.panelHoteles);
+				else
+					this.vista.setContentPane(vista.panelReserva);
 			}
 			registro(vista,modelo);
 		}

@@ -14,6 +14,9 @@ import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JTextArea;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JTextPane;
 
 public class PanelResumen extends JPanel {
 	/**
@@ -22,8 +25,9 @@ public class PanelResumen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public JButton btnFin;
-	public JTable table;
 	public JLabel lblTitulo;
+	public JTextArea txtaDatosUser, txtaDatosHotel, txtaDatosRva, txtaDatosPago;
+	public JTable table;
 
 	
 	public PanelResumen() {
@@ -44,6 +48,28 @@ public class PanelResumen extends JPanel {
 		btnFin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnFin.setBounds(653, 536, 101, 23);
 		add(btnFin);
+		
+		txtaDatosUser = new JTextArea();
+		txtaDatosUser.setToolTipText("\r\n");
+		txtaDatosUser.setEditable(false);
+		txtaDatosUser.setBounds(115, 213, 180, 200);
+		add(txtaDatosUser);
+		
+		txtaDatosHotel = new JTextArea();
+		txtaDatosHotel.setToolTipText("\r\n");
+		txtaDatosHotel.setEditable(false);
+		txtaDatosHotel.setBounds(307, 213, 180, 200);
+		add(txtaDatosHotel);
+		
+		txtaDatosRva = new JTextArea();
+		txtaDatosRva.setToolTipText("\r\n");
+		txtaDatosRva.setEditable(false);
+		txtaDatosRva.setBounds(499, 213, 180, 200);
+		add(txtaDatosRva);
+		
+		txtaDatosPago = new JTextArea();
+		txtaDatosPago.setBounds(115, 465, 372, 58);
+		add(txtaDatosPago);
 		
 		// JTable = Tabla con el resumen de la reserva
 		table = new JTable();
