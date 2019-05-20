@@ -79,12 +79,17 @@ public class Control_login implements ActionListener {
 		//if()
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelLogin
+	 */
 	public static void limpiarLogin(Vista vis) {
 		vis.panelLogin.textFieldNombre.setText("");
 		vis.panelLogin.textFieldContrasenia.setText("");
 	}
 	
-	//-----------------------------------------------------------------------------------------------------------
+	/*
+	 * El usuario consulta con la base de datos si existe un usuario con esos datos, si hay inicia sesion
+	 */
 	public Cliente iniciarSesion(Modelo mod, Vista vis) {
 		String dniUsuario = vis.panelRegistro.txtDni.getText();
 		String contraUsuario = Control_registro.encriptarContra(vis.panelRegistro.txtPassword.getPassword());
@@ -108,6 +113,9 @@ public class Control_login implements ActionListener {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	
+	/*
+	 * Muestra el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	 */
 	public static void nombreUsuario (Vista vis, Cliente cliente) {		
 		vis.panelReserva.lblUsuarioReser.setText(cliente.nombre);
 		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
@@ -117,6 +125,9 @@ public class Control_login implements ActionListener {
 		
 	}
 	
+	/*
+	 * Quita el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	 */
 	public static void salirUsuario(Vista vis) {
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {
 			vis.panelReserva.lblUsuarioReser.setText("");

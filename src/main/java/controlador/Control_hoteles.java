@@ -128,6 +128,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
+	//Añadir listado de casas a JList según ubicación
 	public static void addCasaJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
@@ -147,6 +148,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
+	//Añadir listado de apartamentos a JList según ubicación
 	public static void addApartamentoJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
@@ -199,6 +201,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		} 
 	}
 	
+	//quita todos los objetos del JList
 	public static void limpiarBox(Vista vis) {		
 		vis.panelHoteles.JListHoteles.removeAll();
 	}
@@ -207,7 +210,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vis.panelHoteles.lblNomHotel.setText(nombre);
 	}
 	
-	
+	/*
+	 * Devuelve un ArrayList de hoteles
+	 */
 	public static ArrayList<Hotel> listadoHoteles (ArrayList<Hotel> listHoteles) {	
 		for (int i = 0; i <listHoteles.size(); i++) {
 			listHoteles.get(i);
@@ -215,7 +220,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		return listHoteles;
 	}
 	
-	
+	/*
+	 * Devuelve un ArrayList de casas
+	 */
 	public static ArrayList<Casa> listadoCasas (ArrayList<Casa> listCasas) {	
 		for (int i = 0; i <listCasas.size(); i++) {
 			listCasas.get(i);
@@ -223,6 +230,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		return listCasas;
 	}
 	
+	/*
+	 * Devuelve un ArrayList de apartamentos
+	 */
 	public static ArrayList<Apartamento> listadoApartamento (ArrayList<Apartamento> listApartamento) {	
 		for (int i = 0; i <listApartamento.size(); i++) {
 			listApartamento.get(i);

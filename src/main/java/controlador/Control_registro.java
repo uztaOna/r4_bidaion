@@ -56,6 +56,9 @@ public class Control_registro implements ActionListener {
 		Control_login.limpiarLogin(this.vista);
 	}
 
+	/*
+	 * Registra al usuario
+	 */
 	public static Cliente registro(Vista vis, Modelo modelo) {
 		JTextField dni = vis.panelRegistro.txtDni;
 		JTextField nombre = vis.panelRegistro.txtNombre;
@@ -149,6 +152,9 @@ public class Control_registro implements ActionListener {
 		}
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelRegistro
+	 */
 	public static void limpiarRegistro(Vista vis) {
 		vis.panelRegistro.txtNombre.setText("");
 		vis.panelRegistro.txtApellido.setText("");

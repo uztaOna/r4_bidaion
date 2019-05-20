@@ -23,6 +23,9 @@ public class Control_bienvenida implements ActionListener{
 		this.vista.panelBienvenida.btnInicio.addActionListener(this);
 	}
 	
+	/*
+	 * Añade las ubicaciones de la base de datos a el comboBox
+	 */
 	public void addUbicacionesCombo(Modelo modelo, Vista vista) {
 		//Cargar las ciudades de la bbdd y mostrar
 		 ArrayList<String> ubicaciones = modelo.consulta.getUbicaciones();
