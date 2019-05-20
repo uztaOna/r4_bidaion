@@ -5,14 +5,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.text.ParseException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
-import javafx.scene.control.Spinner;
-import modelo.Hotel;
 import modelo.Modelo;
 import vista.Vista;
 
@@ -46,28 +42,39 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	public void actionPerformed(ActionEvent e) {
 		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
 		
-		if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
+		if(e.getSource() == this.vista.panelBuscador.dateInicio) {
+			this.vista.panelBuscador.btnContinuar.setEnabled(true);
+		}
+		else if(e.getSource() == this.vista.panelBuscador.btnContinuar) {
 			Control_hoteles.addHotelesJList(modelo, vista);	
 			this.vista.setContentPane(vista.panelHoteles);
 			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
+			Control_hoteles.showDestinoBuscador(vista);
+			Control_hoteles.showFechaBuscador(vista);
 			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + getPernoctaciones(vista));
 		}
 		else if(e.getSource() == this.vista.panelBuscador.btnCancelar) {
 			this.vista.setContentPane(vista.panelBienvenida);
 			limpiarinfoHotelSelec(vista);
 		}
-//		else if(e.getSource() == this.vista.panelBuscador.dateInicio) {
-//			Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
-//		}
 		else if (e.getSource() == this.vista.panelBuscador.spinnerDias) {
 			sumarDiasAFecha(fechaInicio, getPernoctaciones(vista));
 			System.out.println("LLEGADA: " + fechaInicio + "         DIAS:" + getPernoctaciones(vista));
 		}
 	}
 	
+	public static String fechaToString(Date fechaInicio){
+		String patron = "dd/MM/yyyy";
+		DateFormat df = new SimpleDateFormat(patron);
+		Date fInicio = fechaInicio;
+		String fInicioString = df.format(fInicio);
+		
+		return fInicioString;
+	}
+	
 	public static int getPernoctaciones(Vista vista) {
-		 int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
-		 return pernoctaciones;
+		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
+		return pernoctaciones;
 	}
 	
 	public static Date sumarDiasAFecha(Date fechaInicio, int pernoctaciones){
@@ -81,17 +88,29 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		calendar.add(Calendar.DAY_OF_MONTH, dias);  
 		return calendar.getTime();   
 	}
-//	Date fechaFinal = variarFecha(fechaInicio, Calendar.HOUR, 1000);
+	
+	//Determinar si la fecha seleccionada esta dentro de temporada alta o temporada baja
+//	public static boolean evaluarLimite(Date date1, Date date2) {
+//	    boolean correcto = false;
+//	    long diferencia = (Math.abs(date1.getTime() - date2.getTime())) / 1000;
+//	    long limit = (60 * 1000) / 1000L;//limite de tiempo
+//
+//	    if (diferencia <= limit) {
+//	        correcto= true;
+//	    }
+//	    return correcto;
+//	}
 	
 	//Acciones de los eventos de PropertyChangeListener (date)
 	public void propertyChange(PropertyChangeEvent e) {
-		
 	}
 	
 	public static void limpiarinfoHotelSelec(Vista vista) {
-		vista.panelHoteles.ubicacion.setText("");
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");
+		vista.panelHoteles.destino.setText("");
+		vista.panelHoteles.fLLegada.setText("");
+		vista.panelHoteles.fSalida.setText("");
 		vista.panelHoteles.btnContinuar.setEnabled(false);
 	}
 	

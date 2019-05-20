@@ -21,7 +21,7 @@ public class PanelLogin extends JPanel {
 	
 	public JLabel lblTitulo, lblNombre, lblContrasenia;
 	public JTextField textFieldNombre;
-	public JButton btnLogin, btnNoAcc, btnCancelar;
+	public JButton btnLogin, btnNoAcc, btnCancelar, btnAtras;
 	public JPasswordField textFieldContrasenia;
 	
 	public PanelLogin() {
@@ -60,9 +60,12 @@ public class PanelLogin extends JPanel {
 		textFieldContrasenia.setBounds(383, 238, 190, 39);
 		add(textFieldContrasenia);
 		
-		btnCancelar = new JButton("CANCELAR");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(32, 523, 100, 29);
 		add(btnCancelar);
+		
+		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setBounds(32, 483, 100, 29);
+		add(btnAtras);
 	}
-
 }

@@ -2,10 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import javax.swing.JOptionPane;
-
-import modelo.Cliente;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
@@ -15,8 +12,7 @@ public class Control_reserva implements ActionListener {
 	
 	Vista vista;
 	Modelo modelo;
-	Cliente cliente;
-	Hotel hotel;
+	public static boolean pulsado;
 	
 	public Control_reserva(Modelo modelo, Vista vista) {
 		this.vista = vista;
@@ -42,9 +38,8 @@ public class Control_reserva implements ActionListener {
 
 
 	TipoHab cama1=new TipoHab(40, 10,14,16);
-	Date miFecha= new Date(115, 6, 2, 15, 30);
-
-	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+//	Date miFecha= new Date(115, 6, 2, 15, 30);
+//	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 
 	
@@ -70,7 +65,8 @@ public class Control_reserva implements ActionListener {
 		else if(e.getSource() == vista.panelReserva.btnReservar) {
 			if(vista.panelReserva.btnLogin.getText()=="Log out") {
 				if(Reserva(vista, cama1)==true && confirmarEleccion(vista)==true) {
-					vista.panelPago.textAPagar.setText(String.valueOf((Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*Control_buscador.getPernoctaciones(vista)));
+					vista.panelPago.textAPagar.setText(String.valueOf(
+							(Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*Control_buscador.getPernoctaciones(vista)));
 					vista.setContentPane(vista.panelPago);
 				}
 			}
@@ -78,17 +74,6 @@ public class Control_reserva implements ActionListener {
 				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
-//		else if(e.getSource() == this.vista.panelHoteles.btnLogin) {
-//			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {				
-//				Control_login.salirUsuario(this.vista);
-////				Control_login.vista = vista.panelHoteles;
-//			}
-//			else {
-//				this.vista.setContentPane(this.vista.panelLogin);
-//			}
-//		}
-		
 		else if(e.getSource() == vista.panelReserva.btnAtras) {
 			vista.setContentPane(vista.panelHoteles);			
 		}
@@ -99,7 +84,6 @@ public class Control_reserva implements ActionListener {
 		else if( e.getSource() == this.vista.panelReserva.btnLogin) {
 			if(this.vista.panelReserva.btnLogin.getText() == "Log out") {				
 				Control_login.salirUsuario(this.vista);
-//				Control_login.vista = vista.panelHoteles;
 			}
 			else {
 				this.vista.setContentPane(this.vista.panelLogin);
@@ -119,6 +103,7 @@ public class Control_reserva implements ActionListener {
 		System.out.println(individual);
 		int matrimonio=vis.panelReserva.lblCantMatri.getComponentCount();
 		int doble=vis.panelReserva.lblCantDoble.getComponentCount();		
+		
 		if(individual>cama.getIndividual()||matrimonio>cama.getMatrimonio()||doble>cama.getDoble()) {
 			JOptionPane.showMessageDialog(null, "Uno de los campos es incorrecto");
 			return false;
@@ -214,12 +199,5 @@ public class Control_reserva implements ActionListener {
 		vis.panelReserva.lblCantInd.setText("0");
 		vis.panelReserva.lblCantMatri.setText("0");
 		vis.panelReserva.lblCantDoble.setText("0");
-	}
-	
-	
-	/*Comprueba que la fecha sea anterior a hoy*/
-	
-	public static void validarFecha(Vista vista) {
-		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
 	}
 }
