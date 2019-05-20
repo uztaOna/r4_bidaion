@@ -28,7 +28,6 @@ public class PanelBienvenida extends JPanel {
 		setLayout(null);
 		
 		btnInicio = new JButton("Reservar");
-		btnInicio.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnInicio.setBounds(174, 319, 411, 55);
 		add(btnInicio);
 		

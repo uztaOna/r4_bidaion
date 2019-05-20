@@ -12,7 +12,7 @@ public class Ficheros {
 		
 	}
 	
-public String imprimirBillete(Hotel billeteIda, String path) {
+public String imprimirBillete(Hotel billete, String path) {
 		
 		FileWriter fichero = null;	
 		PrintWriter writer = null;

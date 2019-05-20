@@ -47,7 +47,6 @@ public class PanelResumen extends JPanel {
 		
 		// JTable = Tabla con el resumen de la reserva
 		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		Object[][] datosIda = {};
 		String[] columnNames = {"Nº Reserva", "Destino", "Alojamiento", "Fecha llegada",  "Fecha salida", 
 				"Dni", "Nombre", "Apellido", "Descripción", "Extras", "Precio"};

@@ -73,5 +73,4 @@ public class test_reserva {
 		rva3.setFechaFin(finDate);
 		assertEquals(rva3.getFechaFin(), finDate);
 	}
-
 }

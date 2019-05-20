@@ -46,7 +46,7 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnReservar.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnReservar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnReservar.setBounds(653, 536, 101, 23);
+		btnReservar.setBounds(664, 535, 101, 23);
 		add(btnReservar);
 		
 		btnLogin = new JButton("Iniciar Sesi\u00F3n");
@@ -158,7 +158,7 @@ public class PanelReserva extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnCancelar.setAlignmentY(0.0f);
-		btnCancelar.setBounds(27, 536, 101, 23);
+		btnCancelar.setBounds(27, 535, 101, 23);
 		add(btnCancelar);
 		
 		
@@ -192,7 +192,7 @@ public class PanelReserva extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnAtras.setAlignmentY(0.0f);
-		btnAtras.setBounds(146, 536, 101, 23);
+		btnAtras.setBounds(27, 502, 101, 23);
 		add(btnAtras);
 		
 		btnMasInd = new JButton("+");
