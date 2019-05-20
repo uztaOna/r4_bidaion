@@ -25,6 +25,9 @@ public class Control_resumen implements ActionListener {
 		
 	}
 	
+	/*
+	 * Muestra los datos de la reserva
+	 */
 	public void mostrarReserva(Reserva rva, Cliente cliete, DefaultTableModel tablaModel) {
 		
 		Object[] datosRva = new Object[11];

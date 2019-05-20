@@ -63,6 +63,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		}
 	}
 	
+	/*
+	 * Devuelve la fecha en String al pasarle un parametro Date
+	 */
 	public static String fechaToString(Date fechaInicio){
 		String patron = "dd/MM/yyyy";
 		DateFormat df = new SimpleDateFormat(patron);
@@ -72,6 +75,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		return fInicioString;
 	}
 	
+	/*
+	 * Devuelve en valor int el valor seleccionado del Spinner
+	 */
 	public static int getPernoctaciones(Vista vista) {
 		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		return pernoctaciones;
@@ -105,6 +111,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	public void propertyChange(PropertyChangeEvent e) {
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelHoteles
+	 */
 	public static void limpiarinfoHotelSelec(Vista vista) {
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");

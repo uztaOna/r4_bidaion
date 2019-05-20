@@ -57,7 +57,9 @@ public class Control_pago implements ActionListener {
 		}
 	}
 	
-	
+	/*
+	 * Resta el precio de la reserva de la cuenta del usuario
+	 */
 	public static void pagar(Vista vis, Cliente cliente){
 		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
 
@@ -75,6 +77,9 @@ public class Control_pago implements ActionListener {
 			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 	}
 	
+	/*
+	 * Devuelve el calcula el precio del total de camas seleccionadas
+	 */
 	public static double precio(Vista vis, Hotel hotel) {	
 		double precio = (Double.parseDouble(vis.panelReserva.lblCantInd.getText())*hotel.getPrecio())+
 				(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())*(hotel.getPrecio()*1.1))+
@@ -84,6 +89,9 @@ public class Control_pago implements ActionListener {
 		return Math.round(precio);
 	}
 	
+	/*
+	 * Devuelve el calculo del servicio seleccionado
+	 */
 	public static double precioRadios(Vista vis) {
 		boolean radioArray[] = {vis.panelReserva.rdbtnWifi.isSelected(),
 				vis.panelReserva.rdbtnPiscina.isSelected(),
