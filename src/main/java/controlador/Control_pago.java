@@ -48,15 +48,15 @@ public class Control_pago implements ActionListener {
 			Control_reserva.disponibilidadCamas(vista, cama1);			
 		}
 		else if(e.getSource() == vista.panelPago.btnAtras) {
-			vista.setContentPane(vista.panelReserva);
+			this.vista.setContentPane(vista.panelReserva);
 		}
 		else if(e.getSource() == vista.panelPago.btnCancelar) {
 			Control_hoteles.limpiarBox(vista);
-			vista.setContentPane(vista.panelBienvenida);
+			this.vista.setContentPane(vista.panelBienvenida);
 		}
 		else if(e.getSource() == vista.panelPago.btnConfirmar) {
-			vista.setContentPane(vista.panelResumen);
-//			actualizarFrame(vista);
+//			vista.setContentPane(vista.panelResumen);
+			actualizarFrame();
 		}
 	}
 	
@@ -123,11 +123,16 @@ public class Control_pago implements ActionListener {
 		return false;
 	}
 	
-//	public void actualizarFrame(Vista vista) {
-//		DefaultTableModel tablaBillete = (DefaultTableModel) vista.panelResumen.table.getModel();
-//		mostrarReserva( modelo.reserva, tablaBillete);
-//	}
+	public void actualizarFrame() {
+		DefaultTableModel tablaRva = (DefaultTableModel) vista.panelResumen.table.getModel();
+		mostrarReserva(modelo.reserva, tablaRva);
+		
+		vista.setContentPane(vista.panelResumen);
+	}
 	
+	/*
+	 * Muestra los datos de la reserva
+	 */
 	public void mostrarReserva(Reserva rva, DefaultTableModel tablaModel) {
 		
 		Object[] datosRva = new Object[11];

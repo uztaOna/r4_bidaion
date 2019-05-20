@@ -109,6 +109,11 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	
 	//Acciones de los eventos de PropertyChangeListener (date)
 	public void propertyChange(PropertyChangeEvent e) {
+		Date fInicio = vista.panelBuscador.dateInicio.getDate();
+		Date fFin = sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
+		
+		this.modelo.reserva.setFechaIni(fInicio);
+		this.modelo.reserva.setFechaFin(fFin);
 	}
 	
 	/*

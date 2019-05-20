@@ -22,7 +22,7 @@ public class Reserva {
 	//Constructor con parámetros de reserva
 	public Reserva(int codigoReserva, String destino, String hotel, Date fechaIni, Date fechaFin, String dni,
 			String nomUsuario, String apeUsuario, int tipoHab, String extras, double precio) {
-		super();
+		
 		this.codigoReserva = codigoReserva;
 		this.destino = destino;
 		this.hotel = hotel;

@@ -69,32 +69,32 @@ public class PanelResumen extends JPanel {
 		    }
 		});
 		
-		//Parametros del Jtable
-		DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-		cellRenderer.setHorizontalAlignment( JLabel.CENTER );
-		
-		table.setDefaultRenderer(String.class, cellRenderer);
-		table.setDefaultRenderer(int.class, cellRenderer);
-		table.setDefaultRenderer(float.class, cellRenderer);
-		table.setFillsViewportHeight(true);
-		
-		table.setBounds(66, 198, 665, 266);
-		table.setBackground(SystemColor.controlShadow);
-		table.setFocusable(false);
-		table.setRowHeight(50);
-		table.setRowSelectionAllowed(false);
-		
-		table.getColumnModel().getColumn(0).setPreferredWidth(120);
-		table.getColumnModel().getColumn(1).setPreferredWidth(120);
-		table.getColumnModel().getColumn(2).setPreferredWidth(120);
-		table.getColumnModel().getColumn(3).setPreferredWidth(120);
-		table.getColumnModel().getColumn(4).setPreferredWidth(120);
-		table.getColumnModel().getColumn(5).setPreferredWidth(120);
-		table.getColumnModel().getColumn(6).setPreferredWidth(120);
-		table.getColumnModel().getColumn(7).setPreferredWidth(120);
-		table.getColumnModel().getColumn(8).setPreferredWidth(120);
-		table.getColumnModel().getColumn(9).setPreferredWidth(120);
-		table.getColumnModel().getColumn(10).setPreferredWidth(120);
-		add(table);
+//		//Parametros del Jtable
+//		DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+//		cellRenderer.setHorizontalAlignment( JLabel.CENTER );
+//		
+//		table.setDefaultRenderer(String.class, cellRenderer);
+//		table.setDefaultRenderer(int.class, cellRenderer);
+//		table.setDefaultRenderer(float.class, cellRenderer);
+//		table.setFillsViewportHeight(true);
+//		
+//		table.setBounds(66, 198, 665, 266);
+//		table.setBackground(SystemColor.controlShadow);
+//		table.setFocusable(false);
+//		table.setRowHeight(50);
+//		table.setRowSelectionAllowed(false);
+//		
+//		table.getColumnModel().getColumn(0).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(1).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(2).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(3).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(4).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(5).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(6).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(7).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(8).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(9).setPreferredWidth(120);
+//		table.getColumnModel().getColumn(10).setPreferredWidth(120);
+//		add(table);
 	}
 }

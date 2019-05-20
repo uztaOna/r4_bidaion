@@ -86,7 +86,6 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
 	}
 	
 	public static void showDestinoBuscador(Vista vista) {
@@ -99,7 +98,7 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public static void showFechaBuscador(Vista vista) {
 		Date fInicio = vista.panelBuscador.dateInicio.getDate();
 		Date fFin = Control_buscador.sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
-		
+
 		vista.panelHoteles.fLLegada.setText(Control_buscador.fechaToString(fInicio));
 		vista.panelHoteles.fSalida.setText(Control_buscador.fechaToString(fFin));
 		
