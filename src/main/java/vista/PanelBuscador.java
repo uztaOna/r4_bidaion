@@ -73,4 +73,13 @@ public class PanelBuscador extends JPanel {
 		add(btnCancelar);
 		
 	}
+	
+	public void limpiarPanelBuscador()
+	{
+		comboBox.removeAllItems();
+	}
+	
+	public void anadirElementoCombo(String elemento) {
+		comboBox.addItem(elemento);
+	}
 }
