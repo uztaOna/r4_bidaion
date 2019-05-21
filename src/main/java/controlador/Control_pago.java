@@ -55,6 +55,7 @@ public class Control_pago implements ActionListener {
 		}
 		else if(e.getSource() == vista.panelPago.btnConfirmar) {
 			this.vista.setContentPane(vista.panelResumen);
+			this.vista.panelResumen.txtaDatosUser.setText( rellenarDatosUsuario(vista, cliente1));
 //			actualizarFrame();
 		}
 	}
@@ -158,5 +159,17 @@ public class Control_pago implements ActionListener {
 		
 		tablaModel.addRow(datosRva);
 		System.out.println(datosRva);
+	}
+	
+	public String rellenarDatosUsuario(Vista vista, Cliente cliente) {
+		String cadenatexto ="";
+		return cadenatexto= "Nombre: " + cliente.getNombre() + "\n" +"Apellido: " + cliente.getApellido() + 
+				"\n" + "DNI: " + cliente.getDni() + "\n" + "Sexo: " + cliente.getSexo();
+	}
+	
+	public String rellenarDatosReserva(Vista vista, Cliente cliente) {
+		String cadenatexto ="";
+		return cadenatexto= "Nombre: " + cliente.getNombre() + "/n" +"Apellido: " + cliente.getApellido() + 
+				"/n" + "DNI: " + cliente.getDni() + "/n" + "Sexo: " + cliente.getSexo();
 	}
 }

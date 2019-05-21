@@ -20,9 +20,9 @@ public class Control_resumen implements ActionListener {
 	public void inicializar_eventos_resumen() {
 		this.vista.panelResumen.btnFin.addActionListener(this);
 	}
-
+	
 	public void actionPerformed(ActionEvent e) {
 		
-		
 	}
+	
 }
