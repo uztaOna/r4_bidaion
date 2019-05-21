@@ -41,7 +41,6 @@ public class Control_bienvenida implements ActionListener{
 			panelBuscador.anadirElementoCombo(ubicaciones.get(i).toString());
 		}
 	}
-
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {

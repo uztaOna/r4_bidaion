@@ -36,7 +36,6 @@ public class Control_reserva implements ActionListener {
 		this.vista.panelReserva.btnMenosDoble.addActionListener(this);
 	}
 
-
 	TipoHab cama1=new TipoHab(40, 10,14,16);
 //	Date miFecha= new Date(115, 6, 2, 15, 30);
 //	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
@@ -95,8 +94,7 @@ public class Control_reserva implements ActionListener {
 			this.vista.setContentPane(this.vista.panelRegistro);
 		}
 	}
-	
-	
+		
 	/*
 	 * Registra al usuario si no lo está
 	 */

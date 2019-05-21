@@ -78,7 +78,6 @@ public class Control_pago implements ActionListener {
 			vis.panelPago.textAPagar.setEnabled(false);
 			vis.panelPago.textCuenta.setEnabled(false);
 		}
-
 		else
 			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 	}

@@ -2,8 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import vista.Vista;
 
@@ -24,7 +22,20 @@ public class Control_resumen implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelResumen.btnFin) {			
 			vista.setContentPane(vista.panelDespedida);
+			resetBotonesPago(vista);
 		}
+	}
+	
+	/*
+	 * Deja los botones que cambiaron de estado al estado con el que empezaron
+	 */
+	public void resetBotonesPago(Vista vista) {
+		vista.panelPago.btnPagar.setEnabled(true);
+		vista.panelPago.btnConfirmar.setEnabled(false);
+		vista.panelPago.btnAtras.setEnabled(true);
+		vista.panelPago.btnCancelar.setEnabled(true);
+		vista.panelPago.textAPagar.setEnabled(true);
+		vista.panelPago.textCuenta.setEnabled(true);		
 	}
 	
 }

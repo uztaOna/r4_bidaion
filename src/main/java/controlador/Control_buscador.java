@@ -22,8 +22,7 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		this.vista = vista;
 	}
 	
-	public void inicializar_eventos_buscador()
-	{
+	public void inicializar_eventos_buscador() {
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
 		this.vista.panelBuscador.btnCancelar.addActionListener(this);
 		this.vista.panelBuscador.spinnerDias.addContainerListener(this);

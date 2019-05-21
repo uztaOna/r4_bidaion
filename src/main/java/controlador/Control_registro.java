@@ -114,7 +114,6 @@ public class Control_registro implements ActionListener {
 		return DNI.getText().matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
 	
-	
 	/**
 	 * Encritacion de la contraseña
 	 * @param contrasenia
