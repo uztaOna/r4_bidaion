@@ -22,7 +22,9 @@ public class Control_resumen implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		if(e.getSource() == vista.panelResumen.btnFin) {			
+			vista.setContentPane(vista.panelDespedida);
+		}
 	}
 	
 }

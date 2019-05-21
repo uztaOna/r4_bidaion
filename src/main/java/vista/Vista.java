@@ -20,6 +20,7 @@ public class Vista extends JFrame {
 	public PanelReserva panelReserva;
 	public PanelPago panelPago;	
 	public PanelResumen panelResumen;	
+	public PanelDespedida panelDespedida;
 	
 	public Vista() {
 		
@@ -32,6 +33,7 @@ public class Vista extends JFrame {
 		panelReserva=new PanelReserva();
 		panelPago=new PanelPago();
 		panelResumen=new PanelResumen();
+		panelDespedida=new PanelDespedida();
 
 		getContentPane().add(panelBienvenida);
 		getContentPane().add(panelBuscador);
@@ -40,7 +42,8 @@ public class Vista extends JFrame {
 		getContentPane().add(panelLogin);
 		getContentPane().add(panelReserva);
 		getContentPane().add(panelPago);	
-		getContentPane().add(panelResumen);	
+		getContentPane().add(panelResumen);
+		getContentPane().add(panelDespedida);	
 		
 		//Inicializacion de variables
 		

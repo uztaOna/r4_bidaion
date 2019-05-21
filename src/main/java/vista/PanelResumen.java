@@ -25,7 +25,7 @@ public class PanelResumen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public JButton btnFin;
-	public JLabel lblTitulo;
+	public JLabel lblTitulo, lblDatosUsuario, lblDatosHotel, lblDatosReserva, lblPrecio;
 	public JTextArea txtaDatosUser, txtaDatosHotel, txtaDatosRva, txtaDatosPago;
 	public JTable table;
 
@@ -71,19 +71,19 @@ public class PanelResumen extends JPanel {
 		txtaDatosPago.setBounds(106, 421, 372, 99);
 		add(txtaDatosPago);
 		
-		JLabel lblDatosUsuario = new JLabel("Datos Usuario:");
+		lblDatosUsuario = new JLabel("Datos Usuario:");
 		lblDatosUsuario.setBounds(104, 142, 84, 26);
 		add(lblDatosUsuario);
 		
-		JLabel lblDatosHotel = new JLabel("Datos Hotel:");
+		lblDatosHotel = new JLabel("Datos Hotel:");
 		lblDatosHotel.setBounds(298, 142, 77, 32);
 		add(lblDatosHotel);
 		
-		JLabel lblDatosReserva = new JLabel("Datos Reserva:");
+		lblDatosReserva = new JLabel("Datos Reserva:");
 		lblDatosReserva.setBounds(490, 148, 122, 23);
 		add(lblDatosReserva);
 		
-		JLabel lblPrecio = new JLabel("Precio:");
+		lblPrecio = new JLabel("Precio:");
 		lblPrecio.setBounds(106, 390, 84, 32);
 		add(lblPrecio);
 		

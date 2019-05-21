@@ -75,6 +75,8 @@ public class Control_pago implements ActionListener {
 			vis.panelPago.btnConfirmar.setEnabled(true);
 			vis.panelPago.btnAtras.setEnabled(false);
 			vis.panelPago.btnCancelar.setEnabled(false);
+			vis.panelPago.textAPagar.setEnabled(false);
+			vis.panelPago.textCuenta.setEnabled(false);
 		}
 
 		else
@@ -185,9 +187,9 @@ public class Control_pago implements ActionListener {
 	 */
 	public String rellenarDatosPrecio(Vista vista, Hotel hotel) {
 		String datosPrecio;
-		return datosPrecio= "Hotel: " + precio(vista, hotel)+ "\n" + "Servicios Extra: " + precioRadios(vista) +
-		"\n" + "Días: " + Control_buscador.getPernoctaciones(vista) + "\n" + "Total: " +  
-		((precio(vista, hotel)+precioRadios(vista))*Control_buscador.getPernoctaciones(vista));
+		return datosPrecio= "Hotel: " + precio(vista, hotel) + " €" + "\n" + "Servicios Extra: " + precioRadios(vista)
+		+ " €" + "\n" + "Días: " + Control_buscador.getPernoctaciones(vista) + " €" + "\n" + "Total: " +  
+		((precio(vista, hotel)+precioRadios(vista))*Control_buscador.getPernoctaciones(vista)) + " €";
 	}
 	
 }
