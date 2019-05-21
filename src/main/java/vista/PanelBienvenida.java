@@ -1,14 +1,10 @@
 package vista;
 
 import javax.swing.JPanel;
-
 import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
-
 import java.awt.Font;
 
 public class PanelBienvenida extends JPanel {

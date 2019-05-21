@@ -89,11 +89,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	}
 	
 	public static void showDestinoBuscador(Vista vista) {
-		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
+		String ubicacion = vista.panelBuscador.comboUbicaciones.getSelectedItem().toString();
 		
 		vista.panelHoteles.destino.setText(ubicacion);
-		vista.panelReserva.destino.setText(ubicacion);	
-		vista.panelResumen.txtaDatosRva.setText(ubicacion);
+		vista.panelReserva.destino.setText(ubicacion);
 	}
 
 	public static void showFechaBuscador(Vista vista) {
@@ -112,8 +111,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public static void addHotelesJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
-		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
-
+		String ubicacion = vista.panelBuscador.comboUbicaciones.getSelectedItem().toString();
+//		modelo.reserva.setDestino(ubicacion);
+		
 		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Hotel> hotelesList =	modelo.consulta.getHotelesUbicacion(ubicacion);
 		Control_hoteles.listadoHoteles(hotelesList); 
@@ -132,8 +132,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public static void addCasaJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
-		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
-
+		String ubicacion = vista.panelBuscador.comboUbicaciones.getSelectedItem().toString();
+		modelo.reserva.setDestino(ubicacion);
+		
 		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Casa> casasList =	modelo.consulta.getCasasUbicacion(ubicacion);
 		Control_hoteles.listadoCasas(casasList); 
@@ -152,8 +153,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public static void addApartamentoJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
-		String ubicacion = vista.panelBuscador.comboBox.getSelectedItem().toString();
-
+		String ubicacion = vista.panelBuscador.comboUbicaciones.getSelectedItem().toString();
+		modelo.reserva.setDestino(ubicacion);
+		
 		//Lamar a la funcion que lee los hoteles de la BBDD en el modelo
 		ArrayList <Apartamento> apartamentoList =	modelo.consulta.getApartamentosUbicacion(ubicacion);
 		Control_hoteles.listadoApartamento(apartamentoList); 
@@ -175,6 +177,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		
 		// 2 Ir a BBDD y sacar datos de hotel pasandole NOMBRE
 		Hotel hotel = modelo.consulta.getDatosHotel(nombreHotel);
+		
+//		modelo.hotel.setCategoria(hotel.getCategoria());
+//		modelo.hotel.setId(hotel.getId());
 		
 		// Limpiar elementos anteriores
 //		vista.panelHoteles.ubicacion.removeAll();

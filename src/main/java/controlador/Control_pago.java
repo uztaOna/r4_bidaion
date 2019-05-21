@@ -16,8 +16,8 @@ public class Control_pago implements ActionListener {
 	
 	Vista vista;
 	Modelo modelo;
-	private Reserva reserva;
-	private DefaultTableModel tablaBillete;
+	Reserva reserva;
+	Hotel hotel;
 	
 	public Control_pago(Modelo modelo, Vista vista) {
 		this.vista = vista;
@@ -35,9 +35,8 @@ public class Control_pago implements ActionListener {
 
 	TipoHab cama1=new TipoHab(40, 10,14,16);
 	Date miFecha= new Date(115, 6, 2, 15, 30);
-
-	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
-	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
+	Hotel hotel1=new Hotel("ID DEMO", "Hotel Risketos", "Valle de Narnia", 85, 5, 50);
+	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 1234567890, 2500.50f);
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
@@ -57,6 +56,7 @@ public class Control_pago implements ActionListener {
 			this.vista.panelResumen.txtaDatosUser.setText(rellenarDatosUsuario(vista, cliente1));
 			this.vista.panelResumen.txtaDatosHotel.setText(rellenarDatosHotel(vista, hotel1));
 			this.vista.panelResumen.txtaDatosPago.setText(rellenarDatosPrecio(vista, hotel1));
+			this.vista.panelResumen.txtaDatosRva.setText(rellenarDatosRva(vista));
 //			actualizarFrame();
 		}
 	}
@@ -132,12 +132,12 @@ public class Control_pago implements ActionListener {
 		return false;
 	}
 	
-	public void actualizarFrame() {
-		DefaultTableModel tablaRva = (DefaultTableModel) vista.panelResumen.table.getModel();
-		mostrarReserva(modelo.reserva, tablaRva);
-		
-		vista.setContentPane(vista.panelResumen);
-	}
+//	public void actualizarFrame() {
+//		DefaultTableModel tablaRva = (DefaultTableModel) vista.panelResumen.table.getModel();
+//		mostrarReserva(modelo.reserva, tablaRva);
+//		
+//		vista.setContentPane(vista.panelResumen);
+//	}
 	
 	/*
 	 * Muestra los datos de la reserva
@@ -167,28 +167,53 @@ public class Control_pago implements ActionListener {
 	 * Inserta los datos del Usuario en el texarea del usuario
 	 */
 	public String rellenarDatosUsuario(Vista vista, Cliente cliente) {
-		String datosUsuario;
-		return datosUsuario= "Nombre: " + cliente.getNombre() + "\n" +"Apellido: " + cliente.getApellido() + 
-				"\n" + "DNI: " + cliente.getDni() + "\n" + "Sexo: " + cliente.getSexo();
+		return "Nombre: " + cliente.getNombre() + "\n" + 
+				"Apellido: " + cliente.getApellido() + "\n" + 
+				"DNI: " + cliente.getDni() + "\n" + 
+				"Sexo: " + cliente.getSexo();
 	}
 	
 	/*
 	 * Inserta los datos del Hotel en el texarea del Hotel
 	 */
 	public String rellenarDatosHotel(Vista vista, Hotel hotel) {
-		String datosHotel;
-		return datosHotel= "Hotel: " + hotel.getNombreAloj()+ "\n" + "Ubicación: " + hotel.getUbicacion() +"\n" +
-		"Estrellas: " + hotel.getCategoria() + "\n" + "Cantidad habitaciones: " + hotel.getNumHabitaciones() ;
+		return hotel.getNombreAloj()+ "\n" + 
+				"Ciudad: " + hotel.getUbicacion() +"\n" +
+				"Categoría: " + hotel.getCategoria() + "*" + "\n" + 
+				"Cantidad habitaciones: " + hotel.getNumHabitaciones() ;
+	}
+	
+	/*
+	 * Inserta los datos de la Reserva en el textArea del Hotel
+	 */
+	public String rellenarDatosRva(Vista vista) {
+		int codRva = 001;
+		Date fiDate = vista.panelBuscador.dateInicio.getDate();
+		String fInicio = Control_buscador.fechaToString(fiDate);
+		String fFin = Control_buscador.fechaToString(Control_buscador.sumarDiasAFecha(fiDate, Control_buscador.getPernoctaciones(vista)));
+		
+		return "Nº Reserva: " + codRva + "\n" +
+				"\n" +
+				"Destino: " +  vista.panelBuscador.comboUbicaciones.getSelectedItem().toString() + "\n" +
+				"\n" +
+				"Llegada: 	" + fInicio.toString() + "\n" + 
+				"Salida:	 " + fFin.toString() + "\n" +
+				"Total días: " + Control_buscador.getPernoctaciones(vista) + "\n" +
+				"\n" +
+				"Habitación individual: " + 2 + "\n" +
+				"Habitación matrimonio: " + 0 + "\n" +
+				"Habitación doble: 		" + 0;
 	}
 	
 	/*
 	 * Inserta los datos del Precio en el texarea del Precio
 	 */
 	public String rellenarDatosPrecio(Vista vista, Hotel hotel) {
-		String datosPrecio;
-		return datosPrecio= "Hotel: " + precio(vista, hotel) + " €" + "\n" + "Servicios Extra: " + precioRadios(vista)
-		+ " €" + "\n" + "Días: " + Control_buscador.getPernoctaciones(vista) + " €" + "\n" + "Total: " +  
-		((precio(vista, hotel)+precioRadios(vista))*Control_buscador.getPernoctaciones(vista)) + " €";
+		return "Hotel: " + (precio(vista, hotel) * Control_buscador.getPernoctaciones(vista)) + " €" + "\n" + 
+				"Servicios Extra: " + precioRadios(vista) + " €" + "\n" +
+				"\n" +
+				"TOTAL: " + ((precio(vista, hotel) + precioRadios(vista)) 
+						* Control_buscador.getPernoctaciones(vista)) + " €";
 	}
 	
 }

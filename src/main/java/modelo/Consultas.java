@@ -352,14 +352,17 @@ public class Consultas {
 		try {
 			String query2 = "insert into cc (NumeroCC, DNI, Saldo) values(?,?,10000);";
 			String query = "insert into clientes (DNI,Nombre,Apellido,Fnac,Sexo,Password) values(?,?,?,?,?,?);";
+			
 			PreparedStatement insertarUsuario = this.conexion.cnx.prepareStatement(query);
 			PreparedStatement insertarCuenta = this.conexion.cnx.prepareStatement(query2);
+			
 			insertarUsuario.setString(1, usuario.dni);
 			insertarUsuario.setString(2, usuario.nombre);
 			insertarUsuario.setString(3, usuario.apellido);
 			insertarUsuario.setDate(4, new java.sql.Date(usuario.fechaNac.getTime()));
 			insertarUsuario.setString(5, String.valueOf(usuario.sexo));
 			insertarUsuario.setString(6, usuario.getContrasenia());
+			
 			insertarCuenta.setInt(1, usuario.NCuenta);
 			insertarCuenta.setString(2, usuario.dni);
 			

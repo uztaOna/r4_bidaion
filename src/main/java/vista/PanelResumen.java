@@ -6,17 +6,13 @@ import java.awt.Cursor;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.BevelBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
-import javax.swing.JTable;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextArea;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.JTextPane;
+import javax.swing.border.TitledBorder;
 
 public class PanelResumen extends JPanel {
 	/**
@@ -25,10 +21,8 @@ public class PanelResumen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public JButton btnFin;
-	public JLabel lblTitulo, lblDatosUsuario, lblDatosHotel, lblDatosReserva, lblPrecio;
+	public JLabel lblTitulo;
 	public JTextArea txtaDatosUser, txtaDatosHotel, txtaDatosRva, txtaDatosPago;
-	public JTable table;
-
 	
 	public PanelResumen() {
 		setBorder(new LineBorder(SystemColor.desktop, 1, true));
@@ -50,93 +44,29 @@ public class PanelResumen extends JPanel {
 		add(btnFin);
 		
 		txtaDatosUser = new JTextArea();
+		txtaDatosUser.setBorder(new TitledBorder(null, "Datos usuario", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		txtaDatosUser.setToolTipText("\r\n");
 		txtaDatosUser.setEditable(false);
-		txtaDatosUser.setBounds(106, 179, 180, 200);
+		txtaDatosUser.setBounds(167, 173, 250, 100);
 		add(txtaDatosUser);
 		
 		txtaDatosHotel = new JTextArea();
+		txtaDatosHotel.setBorder(new TitledBorder(null, "Datos alojamiento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		txtaDatosHotel.setToolTipText("\r\n");
 		txtaDatosHotel.setEditable(false);
-		txtaDatosHotel.setBounds(298, 179, 180, 200);
+		txtaDatosHotel.setBounds(167, 285, 250, 100);
 		add(txtaDatosHotel);
 		
 		txtaDatosRva = new JTextArea();
+		txtaDatosRva.setBorder(new TitledBorder(null, "Datos reserva", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		txtaDatosRva.setToolTipText("\r\n");
 		txtaDatosRva.setEditable(false);
-		txtaDatosRva.setBounds(490, 179, 180, 200);
+		txtaDatosRva.setBounds(429, 173, 180, 212);
 		add(txtaDatosRva);
 		
 		txtaDatosPago = new JTextArea();
-		txtaDatosPago.setBounds(106, 421, 372, 99);
+		txtaDatosPago.setBorder(new TitledBorder(null, "Precio", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		txtaDatosPago.setBounds(167, 397, 442, 99);
 		add(txtaDatosPago);
-		
-		lblDatosUsuario = new JLabel("Datos Usuario:");
-		lblDatosUsuario.setBounds(104, 142, 84, 26);
-		add(lblDatosUsuario);
-		
-		lblDatosHotel = new JLabel("Datos Hotel:");
-		lblDatosHotel.setBounds(298, 142, 77, 32);
-		add(lblDatosHotel);
-		
-		lblDatosReserva = new JLabel("Datos Reserva:");
-		lblDatosReserva.setBounds(490, 148, 122, 23);
-		add(lblDatosReserva);
-		
-		lblPrecio = new JLabel("Precio:");
-		lblPrecio.setBounds(106, 390, 84, 32);
-		add(lblPrecio);
-		
-		// JTable = Tabla con el resumen de la reserva
-		table = new JTable();
-		Object[][] datosIda = {};
-		String[] columnNames = {"Nº Reserva", "Destino", "Alojamiento", "Fecha llegada",  "Fecha salida", 
-				"Dni", "Nombre", "Apellido", "Descripción", "Extras", "Precio"};
-		
-		table.setModel(new DefaultTableModel(datosIda,columnNames) {
-			private static final long serialVersionUID = 1L;
-			
-			@SuppressWarnings("rawtypes")
-			Class[] columnTypes = new Class[] {
-				int.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, double.class
-			};
-			
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-			@Override
-		    public boolean isCellEditable(int row, int column) {
-		        return false;
-		    }
-		});
-		
-//		//Parametros del Jtable
-//		DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
-//		cellRenderer.setHorizontalAlignment( JLabel.CENTER );
-//		
-//		table.setDefaultRenderer(String.class, cellRenderer);
-//		table.setDefaultRenderer(int.class, cellRenderer);
-//		table.setDefaultRenderer(float.class, cellRenderer);
-//		table.setFillsViewportHeight(true);
-//		
-//		table.setBounds(66, 198, 665, 266);
-//		table.setBackground(SystemColor.controlShadow);
-//		table.setFocusable(false);
-//		table.setRowHeight(50);
-//		table.setRowSelectionAllowed(false);
-//		
-//		table.getColumnModel().getColumn(0).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(1).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(2).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(3).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(4).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(5).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(6).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(7).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(8).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(9).setPreferredWidth(120);
-//		table.getColumnModel().getColumn(10).setPreferredWidth(120);
-//		add(table);
 	}
 }

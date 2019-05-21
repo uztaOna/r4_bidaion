@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class PanelDespedida extends JPanel {
 	/**
@@ -19,7 +21,9 @@ public class PanelDespedida extends JPanel {
 		setBackground(new Color(255, 201, 164));
 		
 		JLabel lblGraciasPorSu = new JLabel("Gracias por su compra");
-		lblGraciasPorSu.setBounds(314, 206, 132, 138);
+		lblGraciasPorSu.setFont(new Font("Tahoma", Font.PLAIN, 42));
+		lblGraciasPorSu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGraciasPorSu.setBounds(10, 80, 780, 138);
 		add(lblGraciasPorSu);
 		
 
