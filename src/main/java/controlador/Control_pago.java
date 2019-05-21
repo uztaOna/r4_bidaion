@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
-import modelo.Habitacion;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.Reserva;
