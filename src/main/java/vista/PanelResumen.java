@@ -52,24 +52,40 @@ public class PanelResumen extends JPanel {
 		txtaDatosUser = new JTextArea();
 		txtaDatosUser.setToolTipText("\r\n");
 		txtaDatosUser.setEditable(false);
-		txtaDatosUser.setBounds(115, 213, 180, 200);
+		txtaDatosUser.setBounds(106, 179, 180, 200);
 		add(txtaDatosUser);
 		
 		txtaDatosHotel = new JTextArea();
 		txtaDatosHotel.setToolTipText("\r\n");
 		txtaDatosHotel.setEditable(false);
-		txtaDatosHotel.setBounds(307, 213, 180, 200);
+		txtaDatosHotel.setBounds(298, 179, 180, 200);
 		add(txtaDatosHotel);
 		
 		txtaDatosRva = new JTextArea();
 		txtaDatosRva.setToolTipText("\r\n");
 		txtaDatosRva.setEditable(false);
-		txtaDatosRva.setBounds(499, 213, 180, 200);
+		txtaDatosRva.setBounds(490, 179, 180, 200);
 		add(txtaDatosRva);
 		
 		txtaDatosPago = new JTextArea();
-		txtaDatosPago.setBounds(115, 465, 372, 58);
+		txtaDatosPago.setBounds(106, 421, 372, 99);
 		add(txtaDatosPago);
+		
+		JLabel lblDatosUsuario = new JLabel("Datos Usuario:");
+		lblDatosUsuario.setBounds(104, 142, 84, 26);
+		add(lblDatosUsuario);
+		
+		JLabel lblDatosHotel = new JLabel("Datos Hotel:");
+		lblDatosHotel.setBounds(298, 142, 77, 32);
+		add(lblDatosHotel);
+		
+		JLabel lblDatosReserva = new JLabel("Datos Reserva:");
+		lblDatosReserva.setBounds(490, 148, 84, 23);
+		add(lblDatosReserva);
+		
+		JLabel lblPrecio = new JLabel("Precio:");
+		lblPrecio.setBounds(106, 390, 84, 32);
+		add(lblPrecio);
 		
 		// JTable = Tabla con el resumen de la reserva
 		table = new JTable();

@@ -55,7 +55,9 @@ public class Control_pago implements ActionListener {
 		}
 		else if(e.getSource() == vista.panelPago.btnConfirmar) {
 			this.vista.setContentPane(vista.panelResumen);
-			this.vista.panelResumen.txtaDatosUser.setText( rellenarDatosUsuario(vista, cliente1));
+			this.vista.panelResumen.txtaDatosUser.setText(rellenarDatosUsuario(vista, cliente1));
+			this.vista.panelResumen.txtaDatosHotel.setText(rellenarDatosHotel(vista, hotel1));
+			this.vista.panelResumen.txtaDatosPago.setText(rellenarDatosPrecio(vista, hotel1));
 //			actualizarFrame();
 		}
 	}
@@ -161,15 +163,32 @@ public class Control_pago implements ActionListener {
 		System.out.println(datosRva);
 	}
 	
+	/*
+	 * Inserta los datos del Usuario en el texarea del usuario
+	 */
 	public String rellenarDatosUsuario(Vista vista, Cliente cliente) {
-		String cadenatexto ="";
-		return cadenatexto= "Nombre: " + cliente.getNombre() + "\n" +"Apellido: " + cliente.getApellido() + 
+		String datosUsuario;
+		return datosUsuario= "Nombre: " + cliente.getNombre() + "\n" +"Apellido: " + cliente.getApellido() + 
 				"\n" + "DNI: " + cliente.getDni() + "\n" + "Sexo: " + cliente.getSexo();
 	}
 	
-	public String rellenarDatosReserva(Vista vista, Cliente cliente) {
-		String cadenatexto ="";
-		return cadenatexto= "Nombre: " + cliente.getNombre() + "/n" +"Apellido: " + cliente.getApellido() + 
-				"/n" + "DNI: " + cliente.getDni() + "/n" + "Sexo: " + cliente.getSexo();
+	/*
+	 * Inserta los datos del Hotel en el texarea del Hotel
+	 */
+	public String rellenarDatosHotel(Vista vista, Hotel hotel) {
+		String datosHotel;
+		return datosHotel= "Hotel: " + hotel.getNombreAloj()+ "\n" + "Ubicación: " + hotel.getUbicacion() +"\n" +
+		"Estrellas: " + hotel.getCategoria() + "\n" + "Cantidad habitaciones: " + hotel.getNumHabitaciones() ;
 	}
+	
+	/*
+	 * Inserta los datos del Precio en el texarea del Precio
+	 */
+	public String rellenarDatosPrecio(Vista vista, Hotel hotel) {
+		String datosPrecio;
+		return datosPrecio= "Hotel: " + precio(vista, hotel)+ "\n" + "Servicios Extra: " + precioRadios(vista) +
+		"\n" + "Días: " + Control_buscador.getPernoctaciones(vista) +"Total: " + "\n" +  
+		((precio(vista, hotel)+precioRadios(vista))*Control_buscador.getPernoctaciones(vista));
+	}
+	
 }
