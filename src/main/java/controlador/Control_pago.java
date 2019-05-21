@@ -186,7 +186,7 @@ public class Control_pago implements ActionListener {
 	public String rellenarDatosPrecio(Vista vista, Hotel hotel) {
 		String datosPrecio;
 		return datosPrecio= "Hotel: " + precio(vista, hotel)+ "\n" + "Servicios Extra: " + precioRadios(vista) +
-		"\n" + "Días: " + Control_buscador.getPernoctaciones(vista) +"Total: " + "\n" +  
+		"\n" + "Días: " + Control_buscador.getPernoctaciones(vista) + "\n" + "Total: " +  
 		((precio(vista, hotel)+precioRadios(vista))*Control_buscador.getPernoctaciones(vista));
 	}
 	

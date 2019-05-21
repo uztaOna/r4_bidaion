@@ -80,7 +80,7 @@ public class PanelResumen extends JPanel {
 		add(lblDatosHotel);
 		
 		JLabel lblDatosReserva = new JLabel("Datos Reserva:");
-		lblDatosReserva.setBounds(490, 148, 84, 23);
+		lblDatosReserva.setBounds(490, 148, 122, 23);
 		add(lblDatosReserva);
 		
 		JLabel lblPrecio = new JLabel("Precio:");

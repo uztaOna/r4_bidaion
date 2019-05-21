@@ -68,10 +68,12 @@ public class Control_reserva implements ActionListener {
 					vista.panelPago.textAPagar.setText(String.valueOf(
 							(Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*Control_buscador.getPernoctaciones(vista)));
 					vista.setContentPane(vista.panelPago);
+				}else{
+					JOptionPane.showMessageDialog(null,"Elija al menos una cama, por favor.","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Debe logearse primero.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else if(e.getSource() == vista.panelReserva.btnAtras) {
