@@ -40,13 +40,14 @@ public class Control_pago implements ActionListener {
 	//Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 	
 
-	Hotel hotel1=new Hotel("ID DEMO", "Hotel Risketos", "Valle de Narnia", 85, 5, 50);
-	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 1234567890, 2500.50f);
+	Hotel hotel1=new Hotel("H001", "Hotel Baserri", "Bilbao", 85, 4, 50);
+	Cliente cliente1=new Cliente("Pit", "Anquila","64651682Q", 'M', miFecha, "QQQQ", 1234567890, 2500.50f);
 
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
-			Control_pago.pagar(vista, modelo.metodoLogin.modelo.clienteRegistrado);
+//			Control_pago.pagar(vista, modelo.metodoLogin.modelo.clienteRegistrado);
+			pagar(vista);
 			Control_reserva.actualizacionCamas(vista, cama1);
 			Control_reserva.disponibilidadCamas(vista, cama1);			
 		}
@@ -67,25 +68,34 @@ public class Control_pago implements ActionListener {
 		}
 	}
 	
-	/*
-	 * Resta el precio de la reserva de la cuenta del usuario
-	 */
-	public static void pagar(Vista vis, Cliente cliente){
-		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
-
-			System.out.println("Saldo ante-pago = 	" + cliente.saldo);
-			cliente.saldo=cliente.saldo-Double.parseDouble(vis.panelPago.textAPagar.getText());
-			vis.panelPago.textAPagar.setText("0");
-			System.out.println("Saldo post-pago = 	" + cliente.saldo);
+//	/*
+//	 * Resta el precio de la reserva de la cuenta del usuario
+//	 */
+//	public static void pagar(Vista vis, Cliente cliente){
+//		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
+//
+//			System.out.println("Saldo ante-pago = 	" + cliente.saldo);
+//			cliente.saldo=cliente.saldo-Double.parseDouble(vis.panelPago.textAPagar.getText());
+//			vis.panelPago.textAPagar.setText("0");
+//			System.out.println("Saldo post-pago = 	" + cliente.saldo);
+//			vis.panelPago.btnPagar.setEnabled(false);
+//			vis.panelPago.btnConfirmar.setEnabled(true);
+//			vis.panelPago.btnAtras.setEnabled(false);
+//			vis.panelPago.btnCancelar.setEnabled(false);
+//			vis.panelPago.textAPagar.setEnabled(false);
+//			vis.panelPago.textCuenta.setEnabled(false);
+//		}
+//		else
+//			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
+//	}
+	
+	public static void pagar(Vista vis){
 			vis.panelPago.btnPagar.setEnabled(false);
 			vis.panelPago.btnConfirmar.setEnabled(true);
 			vis.panelPago.btnAtras.setEnabled(false);
 			vis.panelPago.btnCancelar.setEnabled(false);
 			vis.panelPago.textAPagar.setEnabled(false);
 			vis.panelPago.textCuenta.setEnabled(false);
-		}
-		else
-			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/*
@@ -176,7 +186,8 @@ public class Control_pago implements ActionListener {
 		return "Nombre: " + cliente.getNombre() + "\n" + 
 				"Apellido: " + cliente.getApellido() + "\n" + 
 				"DNI: " + cliente.getDni() + "\n" + 
-				"Sexo: " + cliente.getSexo();
+				"Sexo: " + cliente.getSexo() + "\n" + 
+				"Fecha nacimiento: " + "01/01/1990";
 	}
 	
 	/*

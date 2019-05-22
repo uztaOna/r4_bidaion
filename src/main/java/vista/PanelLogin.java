@@ -35,7 +35,7 @@ public class PanelLogin extends JPanel {
 		lblTitulo.setBounds(241, 64, 269, 58);
 		add(lblTitulo);
 		
-		lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel("Dni:");
 		lblNombre.setBounds(222, 188, 78, 39);
 		add(lblNombre);
 		

@@ -14,6 +14,8 @@ public class PanelDespedida extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public JLabel label;
+	
 	public PanelDespedida() {
 		setBorder(new LineBorder(SystemColor.desktop, 1, true));
 		setLayout(null);
@@ -25,6 +27,10 @@ public class PanelDespedida extends JPanel {
 		lblGraciasPorSu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGraciasPorSu.setBounds(10, 80, 780, 138);
 		add(lblGraciasPorSu);
+		
+		label = new JLabel("");
+		label.setBounds(0, 0, 800, 600);
+		add(label);
 		
 
 	}
