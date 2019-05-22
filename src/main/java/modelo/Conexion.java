@@ -44,7 +44,7 @@ public class Conexion {
 			ResultSet resultadoPeticion = peticion.executeQuery(peticionString);
 			return resultadoPeticion;
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error con la peticion en la BBDD", 0);
 		}
 		return null;
 	}

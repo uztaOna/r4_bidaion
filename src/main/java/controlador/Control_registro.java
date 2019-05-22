@@ -128,6 +128,23 @@ public class Control_registro implements ActionListener {
 		}
 		return null;
 	}
+	
+	
+	public static String encriptarContraSesion(String contraUsuario) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			String contraEnc = new String(contraUsuario);
+			byte[] hashInBytes = md.digest(contraEnc.getBytes(StandardCharsets.UTF_8));
+			StringBuilder sb = new StringBuilder();
+			for (byte b : hashInBytes) {
+				sb.append(String.format("%02x", b));
+			}
+			return sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	/*
 	 * valida que la contraseña tenga los parámetros válidos

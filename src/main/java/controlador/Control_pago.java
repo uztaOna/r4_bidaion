@@ -36,12 +36,12 @@ public class Control_pago implements ActionListener {
 	TipoHab cama1=new TipoHab(40, 10,14,16);
 	Date miFecha= new Date(115, 6, 2, 15, 30);
 
-	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+	//Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
-			Control_pago.pagar(vista, cliente1);
+			Control_pago.pagar(vista, modelo.metodoLogin.iniciarSesion(modelo, vista));
 			Control_reserva.actualizacionCamas(vista, cama1);
 			Control_reserva.disponibilidadCamas(vista, cama1);			
 		}

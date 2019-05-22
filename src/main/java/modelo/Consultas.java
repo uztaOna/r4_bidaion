@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import controlador.Control_registro;
+import vista.Vista;
+
 public class Consultas {
 	
 	private Conexion conexion;
@@ -185,6 +188,41 @@ public class Consultas {
 			return listaCasas;
 		}
 		
+		public Cliente getCliente(String dniUsuario, char[] contraUsuario) {
+			Cliente cliente = null;
+			PreparedStatement stmt = null;
+			ResultSet result = null;
+			String sql = "select * from clientes where DNI='" + dniUsuario + "'";
+			
+			
+			
+			try {
+				//levantar la conexion
+				connection = conexion.conectar();
+				
+				//preparar la consulta SQL a la base de datos
+				stmt = connection.prepareStatement(sql);
+				
+				//execute la consulta y guardarla en un ResultSet
+				result = stmt.executeQuery();
+				
+				if (result.next()) {
+					String contraBase = result.getString("Password");
+					String contraseñaIntroducidaEncripatada = Control_registro.encriptarContra(contraUsuario);
+					if (contraBase.equals(contraseñaIntroducidaEncripatada)) {
+						cliente = new Cliente(result.getString("DNI"), result.getString("Nombre"), result.getString("Apellido"), result.getDate("Fnac"), result.getString("Sexo").toCharArray()[0], result.getString("Password"));
+					} else {
+						JOptionPane.showMessageDialog(null, "Contraseña incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
+					}
+				} else
+					JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return cliente;
+		}
+		
 		//Método que recibe nombre de una casa y saca sus datos
 		public Casa getDatosCasa(String nombreCasa){
 			//read * hotels
@@ -339,6 +377,39 @@ public class Consultas {
 		}
 		return false;
 	}
+	
+	//---------------------------------------------------------------------------------------------------------------------
+	public Cliente comprobarDNIenBBDD(String dni, Vista vis) {		
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String dniUsuario = vis.panelRegistro.txtDni.getText();
+		String contraUsuario = Control_registro.encriptarContra(vis.panelRegistro.txtPassword.getPassword());
+		String query = "select DNI from clientes where DNI = \"" + dni + "\"";
+		try {
+			connection = conexion.conectar();
+			
+			//preparar la consulta SQL a la base de datos
+			stmt = connection.prepareStatement(query);
+			
+			//execute la consulta y guardarla en un ResultSet
+			result = stmt.executeQuery();
+			if (result.next()) {
+				String contraBase = result.getString("Password");
+				if (contraBase.equals(contraUsuario)) {
+					return (new Cliente(result.getString("DNI"), result.getString("Nombre"), result.getString("Apellidos"), result.getDate("Fnac"), result.getString("Sexo").toCharArray()[0], result.getString("Password")));
+				} else {
+					JOptionPane.showMessageDialog(null, "ContraseÃ±a incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
+				}
+			} else
+				JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	//----------------------------------------------------------------------------------------------------------------------
+	
+	
 	
 	/**
 	 * Inserta la informacion del usuario en la base de datos

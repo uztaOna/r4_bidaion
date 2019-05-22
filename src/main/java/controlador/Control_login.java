@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Cliente;
+import modelo.Encript;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
@@ -21,6 +22,7 @@ public class Control_login implements ActionListener {
 	
 	Vista vista;
 	Modelo modelo;
+	Cliente cliente;
 	public static boolean pulsado;
 	
 	//Constructor
@@ -41,14 +43,26 @@ public class Control_login implements ActionListener {
 		TipoHab cama1=new TipoHab(40, 10,14,16);
 		Date miFecha= new Date(115, 6, 2, 15, 30);
 	
-		Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
+		//Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 		Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	//
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == vista.panelLogin.btnLogin) {		
-			nombreUsuario(this.vista, cliente1);
-			comprobarInicioSesion(this.vista);
+		if(e.getSource() == vista.panelLogin.btnLogin) {
+			modelo.clienteRegistrado = iniciarSesion(modelo, vista);
+			nombreUsuario(this.vista,modelo.clienteRegistrado);
+			if(modelo.clienteRegistrado != null || 
+					pulsado == false) {
+				this.vista.setContentPane(vista.panelHoteles);
+//				vista.setContentPane(modelo.);
+			}
+			else if(modelo.clienteRegistrado != null || 
+					pulsado == true)
+				this.vista.setContentPane(vista.panelReserva);
+			else if(modelo.clienteRegistrado == null)
+				System.out.println("Error");
+			
+			//comprobarInicioSesion(this.vista);
 			
 			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
 					pulsado == false)
@@ -86,24 +100,15 @@ public class Control_login implements ActionListener {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	public Cliente iniciarSesion(Modelo mod, Vista vis) {
-		String dniUsuario = vis.panelRegistro.txtDni.getText();
-		String contraUsuario = Control_registro.encriptarContra(vis.panelRegistro.txtPassword.getPassword());
-		String sql = "select * from cliente where DNI=\"" + dniUsuario + "\"";
-		ResultSet rs = mod.conexion.hacerPeticion(sql);
-		try {
-			if (rs.next()) {
-				String contraBase = rs.getString("Password");
-				if (contraBase.equals(contraUsuario)) {
-					return (new Cliente(rs.getString("DNI"), rs.getString("Nombre"), rs.getString("Apellidos"), rs.getDate("Fnac"), rs.getString("Sexo").toCharArray()[0], rs.getString("Password")));
-				} else {
-					JOptionPane.showMessageDialog(null, "Contraseña incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
-				}
-			} else
-				JOptionPane.showMessageDialog(null, "Este usuario no esta registrado, por favor introduzca sus datos a la izquierda", null, JOptionPane.INFORMATION_MESSAGE);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+		Cliente cliente;
+		System.out.println("entra sesion");
+		String dniUsuario = vis.panelLogin.textFieldNombre.getText();
+		char[] contraUsuario = vis.panelLogin.textFieldContrasenia.getPassword();
+		
+		
+		cliente = this.modelo.consulta.getCliente(dniUsuario, contraUsuario);
+		System.out.println(cliente.nombre + cliente.apellido);
+		return cliente;
 	}
 	
 	//-----------------------------------------------------------------------------------------------------------
