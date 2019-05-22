@@ -210,7 +210,7 @@ public class Consultas {
 					String contraBase = result.getString("Password");
 					String contraseñaIntroducidaEncripatada = Control_registro.encriptarContra(contraUsuario);
 					if (contraBase.equals(contraseñaIntroducidaEncripatada)) {
-						cliente = new Cliente(result.getString("DNI"), result.getString("Nombre"), result.getString("Apellido"), result.getDate("Fnac"), result.getString("Sexo").toCharArray()[0], result.getString("Password"));
+						cliente = new Cliente(result.getString("DNI"), result.getString("Nombre"), result.getString("Apellido"),result.getString("Sexo").toCharArray()[0], result.getDate("Fnac"), result.getString("Password"),110,(double)(10000));
 					} else {
 						JOptionPane.showMessageDialog(null, "Contraseña incorrecta", null, JOptionPane.INFORMATION_MESSAGE);
 					}

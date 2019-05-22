@@ -50,7 +50,7 @@ public class Control_login implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource() == vista.panelLogin.btnLogin) {
-			modelo.clienteRegistrado = iniciarSesion(modelo, vista);
+			modelo.clienteRegistrado = iniciarSesion(modelo, vista);			
 			nombreUsuario(this.vista,modelo.clienteRegistrado);
 			if(modelo.clienteRegistrado != null || 
 					pulsado == false) {
@@ -71,6 +71,7 @@ public class Control_login implements ActionListener {
 				this.vista.setContentPane(vista.panelHoteles);
 			else
 				this.vista.setContentPane(vista.panelReserva);
+			
 		}
 		else if(e.getSource() == this.vista.panelLogin.btnNoAcc) {
 			this.vista.setContentPane(vista.panelRegistro);

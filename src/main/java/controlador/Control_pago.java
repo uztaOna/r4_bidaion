@@ -46,7 +46,7 @@ public class Control_pago implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
-			Control_pago.pagar(vista, modelo.metodoLogin.iniciarSesion(modelo, vista));
+			Control_pago.pagar(vista, modelo.metodoLogin.modelo.clienteRegistrado);
 			Control_reserva.actualizacionCamas(vista, cama1);
 			Control_reserva.disponibilidadCamas(vista, cama1);			
 		}
@@ -71,7 +71,6 @@ public class Control_pago implements ActionListener {
 	 * Resta el precio de la reserva de la cuenta del usuario
 	 */
 	public static void pagar(Vista vis, Cliente cliente){
-		System.out.println(cliente.NCuenta);
 		if(Integer.parseInt(vis.panelPago.textCuenta.getText())==cliente.NCuenta) {
 
 			System.out.println("Saldo ante-pago = 	" + cliente.saldo);
