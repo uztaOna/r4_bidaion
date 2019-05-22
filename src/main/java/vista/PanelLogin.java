@@ -53,7 +53,7 @@ public class PanelLogin extends JPanel {
 		add(btnNoAcc);
 		
 		lblContrasenia = new JLabel("Contrase\u00F1a:");
-		lblContrasenia.setBounds(218, 238, 65, 39);
+		lblContrasenia.setBounds(218, 238, 100, 39);
 		add(lblContrasenia);
 		
 		textFieldContrasenia = new JPasswordField();

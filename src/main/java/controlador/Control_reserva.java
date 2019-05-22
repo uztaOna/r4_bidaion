@@ -36,7 +36,6 @@ public class Control_reserva implements ActionListener {
 		this.vista.panelReserva.btnMenosDoble.addActionListener(this);
 	}
 
-
 	TipoHab cama1=new TipoHab(40, 10,14,16);
 //	Date miFecha= new Date(115, 6, 2, 15, 30);
 //	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
@@ -68,10 +67,12 @@ public class Control_reserva implements ActionListener {
 					vista.panelPago.textAPagar.setText(String.valueOf(
 							(Control_pago.precio(vista, hotel1)+Control_pago.precioRadios(vista))*Control_buscador.getPernoctaciones(vista)));
 					vista.setContentPane(vista.panelPago);
+				}else{
+					JOptionPane.showMessageDialog(null,"Elija al menos una cama, por favor.","Error",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null,"Debe logearse primero","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Debe logearse primero.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else if(e.getSource() == vista.panelReserva.btnAtras) {
@@ -93,8 +94,7 @@ public class Control_reserva implements ActionListener {
 			this.vista.setContentPane(this.vista.panelRegistro);
 		}
 	}
-	
-	
+		
 	/*
 	 * Registra al usuario si no lo está
 	 */
@@ -119,6 +119,9 @@ public class Control_reserva implements ActionListener {
 		return true;
 	}
 	
+	/*
+	 * Suma 1 a la cantidad de camas individuales
+	 */
 	public static String sumaBoton (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblInDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantInd.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())+1;
@@ -128,6 +131,9 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
+	/*
+	 * Suma 1 a la cantidad de camas de matrimonio
+	 */
 	public static String sumaBoton2 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblMatriDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantMatri.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())+1;
@@ -137,6 +143,9 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
+	/*
+	 * Suma 1 a la cantidad de camas dobles
+	 */
 	public static String sumaBoton3 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblDobleDisp.getText())!=Double.parseDouble(vis.panelReserva.lblCantDoble.getText())){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())+1;
@@ -146,6 +155,9 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
+	/*
+	 * Resta 1 a la cantidad de camas individuales
+	 */
 	public static String restaBoton (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantInd.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantInd.getText())-1;
@@ -155,6 +167,9 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantInd.getText();
 	}
 	
+	/*
+	 * Resta 1 a la cantidad de camas de matrimonio
+	 */
 	public static String restaBoton2 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantMatri.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantMatri.getText())-1;
@@ -164,6 +179,9 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantMatri.getText();
 	}
 	
+	/*
+	 * Resta 1 a la cantidad de camas dobles
+	 */
 	public static String restaBoton3 (Vista vis) {
 		if(Double.parseDouble(vis.panelReserva.lblCantDoble.getText())>0){
 			int numEntero = Integer.parseInt(vis.panelReserva.lblCantDoble.getText())-1;
@@ -173,19 +191,28 @@ public class Control_reserva implements ActionListener {
 		else return vis.panelReserva.lblCantDoble.getText();
 	}
 	
+	/*
+	 * Confirma que hay al menos una cama seleccionada
+	 */
 	public static boolean confirmarEleccion(Vista vis) {
-		if(vis.panelReserva.lblCantInd.getText()=="0" && vis.panelReserva.lblCantMatri.getText()=="0" &&
-				vis.panelReserva.lblCantDoble.getText()=="0") {
+		if(Integer.parseInt(vis.panelReserva.lblCantInd.getText())<1 && Integer.parseInt(vis.panelReserva.lblCantMatri.getText())<1 &&
+				Integer.parseInt(vis.panelReserva.lblCantDoble.getText())<1) {
 			return false;
 		}else return true;
 	}
 	
+	/*
+	 * Muestra la cantidad de camas libres
+	 */
 	public static void disponibilidadCamas (Vista vis, TipoHab cama) {
 		vis.panelReserva.lblInDisp.setText(Integer.toString(cama.getIndividual()));
 		vis.panelReserva.lblMatriDisp.setText(Integer.toString(cama.getMatrimonio()));
 		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
 	}
 
+	/*
+	 * Va actualizando la cantidad de las camas
+	 */
 	public static void actualizacionCamas (Vista vis, TipoHab cama) {
 		cama.setIndividual(cama.getIndividual()-Integer.parseInt(vis.panelReserva.lblCantInd.getText()));
 		cama.setMatrimonio(cama.getMatrimonio()-Integer.parseInt(vis.panelReserva.lblMatriDisp.getText()));
@@ -195,6 +222,9 @@ public class Control_reserva implements ActionListener {
 		vis.panelReserva.lblDobleDisp.setText(Integer.toString(cama.getDoble()));
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelReserva
+	 */
 	public static void limpiarDispReser(Vista vis) {
 		vis.panelReserva.lblCantInd.setText("0");
 		vis.panelReserva.lblCantMatri.setText("0");

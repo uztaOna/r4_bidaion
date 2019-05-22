@@ -48,6 +48,7 @@ public class Control_login implements ActionListener {
 	//
 	
 	public void actionPerformed(ActionEvent e) {
+
 		if(e.getSource() == vista.panelLogin.btnLogin) {
 			modelo.clienteRegistrado = iniciarSesion(modelo, vista);
 			nombreUsuario(this.vista,modelo.clienteRegistrado);
@@ -63,6 +64,7 @@ public class Control_login implements ActionListener {
 				System.out.println("Error");
 			
 			//comprobarInicioSesion(this.vista);
+
 			
 			if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
 					pulsado == false)
@@ -93,12 +95,17 @@ public class Control_login implements ActionListener {
 		//if()
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelLogin
+	 */
 	public static void limpiarLogin(Vista vis) {
 		vis.panelLogin.textFieldNombre.setText("");
 		vis.panelLogin.textFieldContrasenia.setText("");
 	}
 	
-	//-----------------------------------------------------------------------------------------------------------
+	/*
+	 * El usuario consulta con la base de datos si existe un usuario con esos datos, si hay inicia sesion
+	 */
 	public Cliente iniciarSesion(Modelo mod, Vista vis) {
 		Cliente cliente;
 		System.out.println("entra sesion");
@@ -113,6 +120,9 @@ public class Control_login implements ActionListener {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	
+	/*
+	 * Muestra el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	 */
 	public static void nombreUsuario (Vista vis, Cliente cliente) {		
 		vis.panelReserva.lblUsuarioReser.setText(cliente.nombre);
 		vis.panelHoteles.lblUsuarioHotel.setText(cliente.nombre);
@@ -122,6 +132,9 @@ public class Control_login implements ActionListener {
 		
 	}
 	
+	/*
+	 * Quita el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	 */
 	public static void salirUsuario(Vista vis) {
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {
 			vis.panelReserva.lblUsuarioReser.setText("");

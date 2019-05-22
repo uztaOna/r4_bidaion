@@ -22,8 +22,7 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		this.vista = vista;
 	}
 	
-	public void inicializar_eventos_buscador()
-	{
+	public void inicializar_eventos_buscador() {
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
 		this.vista.panelBuscador.btnCancelar.addActionListener(this);
 		this.vista.panelBuscador.spinnerDias.addContainerListener(this);
@@ -63,6 +62,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		}
 	}
 	
+	/*
+	 * Devuelve la fecha en String al pasarle un parametro Date
+	 */
 	public static String fechaToString(Date fechaInicio){
 		String patron = "dd/MM/yyyy";
 		DateFormat df = new SimpleDateFormat(patron);
@@ -72,6 +74,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		return fInicioString;
 	}
 	
+	/*
+	 * Devuelve en valor int el valor seleccionado del Spinner
+	 */
 	public static int getPernoctaciones(Vista vista) {
 		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		return pernoctaciones;
@@ -103,8 +108,16 @@ public class Control_buscador implements ActionListener, ContainerListener {
 	
 	//Acciones de los eventos de PropertyChangeListener (date)
 	public void propertyChange(PropertyChangeEvent e) {
+		Date fInicio = vista.panelBuscador.dateInicio.getDate();
+		Date fFin = sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
+		
+		this.modelo.reserva.setFechaIni(fInicio);
+		this.modelo.reserva.setFechaFin(fFin);
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelHoteles
+	 */
 	public static void limpiarinfoHotelSelec(Vista vista) {
 		vista.panelHoteles.categoria.setText("");
 		vista.panelHoteles.precio.setText("");

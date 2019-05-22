@@ -22,7 +22,7 @@ public class PanelBuscador extends JPanel {
 	
 	public JLabel lblDestino, lblTitulo, lblFechaInicio, numDias;
 	public JButton btnContinuar, btnCancelar;
-	public JComboBox<String> comboBox;
+	public JComboBox<String> comboUbicaciones;
 	public JDateChooser dateInicio;
 	public JSpinner spinnerDias;
 	
@@ -40,9 +40,9 @@ public class PanelBuscador extends JPanel {
 		btnContinuar.setBounds(653, 536, 101, 23);
 		add(btnContinuar);
 		
-		comboBox = new JComboBox<String>();
-		comboBox.setBounds(362, 304, 196, 22);
-		add(comboBox);
+		comboUbicaciones = new JComboBox<String>();
+		comboUbicaciones.setBounds(362, 304, 196, 22);
+		add(comboUbicaciones);
 		
 		lblTitulo = new JLabel("Escoja su destino");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 29));
@@ -72,5 +72,14 @@ public class PanelBuscador extends JPanel {
 		btnCancelar.setBounds(22, 536, 107, 23);
 		add(btnCancelar);
 		
+	}
+	
+	public void limpiarPanelBuscador()
+	{
+		comboUbicaciones.removeAllItems();
+	}
+	
+	public void anadirElementoCombo(String elemento) {
+		comboUbicaciones.addItem(elemento);
 	}
 }

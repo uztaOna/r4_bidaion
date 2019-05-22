@@ -20,6 +20,7 @@ public class PanelReserva extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -46,7 +47,7 @@ public class PanelReserva extends JPanel {
 		btnReservar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnReservar.setAlignmentY(Component.TOP_ALIGNMENT);
 		btnReservar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnReservar.setBounds(653, 536, 101, 23);
+		btnReservar.setBounds(664, 535, 101, 23);
 		add(btnReservar);
 		
 		btnLogin = new JButton("Iniciar Sesi\u00F3n");
@@ -117,7 +118,7 @@ public class PanelReserva extends JPanel {
 		add(rdbtnParking);
 		
 		rdbtnAireAcon = new JRadioButton("Aire Acondicionado");
-		rdbtnAireAcon.setBounds(432, 469, 117, 23);
+		rdbtnAireAcon.setBounds(432, 469, 140, 23);
 		rdbtnAireAcon.setBackground(new Color(255, 201, 164));
 		add(rdbtnAireAcon);
 		
@@ -127,12 +128,12 @@ public class PanelReserva extends JPanel {
 		add(rdbtnRestaurante);
 		
 		rdbtnBar = new JRadioButton("Bar");
-		rdbtnBar.setBounds(567, 469, 109, 23);
+		rdbtnBar.setBounds(574, 469, 109, 23);
 		rdbtnBar.setBackground(new Color(255, 201, 164));
 		add(rdbtnBar);
 		
 		rdbtnGYM = new JRadioButton("Gimnasio");
-		rdbtnGYM.setBounds(567, 496, 109, 23);
+		rdbtnGYM.setBounds(574, 496, 109, 23);
 		rdbtnGYM.setBackground(new Color(255, 201, 164));
 		add(rdbtnGYM);
 		
@@ -158,19 +159,19 @@ public class PanelReserva extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnCancelar.setAlignmentY(0.0f);
-		btnCancelar.setBounds(27, 536, 101, 23);
+		btnCancelar.setBounds(27, 535, 101, 23);
 		add(btnCancelar);
 		
 		
-		lblCamasDiponibles = new JLabel("Disponibles");
+		lblCamasDiponibles = new JLabel("Disponibles:");
 		lblCamasDiponibles.setBounds(37, 344, 118, 21);
 		add(lblCamasDiponibles);
 		
-		lblCantSeleccionada = new JLabel("Seleccionadas");
+		lblCantSeleccionada = new JLabel("Seleccionadas:");
 		lblCantSeleccionada.setBounds(37, 391, 118, 21);
 		add(lblCantSeleccionada);
 		
-		lblServicios = new JLabel("Servicios Extra");
+		lblServicios = new JLabel("Servicios Extra:");
 		lblServicios.setBounds(27, 470, 110, 21);
 		add(lblServicios);
 		
@@ -192,7 +193,7 @@ public class PanelReserva extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0), new Color(0, 0, 0)));
 		btnAtras.setAlignmentY(0.0f);
-		btnAtras.setBounds(146, 536, 101, 23);
+		btnAtras.setBounds(27, 502, 101, 23);
 		add(btnAtras);
 		
 		btnMasInd = new JButton("+");

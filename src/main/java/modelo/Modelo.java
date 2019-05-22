@@ -11,6 +11,7 @@ public class Modelo {
 	public Hotel hotel;
 	public float precioTotal;
 	public Cliente clienteRegistrado;
+	public Reserva reserva;
 	
 	public Control_login metodoLogin;
 	public Consultas cbd;

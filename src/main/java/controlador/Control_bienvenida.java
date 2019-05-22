@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 
+import modelo.Consultas;
 import modelo.Modelo;
+import vista.PanelBuscador;
 import vista.Vista;
 
 public class Control_bienvenida implements ActionListener{
@@ -23,24 +25,26 @@ public class Control_bienvenida implements ActionListener{
 		this.vista.panelBienvenida.btnInicio.addActionListener(this);
 	}
 	
-	public void addUbicacionesCombo(Modelo modelo, Vista vista) {
+	/*
+	 * Añade las ubicaciones de la base de datos a el comboBox
+	 */
+	public void addUbicacionesCombo(Vista vista, Consultas consultas, PanelBuscador panelBuscador) {
 		//Cargar las ciudades de la bbdd y mostrar
-		 ArrayList<String> ubicaciones = modelo.consulta.getUbicaciones();
+		 ArrayList<String> ubicaciones = consultas.getUbicaciones();
 		
 		//Limpiar combobox de ubicaciones de la interfaz
-		vista.panelBuscador.comboBox.removeAllItems();
+		panelBuscador.limpiarPanelBuscador();
 		
 		//Recorrer el arraylist de ubicaciones y 
 		//rellenarlos con las ubicaciones disponibles
 		for(int i=0; i < ubicaciones.size(); i++) {
-			vista.panelBuscador.comboBox.addItem(ubicaciones.get(i).toString());
+			panelBuscador.anadirElementoCombo(ubicaciones.get(i).toString());
 		}
 	}
-
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
-			addUbicacionesCombo(this.modelo, this.vista);
+			addUbicacionesCombo(this.vista, this.modelo.consulta, this.vista.panelBuscador);
 			this.vista.setContentPane(this.vista.panelBuscador);
 			validarFecha(vista);
 		}

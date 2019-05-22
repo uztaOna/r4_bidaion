@@ -38,7 +38,11 @@ public class Control_registro implements ActionListener {
 			modelo.clienteRegistrado = registro(vista,modelo);
 			if(modelo.clienteRegistrado != null) {
 				modelo.cbd.insertarUsuarioEnBaseDeDatos(modelo.clienteRegistrado);
-				this.vista.setContentPane(vista.panelHoteles);
+				if(vista.panelHoteles.JListHoteles.getSelectedValue() == null || 
+						pulsado == false)
+					this.vista.setContentPane(vista.panelHoteles);
+				else
+					this.vista.setContentPane(vista.panelReserva);
 			}
 			registro(vista,modelo);
 		}
@@ -56,6 +60,9 @@ public class Control_registro implements ActionListener {
 		Control_login.limpiarLogin(this.vista);
 	}
 
+	/*
+	 * Registra al usuario
+	 */
 	public static Cliente registro(Vista vis, Modelo modelo) {
 		JTextField dni = vis.panelRegistro.txtDni;
 		JTextField nombre = vis.panelRegistro.txtNombre;
@@ -106,7 +113,6 @@ public class Control_registro implements ActionListener {
 	public static boolean validarDNI(JTextField DNI) {
 		return DNI.getText().matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
 	}
-	
 	
 	/**
 	 * Encritacion de la contraseña
@@ -166,6 +172,9 @@ public class Control_registro implements ActionListener {
 		}
 	}
 	
+	/*
+	 * Limpia los valores insertados en el panelRegistro
+	 */
 	public static void limpiarRegistro(Vista vis) {
 		vis.panelRegistro.txtNombre.setText("");
 		vis.panelRegistro.txtApellido.setText("");

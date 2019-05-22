@@ -67,7 +67,7 @@ public class PanelHoteles extends JPanel {
 		lblPrecio.setBounds(426, 368, 101, 23);
 		add(lblPrecio);
 		
-		lblCategoría = new JLabel("Categoria");
+		lblCategoría = new JLabel("Categoría");
 		lblCategoría.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCategoría.setBounds(426, 300, 101, 23);
 		add(lblCategoría);
