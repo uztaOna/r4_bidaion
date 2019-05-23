@@ -12,12 +12,18 @@ public class Control_resumen implements ActionListener, MouseListener {
 
 	Vista vista;
 	Modelo modelo;
-	
+	/**
+	 * declaracion de vista,controlador
+	 * @param modelo
+	 * @param vista
+	 */
 	public Control_resumen(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
-	
+	/**
+	 * inicializador de eventos
+	 */
 	public void inicializar_eventos_resumen() {
 		this.vista.panelResumen.btnFin.addActionListener(this);
 		this.vista.panelDespedida.label.addMouseListener(this);
@@ -33,8 +39,9 @@ public class Control_resumen implements ActionListener, MouseListener {
 		}
 	}
 	
-	/*
-	 * Deja los botones que cambiaron de estado al estado con el que empezaron
+	/**
+	 * metodo para resetear los botones del panel pago
+	 * @param vista
 	 */
 	public void resetBotonesPago(Vista vista) {
 		vista.panelPago.btnPagar.setEnabled(true);

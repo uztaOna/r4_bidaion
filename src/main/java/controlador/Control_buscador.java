@@ -16,12 +16,19 @@ public class Control_buscador implements ActionListener, ContainerListener {
 
 	Modelo modelo;
 	Vista vista;
-	
+	/**
+	 * declaracion de modelo,vista
+	 * @param modelo
+	 * @param vista
+	 */
 	public Control_buscador (Modelo modelo,Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
 	}
 	
+	/**
+	 * inicializador de eventos del panel
+	 */
 	public void inicializar_eventos_buscador() {
 		this.vista.panelBuscador.btnContinuar.addActionListener(this);
 		this.vista.panelBuscador.btnCancelar.addActionListener(this);
@@ -38,6 +45,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * accionador del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Date fechaInicio = vista.panelBuscador.dateInicio.getDate();
 		
@@ -62,8 +72,10 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		}
 	}
 	
-	/*
+	/**
 	 * Devuelve la fecha en String al pasarle un parametro Date
+	 * @param fechaInicio
+	 * @return
 	 */
 	public static String fechaToString(Date fechaInicio){
 		String patron = "dd/MM/yyyy";
@@ -74,14 +86,22 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		return fInicioString;
 	}
 	
-	/*
+	/**
 	 * Devuelve en valor int el valor seleccionado del Spinner
+	 * @param vista
+	 * @return
 	 */
 	public static int getPernoctaciones(Vista vista) {
 		int pernoctaciones = (Integer)vista.panelBuscador.spinnerDias.getValue();
 		return pernoctaciones;
 	}
 	
+	/**
+	 * suma los dias de la fecha
+	 * @param fechaInicio
+	 * @param pernoctaciones
+	 * @return
+	 */
 	public static Date sumarDiasAFecha(Date fechaInicio, int pernoctaciones){
 		int dias = pernoctaciones;
 		if (dias==0) {
@@ -106,7 +126,10 @@ public class Control_buscador implements ActionListener, ContainerListener {
 //	    return correcto;
 //	}
 	
-	//Acciones de los eventos de PropertyChangeListener (date)
+	/**
+	 * Acciones de los eventos de PropertyChangeListener (date)
+	 * @param e
+	 */
 	public void propertyChange(PropertyChangeEvent e) {
 		Date fInicio = vista.panelBuscador.dateInicio.getDate();
 		Date fFin = sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
@@ -115,8 +138,9 @@ public class Control_buscador implements ActionListener, ContainerListener {
 		this.modelo.reserva.setFechaFin(fFin);
 	}
 	
-	/*
+	/**
 	 * Limpia los valores insertados en el panelHoteles
+	 * @param vista
 	 */
 	public static void limpiarinfoHotelSelec(Vista vista) {
 		vista.panelHoteles.categoria.setText("");

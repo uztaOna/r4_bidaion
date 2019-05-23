@@ -9,6 +9,9 @@ import vista.Vista;
 
 public class Controlador implements ActionListener, ContainerListener {
 
+	/**
+	 * declaraciones de los controladores
+	 */
 	private Vista vista;
 	private Modelo modelo;
 	
@@ -21,6 +24,11 @@ public class Controlador implements ActionListener, ContainerListener {
 	private Control_pago control_pago;
 	private Control_resumen control_resumen;
 	
+	/**
+	 * controlador del programa
+	 * @param vista
+	 * @param modelo
+	 */
 	public Controlador(Vista vista, Modelo modelo) {
 		this.vista = vista;
 		this.modelo = modelo; 

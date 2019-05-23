@@ -9,6 +9,9 @@ public class CerrarVentana extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * La ventana de la aplicacion
+	 */
 	public void VistaPrincipal() {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
  

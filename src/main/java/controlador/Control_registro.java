@@ -21,18 +21,26 @@ public class Control_registro implements ActionListener {
 	Vista vista;
 	Modelo modelo;
 	public static boolean pulsado;
-	
+	/**
+	 * declaracion de vista,modelo
+	 * @param modelo
+	 * @param vista
+	 */
 	public Control_registro(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
-	
+	/**
+	 * iniciador de eventos
+	 */
 	public void inicializar_eventos_registro() {
 		this.vista.panelRegistro.btnCancelar.addActionListener(this);
 		this.vista.panelRegistro.btnRegistrarme.addActionListener(this);
 		this.vista.panelRegistro.btnAtras.addActionListener(this);
 	}
-
+	/**
+	 * accionador del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelRegistro.btnRegistrarme) {
 			modelo.clienteRegistrado = registro(vista,modelo);
@@ -60,8 +68,11 @@ public class Control_registro implements ActionListener {
 		Control_login.limpiarLogin(this.vista);
 	}
 
-	/*
-	 * Registra al usuario
+	/**
+	 * metodo para hacer el registro del usuario
+	 * @param vis
+	 * @param modelo
+	 * @return
 	 */
 	public static Cliente registro(Vista vis, Modelo modelo) {
 		JTextField dni = vis.panelRegistro.txtDni;
@@ -83,8 +94,10 @@ public class Control_registro implements ActionListener {
 		return null;	
 	}
 	
-	/*
-	 * Pasa el valor de la comboBox a char dependiendo de si es hombre (V) o mujer (M)
+	/**
+	 * metodo para cambiar el sexo
+	 * @param ComboBoxSexo
+	 * @return
 	 */
 	public static char cambiarSexoAChar(JComboBox ComboBoxSexo) {
 		String sexo = ComboBoxSexo.getSelectedItem().toString();
@@ -94,8 +107,10 @@ public class Control_registro implements ActionListener {
 			return 'M';
 	}
 
-	/*
-	 * Valida si en el campo solo hay letras
+	/**
+	 * metodo para validar solo letras en los campos necesarios
+	 * @param campoTexto
+	 * @return
 	 */
 	public static boolean validarSoloLetras(JTextField campoTexto) {
 		if (!(campoTexto.getText().matches("^[a-zA-Z]+$"))) {
@@ -107,8 +122,10 @@ public class Control_registro implements ActionListener {
 		return true;
 	}
 
-	/*
-	 * valida que sea un DNI válido
+	/**
+	 * metodo para validar el DNI
+	 * @param DNI
+	 * @return
 	 */
 	public static boolean validarDNI(JTextField DNI) {
 		return DNI.getText().matches("^[0-9]{7,8}['T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|T]$");
@@ -135,7 +152,11 @@ public class Control_registro implements ActionListener {
 		return null;
 	}
 	
-	
+	/**
+	 * metodo para encriptar la contraseña de tipo string
+	 * @param contraUsuario
+	 * @return
+	 */
 	public static String encriptarContraSesion(String contraUsuario) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -152,8 +173,10 @@ public class Control_registro implements ActionListener {
 		return null;
 	}
 
-	/*
-	 * valida que la contraseña tenga los parámetros válidos
+	/**
+	 * valida que la contraseña tenga los parametros validos
+	 * @param contra
+	 * @return
 	 */
 	public static boolean validarContrasenia(char[] contra) {
 		// Regex para validar contraseña, por orden: Una letra minuscula, una letra
@@ -172,8 +195,9 @@ public class Control_registro implements ActionListener {
 		}
 	}
 	
-	/*
-	 * Limpia los valores insertados en el panelRegistro
+	/**
+	 * metodo para limpiar el panel registro
+	 * @param vis
 	 */
 	public static void limpiarRegistro(Vista vis) {
 		vis.panelRegistro.txtNombre.setText("");

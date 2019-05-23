@@ -25,8 +25,11 @@ public class Control_bienvenida implements ActionListener{
 		this.vista.panelBienvenida.btnInicio.addActionListener(this);
 	}
 	
-	/*
+	/**
 	 * Añade las ubicaciones de la base de datos a el comboBox
+	 * @param vista
+	 * @param consultas
+	 * @param panelBuscador
 	 */
 	public void addUbicacionesCombo(Vista vista, Consultas consultas, PanelBuscador panelBuscador) {
 		//Cargar las ciudades de la bbdd y mostrar
@@ -42,6 +45,9 @@ public class Control_bienvenida implements ActionListener{
 		}
 	}
 	
+	/**
+	 * accionador del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelBienvenida.btnInicio) {
 			addUbicacionesCombo(this.vista, this.modelo.consulta, this.vista.panelBuscador);
@@ -50,7 +56,10 @@ public class Control_bienvenida implements ActionListener{
 		}
 	}
 	
-	/*Comprueba que la fecha sea anterior a hoy*/
+	/**
+	 * Comprueba que la fecha sea anterior a hoy
+	 * @param vista
+	 */
 	public static void validarFecha(Vista vista) {
 		vista.panelBuscador.dateInicio.setMinSelectableDate(new Date());
 		vista.panelBuscador.dateInicio.setDate(new Date());

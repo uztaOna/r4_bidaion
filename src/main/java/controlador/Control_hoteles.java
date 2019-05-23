@@ -25,7 +25,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		this.modelo = modelo;
 	}
 	
-	//Añadir listeners a los botones del panel 'hoteles'
+	/**
+	 * Añadir listeners a los botones del panel 'hoteles
+	 */
 	public void inicializar_eventos_hoteles() {
 		this.vista.panelHoteles.JListHoteles.addListSelectionListener(this);
 		this.vista.panelHoteles.btnContinuar.addActionListener(this);
@@ -42,6 +44,9 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 //	Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 //	Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	
+	/**
+	 * accionador del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.vista.panelHoteles.btnSeleccionar) {
 			this.vista.panelHoteles.btnContinuar.setEnabled(true);
@@ -88,6 +93,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	public void valueChanged(ListSelectionEvent e) {
 	}
 	
+	
+	/**
+	 * muestra del destino elegido en el label
+	 * @param vista
+	 */
 	public static void showDestinoBuscador(Vista vista) {
 		String ubicacion = vista.panelBuscador.comboUbicaciones.getSelectedItem().toString();
 		
@@ -95,6 +105,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelReserva.destino.setText(ubicacion);
 	}
 
+	/**
+	 * muestra la fecha seleccionada en le label
+	 * @param vista
+	 */
 	public static void showFechaBuscador(Vista vista) {
 		Date fInicio = vista.panelBuscador.dateInicio.getDate();
 		Date fFin = Control_buscador.sumarDiasAFecha(fInicio, Control_buscador.getPernoctaciones(vista));
@@ -107,7 +121,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 	}
 	
 	
-	//Añadir listado de hoteles a JList según ubicación
+	/**
+	 * Añadir listado de hoteles a JList según ubicación
+	 * @param modelo
+	 * @param vista
+	 */
 	public static void addHotelesJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
@@ -128,7 +146,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
-	//Añadir listado de casas a JList según ubicación
+	/**
+	 * Añadir listado de casas a JList según ubicación
+	 * @param modelo
+	 * @param vista
+	 */
 	public static void addCasaJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
@@ -149,7 +171,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
-	//Añadir listado de apartamentos a JList según ubicación
+	/**
+	 * Añadir listado de apartamentos a JList según ubicación
+	 * @param modelo
+	 * @param vista
+	 */
 	public static void addApartamentoJList(Modelo modelo, Vista vista) {
 		//Panel esta creado en el constructor de vista.
 		//Guardar ubicacion seleccionada
@@ -170,7 +196,11 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelHoteles.JListHoteles.setModel(vista.panelHoteles.modeloHoteles);
 	}
 	
-	//Muestra info del hotel pulsando el botón "Seleccionar"
+	/**
+	 * Muestra info del hotel pulsando el botón "Seleccionar
+	 * @param modelo
+	 * @param vista
+	 */
 	public static void infoHotelSelec(Modelo modelo, Vista vista) {
 		// 1 Leer JList seleccionado
 		String nombreHotel = (String)vista.panelHoteles.JListHoteles.getSelectedValue();
@@ -193,7 +223,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		vista.panelReserva.nomHotel.setText(hotel.getNombreAloj());
 	}
 	
-	
+	/**
+	 * metodo para modificar el label del hotel
+	 * @param vis
+	 */
 	public static void tres(Vista vis) {
 		String nombre = "";
 		if(nombre == vis.panelHoteles.lblNomHotel.getText()) {
@@ -206,17 +239,27 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		} 
 	}
 	
-	//quita todos los objetos del JList
+	/**
+	 * quita todos los objetos del JList
+	 * @param vis
+	 */
 	public static void limpiarBox(Vista vis) {		
 		vis.panelHoteles.JListHoteles.removeAll();
 	}
 	
+	/**
+	 * metodo para cargar los nombres del hotel
+	 * @param vis
+	 * @param nombre
+	 */
 	public static void cargaNombreHotel(Vista vis, String nombre) {		
 		vis.panelHoteles.lblNomHotel.setText(nombre);
 	}
 	
-	/*
-	 * Devuelve un ArrayList de hoteles
+	/**
+	 * metodo para recoger los hoteles de la BBDD
+	 * @param listHoteles
+	 * @return
 	 */
 	public static ArrayList<Hotel> listadoHoteles (ArrayList<Hotel> listHoteles) {	
 		for (int i = 0; i <listHoteles.size(); i++) {
@@ -225,8 +268,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		return listHoteles;
 	}
 	
-	/*
-	 * Devuelve un ArrayList de casas
+	/**
+	 * metodo para recoger los casas de la BBDD
+	 * @param listCasas
+	 * @return
 	 */
 	public static ArrayList<Casa> listadoCasas (ArrayList<Casa> listCasas) {	
 		for (int i = 0; i <listCasas.size(); i++) {
@@ -235,8 +280,10 @@ public class Control_hoteles implements ListSelectionListener, ActionListener {
 		return listCasas;
 	}
 	
-	/*
+	/**
 	 * Devuelve un ArrayList de apartamentos
+	 * @param listApartamento
+	 * @return
 	 */
 	public static ArrayList<Apartamento> listadoApartamento (ArrayList<Apartamento> listApartamento) {	
 		for (int i = 0; i <listApartamento.size(); i++) {

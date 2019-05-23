@@ -2,13 +2,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Cliente;
-import modelo.Encript;
 import modelo.Hotel;
 import modelo.Modelo;
 import modelo.TipoHab;
@@ -31,6 +27,9 @@ public class Control_login implements ActionListener {
 		this.modelo = modelo;
 	}
 	
+	/**
+	 * inicializa evento del PanelLogin
+	 */
 	public void inicializar_eventos_login()
 	{
 		this.vista.panelLogin.btnCancelar.addActionListener(this);
@@ -46,7 +45,10 @@ public class Control_login implements ActionListener {
 		//Cliente cliente1=new Cliente("Pit", "El Anquila","64651682Q", 'M', miFecha, "QQQQ", 2, 9999999);
 		Hotel hotel1=new Hotel("ID DEMO", "HOTEL DEMO", "DEMO CITY", 10, 5, 50);
 	//
-	
+		
+	/**
+	 * Acciones del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource() == vista.panelLogin.btnLogin) {
@@ -104,8 +106,11 @@ public class Control_login implements ActionListener {
 		vis.panelLogin.textFieldContrasenia.setText("");
 	}
 	
-	/*
-	 * El usuario consulta con la base de datos si existe un usuario con esos datos, si hay inicia sesion
+	/**
+	 * Metodo iniciar sesion
+	 * @param mod
+	 * @param vis
+	 * @return
 	 */
 	public Cliente iniciarSesion(Modelo mod, Vista vis) {
 		Cliente cliente;
@@ -121,8 +126,10 @@ public class Control_login implements ActionListener {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	
-	/*
-	 * Muestra el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	/**
+	 * Cambia en nombre en el label
+	 * @param vis
+	 * @param cliente
 	 */
 	public static void nombreUsuario (Vista vis, Cliente cliente) {		
 		vis.panelReserva.lblUsuarioReser.setText(cliente.nombre);
@@ -133,8 +140,9 @@ public class Control_login implements ActionListener {
 		
 	}
 	
-	/*
-	 * Quita el nombre del usuario y cambia el texto del boton reserva en las pantallas de reserva y de hotel
+	/**
+	 * cambia los labels al salir el usuario de su cuenta
+	 * @param vis
 	 */
 	public static void salirUsuario(Vista vis) {
 		if(vis.panelReserva.btnLogin.getText()=="Log out") {

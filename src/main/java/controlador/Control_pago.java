@@ -3,7 +3,6 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Hotel;
@@ -18,12 +17,18 @@ public class Control_pago implements ActionListener {
 	Modelo modelo;
 	Reserva reserva;
 	Hotel hotel;
-	
+	/**
+	 * declaracion de vista,modelo
+	 * @param modelo
+	 * @param vista
+	 */
 	public Control_pago(Modelo modelo, Vista vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 	}
-	
+	/**
+	 * iniciador de los eventos del panel
+	 */
 	public void inicializar_eventos_pago() {
 		this.vista.panelPago.btnConfirmar.addActionListener(this);
 		this.vista.panelPago.btnAtras.addActionListener(this);
@@ -43,7 +48,9 @@ public class Control_pago implements ActionListener {
 	Hotel hotel1=new Hotel("H001", "Hotel Baserri", "Bilbao", 85, 4, 50);
 	Cliente cliente1=new Cliente("Pit", "Anquila","64651682Q", 'M', miFecha, "QQQQ", 1234567890, 2500.50f);
 
-	
+	/**
+	 * acciondel del panel
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == vista.panelPago.btnPagar) {		
 //			Control_pago.pagar(vista, modelo.metodoLogin.modelo.clienteRegistrado);
@@ -88,7 +95,10 @@ public class Control_pago implements ActionListener {
 //		else
 //			JOptionPane.showMessageDialog(null,"Nº cuenta incorrecto","Error",JOptionPane.ERROR_MESSAGE);
 //	}
-	
+	/**
+	 * metodo para solucionar el pago
+	 * @param vis
+	 */
 	public static void pagar(Vista vis){
 			vis.panelPago.btnPagar.setEnabled(false);
 			vis.panelPago.btnConfirmar.setEnabled(true);
@@ -98,8 +108,11 @@ public class Control_pago implements ActionListener {
 			vis.panelPago.textCuenta.setEnabled(false);
 	}
 	
-	/*
-	 * Devuelve el calcula el precio del total de camas seleccionadas
+	/**
+	 * metodo para coger el precio de la reserva
+	 * @param vis
+	 * @param hotel
+	 * @return
 	 */
 	public static double precio(Vista vis, Hotel hotel) {	
 		double precio = (Double.parseDouble(vis.panelReserva.lblCantInd.getText())*hotel.getPrecio()) + 
@@ -118,8 +131,10 @@ public class Control_pago implements ActionListener {
 		return Math.round(precio);
 	}
 	
-	/*
-	 * Devuelve el calculo del servicio seleccionado
+	/**
+	 * metodo para fijar los precios de los complemento de la habitacion
+	 * @param vis
+	 * @return
 	 */
 	public static double precioRadios(Vista vis) {
 		boolean radioArray[] = {vis.panelReserva.rdbtnWifi.isSelected(),
@@ -155,8 +170,10 @@ public class Control_pago implements ActionListener {
 //		vista.setContentPane(vista.panelResumen);
 //	}
 	
-	/*
-	 * Muestra los datos de la reserva
+	/**
+	 * metodo para reservar
+	 * @param rva
+	 * @param tablaModel
 	 */
 	public void mostrarReserva(Reserva rva, DefaultTableModel tablaModel) {
 		
@@ -179,8 +196,11 @@ public class Control_pago implements ActionListener {
 		System.out.println(datosRva);
 	}
 	
-	/*
-	 * Inserta los datos del Usuario en el texarea del usuario
+	/**
+	 * metodo para rellenar los datos del usuario 
+	 * @param vista
+	 * @param cliente
+	 * @return
 	 */
 	public String rellenarDatosUsuario(Vista vista, Cliente cliente) {
 		return "Nombre: " + cliente.getNombre() + "\n" + 
@@ -190,8 +210,11 @@ public class Control_pago implements ActionListener {
 				"Fecha nacimiento: " + "01/01/1990";
 	}
 	
-	/*
-	 * Inserta los datos del Hotel en el texarea del Hotel
+	/**
+	 * metodo para rellenar los datos del hotel
+	 * @param vista
+	 * @param hotel
+	 * @return
 	 */
 	public String rellenarDatosHotel(Vista vista, Hotel hotel) {
 		return hotel.getNombreAloj()+ "\n" + 
@@ -200,8 +223,10 @@ public class Control_pago implements ActionListener {
 				"Cantidad habitaciones: " + hotel.getNumHabitaciones() ;
 	}
 	
-	/*
-	 * Inserta los datos de la Reserva en el textArea del Hotel
+	/**
+	 * metodo para rellenar los datos de la reserva
+	 * @param vista
+	 * @return
 	 */
 	public String rellenarDatosRva(Vista vista) {
 		int codRva = 001;
@@ -222,8 +247,11 @@ public class Control_pago implements ActionListener {
 				"Habitación doble: 		" + 0;
 	}
 	
-	/*
-	 * Inserta los datos del Precio en el texarea del Precio
+	/**
+	 * metodo para rellenar mostrar los datos de la reserva (archivo)
+	 * @param vista
+	 * @param hotel
+	 * @return
 	 */
 	public String rellenarDatosPrecio(Vista vista, Hotel hotel) {
 		return "Hotel: " + (precio(vista, hotel) * Control_buscador.getPernoctaciones(vista)) + " €" + "\n" + 
